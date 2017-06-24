@@ -17,10 +17,12 @@
 package com.dirtyunicorns.tweaks.fragments.system;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.SELinux;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -35,15 +37,26 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
+import android.util.Log;
+import com.android.settings.Utils;
+import android.text.TextUtils;
 
 import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
 
+import com.dirtyunicorns.utils.SuTask;
+import com.dirtyunicorns.utils.SuShell;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Arrays;
 
 @SearchIndexable
 public class Miscellaneous extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
+
+    private static final String TAG = "Miscellaneous";
 
     private static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
     private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
@@ -53,12 +66,17 @@ public class Miscellaneous extends SettingsPreferenceFragment
     private static final String PREF_KEY_CUTOUT = "cutout_settings";
     private static final String KEY_RINGTONE_FOCUS_MODE_V2 = "ringtone_focus_mode_v2";
     private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
+    private static final String SELINUX_CATEGORY = "selinux";
+    private static final String PREF_SELINUX_MODE = "selinux_mode";
+    private static final String PREF_SELINUX_PERSISTENCE = "selinux_persistence";
 
     private SystemSettingMasterSwitchPreference mGamingMode;
     private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
     private ListPreference mScrollingCachePref;
     private ListPreference mScreenOffAnimation;
     private ListPreference mRingtoneFocusMode;
+    private SwitchPreference mSelinuxMode;
+    private SwitchPreference mSelinuxPersistence;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,12 +113,25 @@ public class Miscellaneous extends SettingsPreferenceFragment
         if (!res.getBoolean(com.android.internal.R.bool.config_deviceRingtoneFocusMode)) {
             prefScreen.removePreference(mRingtoneFocusMode);
         }
-
+ 
         mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
         int enabled = Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
         mEnableScreenStateToggles.setChecked(enabled != 0);
         mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
+
+      // SELinux
+      Preference selinuxCategory = findPreference(SELINUX_CATEGORY);
+      mSelinuxMode = (SwitchPreference) findPreference(PREF_SELINUX_MODE);
+      mSelinuxMode.setChecked(SELinux.isSELinuxEnforced());
+      mSelinuxMode.setOnPreferenceChangeListener(this);
+
+      mSelinuxPersistence =
+          (SwitchPreference) findPreference(PREF_SELINUX_PERSISTENCE);
+      mSelinuxPersistence.setOnPreferenceChangeListener(this);
+      mSelinuxPersistence.setChecked(getContext()
+          .getSharedPreferences("selinux_pref", Context.MODE_PRIVATE)
+          .contains(PREF_SELINUX_MODE));
     }
 
     @Override
@@ -135,8 +166,16 @@ public class Miscellaneous extends SettingsPreferenceFragment
                 getActivity().stopService(service);
             }
             return true;
+        } else if (preference == mSelinuxMode) {
+            boolean enabled = (Boolean) newValue;
+            new SwitchSelinuxTask(getActivity()).execute(enabled);
+            setSelinuxEnabled(enabled, mSelinuxPersistence.isChecked());
+            return true;
+        } else if (preference == mSelinuxPersistence) {
+            setSelinuxEnabled(mSelinuxMode.isChecked(), (Boolean) newValue);
+            return true;
         }
-        return false;
+            return false;
     }
 
     private static boolean hasPhysicalDisplayCutout(Context context) {
@@ -149,6 +188,44 @@ public class Miscellaneous extends SettingsPreferenceFragment
         return MetricsProto.MetricsEvent.DIRTYTWEAKS;
     }
 
+      private void setSelinuxEnabled(boolean status, boolean persistent) {
+      SharedPreferences.Editor editor = getContext()
+          .getSharedPreferences("selinux_pref", Context.MODE_PRIVATE).edit();
+      if (persistent) {
+        editor.putBoolean(PREF_SELINUX_MODE, status);
+      } else {
+        editor.remove(PREF_SELINUX_MODE);
+      }
+      editor.apply();
+      mSelinuxMode.setChecked(status);
+    }
+
+    private class SwitchSelinuxTask extends SuTask<Boolean> {
+      public SwitchSelinuxTask(Context context) {
+        super(context);
+      }
+      @Override
+      protected void sudoInBackground(Boolean... params) throws SuShell.SuDeniedException {
+        if (params.length != 1) {
+          Log.e(TAG, "SwitchSelinuxTask: invalid params count");
+          return;
+        }
+        if (params[0]) {
+          SuShell.runWithSuCheck("setenforce 1");
+        } else {
+          SuShell.runWithSuCheck("setenforce 0");
+        }
+      }
+
+      @Override
+      protected void onPostExecute(Boolean result) {
+        super.onPostExecute(result);
+        if (!result) {
+          // Did not work, so restore actual value
+          setSelinuxEnabled(SELinux.isSELinuxEnforced(), mSelinuxPersistence.isChecked());
+        }
+      }
+    }
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
                 @Override
