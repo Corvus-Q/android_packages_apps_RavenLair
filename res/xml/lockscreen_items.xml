@@ -66,12 +66,6 @@
         android:defaultValue="true" />
 
     <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
-        android:key="fp_unlock_keystore"
-        android:title="@string/fp_unlock_keystore_title"
-        android:summary="@string/fp_unlock_keystore_summary"
-        android:defaultValue="false" />
-
-    <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
 	android:key="lockscreen_hide_status_bar"
 	android:title="@string/lockscreen_hide_status_bar_title"
 	android:summary="@string/lockscreen_hide_status_bar_summary"

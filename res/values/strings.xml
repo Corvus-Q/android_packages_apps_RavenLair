@@ -518,4 +518,9 @@
 
     <string name="hide_lockscreen_indicator_display_title">Status text on bottom</string>
     <string name="hide_lockscreen_indicator_display_summary">Show charging information and unlock hints</string>
+
+    <!-- Fingerprint authentication vibration -->
+    <string name="fprint_sucess_vib_title">Fingerprint authentication vibration</string>
+    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
+
 </resources>
