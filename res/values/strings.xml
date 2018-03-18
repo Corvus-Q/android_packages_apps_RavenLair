@@ -885,4 +885,6 @@
     <string name="theme_applied_toast">Theme applied.</string>
     <string name="applying_theme_toast">Applying theme, please wait...</string>
 
+    <!-- QuickSettings Panel Transparency -->
+    <string name="qs_panel_alpha_title">Opacity</string>
 </resources>
