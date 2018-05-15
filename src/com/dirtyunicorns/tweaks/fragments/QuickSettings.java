@@ -49,9 +49,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
-    private static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
 
-    private CustomSeekBarPreference mQsPanelAlpha;
     private CustomSeekBarPreference mQsRowsPort;
     private CustomSeekBarPreference mQsRowsLand;
     private CustomSeekBarPreference mQsColumnsPort;
@@ -122,12 +120,6 @@ public class QuickSettings extends SettingsPreferenceFragment
         mQsColumnsLand.setValue(value);
         mQsColumnsLand.setOnPreferenceChangeListener(this);
 
-        mQsPanelAlpha = (CustomSeekBarPreference) findPreference(QS_PANEL_BG_ALPHA);
-        int qsPanelAlpha = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
-        mQsPanelAlpha.setValue(qsPanelAlpha);
-        mQsPanelAlpha.setOnPreferenceChangeListener(this);
-
         updateAnimTileStyle(tileAnimationStyle);
     }
 
@@ -182,12 +174,6 @@ public class QuickSettings extends SettingsPreferenceFragment
             int val = (Integer) newValue;
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_COLUMNS_LANDSCAPE, val, UserHandle.USER_CURRENT);
-            return true;
-        } else if (preference == mQsPanelAlpha) {
-            int bgAlpha = (Integer) newValue;
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
-                    UserHandle.USER_CURRENT);
             return true;
        }
         return false;

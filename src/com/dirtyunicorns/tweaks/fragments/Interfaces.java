@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.List;
 
+import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 import com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference;
 
@@ -80,14 +82,16 @@ public class Interfaces extends SettingsPreferenceFragment
     private String KEY_ACCENT_PICKER = "accent_picker";
     private String KEY_THEME_PICKER = "theme_picker";
 
+    private static final String QS_HEADER_STYLE = "qs_header_style";
     private static final String QS_TILE_STYLE = "qs_tile_style";
+    private static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
+    private static final String QS_PANEL_COLOR = "qs_panel_color";
     private static final String SYSTEM_THEME_STYLE = "system_theme_style";
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
     private static final String SWITCH_STYLE = "switch_style";
     private static final String KEY_FONT_PICKER_FRAGMENT_PREF = "custom_font";
-    private static final String QS_HEADER_STYLE = "qs_header_style";
     private static final String PREF_KEY_CUTOUT = "cutout_settings";
 
     private SecureSettingSwitchPreference mRoundedFwvals;
@@ -100,6 +104,8 @@ public class Interfaces extends SettingsPreferenceFragment
     private Preference mAccentPicker;
     private Preference mThemePicker;
     private FontDialogPreference mFontPreference;
+    private ColorPickerPreference mQsPanelColor;
+    private CustomSeekBarPreference mQsPanelAlpha;
 
     Context mContext;
 
@@ -178,6 +184,18 @@ public class Interfaces extends SettingsPreferenceFragment
         mQsHeaderStyle.setValueIndex(headerValueIndex >= 0 ? headerValueIndex : 0);
         mQsHeaderStyle.setSummary(mQsHeaderStyle.getEntry());
         mQsHeaderStyle.setOnPreferenceChangeListener(this);
+
+        mQsPanelAlpha = (CustomSeekBarPreference) findPreference(QS_PANEL_BG_ALPHA);
+        int qsPanelAlpha = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
+        mQsPanelAlpha.setValue(qsPanelAlpha);
+        mQsPanelAlpha.setOnPreferenceChangeListener(this);
+
+        mQsPanelColor = (ColorPickerPreference) findPreference(QS_PANEL_COLOR);
+        int QsColor = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.QS_PANEL_BG_COLOR, Color.WHITE, UserHandle.USER_CURRENT);
+        mQsPanelColor.setNewPreviewColor(QsColor);
+        mQsPanelColor.setOnPreferenceChangeListener(this);
 
         Preference mCutoutPref = (Preference) findPreference(PREF_KEY_CUTOUT);
         if (!hasPhysicalDisplayCutout(getContext()))
@@ -258,6 +276,17 @@ public class Interfaces extends SettingsPreferenceFragment
             Settings.System.putInt(resolver, Settings.System.QS_HEADER_STYLE, Integer.valueOf(value));
             int valueIndex = mQsHeaderStyle.findIndexOfValue(value);
             mQsHeaderStyle.setSummary(mQsHeaderStyle.getEntries()[valueIndex]);
+            return true;
+        } else if (preference == mQsPanelColor) {
+            int bgColor = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_COLOR, bgColor,
+                    UserHandle.USER_CURRENT);
+        } else if (preference == mQsPanelAlpha) {
+            int bgAlpha = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
+                    UserHandle.USER_CURRENT);
             return true;
 	}
         return false;
