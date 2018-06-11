@@ -44,7 +44,10 @@ import java.util.List;
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+
     private ListPreference mAnnoyingNotification;
+    private SwitchPreference mForceExpanded;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,10 @@ public class Notifications extends SettingsPreferenceFragment
                 Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
                 30000, UserHandle.USER_CURRENT);
         mAnnoyingNotification.setValue(String.valueOf(threshold));
+
+	mForceExpanded = (SwitchPreference) findPreference(FORCE_EXPANDED_NOTIFICATIONS);
+        mForceExpanded.setChecked((Settings.System.getInt(getContentResolver(),
+	        Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
     }
 
     @Override
@@ -66,6 +73,11 @@ public class Notifications extends SettingsPreferenceFragment
             int mode = Integer.parseInt(((String) newValue).toString());
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, mode, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mForceExpanded) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FORCE_EXPANDED_NOTIFICATIONS, checked ? 1 : 0);
             return true;
         }
         return false;
