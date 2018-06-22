@@ -1064,6 +1064,8 @@
     <string name="qs_panel_color_title">QS Panel color</string>
     <string name="qs_bg_wall_title">Use Wallpaper colors</string>
     <string name="qs_bg_wall_summary">Set QS background color from Wallpaper</string>
+    <string name="qs_bg_use_fw">Use default colors</string>
+    <string name="qs_bg_use_fw_summary">Disable custom quick settings styles for external theme engines</string>
 
     <!-- Pocket judge -->
     <string name="pocket_judge_title">Pocket detection</string>
