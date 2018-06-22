@@ -72,27 +72,35 @@
 	    android:key="qs_tile_style"
 	    android:title="@string/qs_tile_style_title" />
 
-    <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
-        android:key="qs_panel_bg_alpha"
-        android:title="@string/qs_panel_alpha_title"
-        android:max="255"
-        settings:min="0"
-        settings:units=""
-        android:persistent="false" />
+  	  <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
+            android:key="qs_panel_bg_alpha"
+            android:title="@string/qs_panel_alpha_title"
+            android:max="255"
+            settings:min="0"
+            settings:units=""
+            android:persistent="false"
+            android:dependency="qs_panel_bg_use_fw" />
+
+        <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_panel_bg_use_fw"
+            android:title="@string/qs_bg_use_fw"
+            android:summary="@string/qs_bg_use_fw_summary"
+            android:defaultValue="true"
+            android:disableDependentsState="true" />
 
         <com.dirtyunicorns.support.colorpicker.ColorPickerPreference
             android:key="qs_panel_color"
             android:title="@string/qs_panel_color_title"
             android:defaultValue="0xffffff"
             android:persistent="false"
-            android:dependency="qs_panel_bg_use_wall" />
+            android:dependency="qs_panel_bg_use_fw" />
 
         <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
             android:key="qs_panel_bg_use_wall"
             android:title="@string/qs_bg_wall_title"
             android:summary="@string/qs_bg_wall_summary"
             android:defaultValue="false"
-            android:disableDependentsState="true" />
+            android:dependency="qs_panel_bg_use_fw" />
 
    	 <Preference
      	    android:key="custom_header"
