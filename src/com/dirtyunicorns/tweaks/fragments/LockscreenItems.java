@@ -48,9 +48,11 @@ public class LockscreenItems extends SettingsPreferenceFragment
     private static final String KEY_WEATHER_TEMP = "weather_lockscreen_unit";
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
+    private static final String LOCK_OWNER_FONTS = "lock_owner_fonts";
 
     ListPreference mLockClockFonts;
     ListPreference mLockDateFonts;
+    ListPreference mLockOwnerFonts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,12 @@ public class LockscreenItems extends SettingsPreferenceFragment
                 getContentResolver(), Settings.System.LOCK_DATE_FONTS, 8)));
         mLockDateFonts.setSummary(mLockDateFonts.getEntry());
         mLockDateFonts.setOnPreferenceChangeListener(this);
+
+        mLockOwnerFonts = (ListPreference) findPreference(LOCK_OWNER_FONTS);
+        mLockOwnerFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_OWNER_FONTS, 8)));
+        mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
+        mLockOwnerFonts.setOnPreferenceChangeListener(this);
 
         SystemSettingListPreference mWeatherTemp =
                 (SystemSettingListPreference) findPreference(KEY_WEATHER_TEMP);
@@ -90,6 +98,12 @@ public class LockscreenItems extends SettingsPreferenceFragment
                     Integer.valueOf((String) newValue));
             mLockDateFonts.setValue(String.valueOf(newValue));
             mLockDateFonts.setSummary(mLockDateFonts.getEntry());
+            return true;
+        } else if (preference == mLockOwnerFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_OWNER_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockOwnerFonts.setValue(String.valueOf(newValue));
+            mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
             return true;
 	}
         return false;
