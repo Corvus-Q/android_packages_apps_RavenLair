@@ -239,6 +239,13 @@
     <string name="systemui_tuner_navbar_disabled_summary">Gesture navbar is enabled. Disable it to use these options.</string>
     <string name="swipe_up_to_switch_apps_custom_summary">Enable gesture navigation bar</string>
 
+    <!--  Tuner -->
+    <string name="status_bar_tuner_title">Status bar items</string>
+    <string name="status_bar_tuner_summary">Edit status bar icons and options</string>
+
+    <string name="lock_screen_shortcuts_title">Lock screen shortcuts</string>
+    <string name="lock_screen_shortcuts_summary">Manage lock screen bottom shortcuts</string>
+
     <!-- Navbar arrow keys -->
     <string name="show_navbar_arrow_keys_title">Show arrow keys while typing</string>
     <string name="show_navbar_arrow_keys_summary">Display left and right cursor buttons in navigation bar while typing.</string>

@@ -18,6 +18,14 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/icon_manager_title" >
 
+    <Preference
+        android:title="@string/status_bar_tuner_title"
+        android:summary="@string/status_bar_tuner_summary">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
+    </Preference>
+
     <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
         android:key="use_old_mobiletype"
         android:title="@string/use_old_mobiletype_title"
