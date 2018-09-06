@@ -50,18 +50,37 @@
 	android:dependency="lockscreen_media_metadata"
         android:defaultValue="3" />
 
-    <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
-        android:key="lockscreen_visualizer"
-        android:title="@string/lockscreen_visualizer_title"
-        android:summary="@string/lockscreen_visualizer_summary"
-        android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/lockscreen_visualizer_category">
 
     <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
-        android:key="ambient_visualizer"
-        android:title="@string/ambient_visualizer_title"
-        android:summary="@string/ambient_visualizer_summary"
-        android:dependency="lockscreen_visualizer"
-        android:defaultValue="false"/>
+	android:key="lockscreen_visualizer"
+	android:title="@string/lockscreen_visualizer_title"
+	android:summary="@string/lockscreen_visualizer_summary"
+	android:defaultValue="false"/>
+
+    <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+	android:key="lock_screen_visualizer_use_custom_color"
+	android:title="@string/lockscreen_visualizer_enable_custom"
+	android:summary="@string/lockscreen_visualizer_enable_custom_summary"
+	android:dependency="lockscreen_visualizer"
+	android:defaultValue="false" />
+
+    <com.dirtyunicorns.support.colorpicker.ColorPickerPreference
+	android:key="lock_screen_visualizer_custom_color"
+	android:title="@string/lockscreen_visualizer_custom_color"
+	android:dependency="lock_screen_visualizer_use_custom_color"
+	android:defaultValue="0xffffffff"
+	android:dialogTitle="@string/lockscreen_visualizer_custom_color" />
+
+    <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+	android:key="ambient_visualizer"
+	android:title="@string/ambient_visualizer_title"
+	android:summary="@string/ambient_visualizer_summary"
+	android:dependency="lockscreen_visualizer"
+	android:defaultValue="false"/>
 
     </PreferenceCategory>
 

@@ -42,6 +42,7 @@ import com.android.settings.Utils;
 
 import com.dirtyunicorns.support.preferences.SecureSettingMasterSwitchPreference;
 import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
+import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,9 @@ public class LockscreenItems extends SettingsPreferenceFragment
 
     private static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
     private static final String LOCKSCREEN_INFO = "lockscreen_info";
+    private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
 
+    private ColorPickerPreference mVisualizerColor;
     private SystemSettingMasterSwitchPreference mClockEnabled;
     private SystemSettingMasterSwitchPreference mInfoEnabled;
 
@@ -72,6 +75,16 @@ public class LockscreenItems extends SettingsPreferenceFragment
         int infoEnabled = Settings.System.getInt(resolver,
                 LOCKSCREEN_INFO, 1);
         mInfoEnabled.setChecked(infoEnabled != 0);
+
+        // Visualizer custom color
+        mVisualizerColor = (ColorPickerPreference) findPreference(LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR);
+        int visColor = Settings.System.getInt(resolver,
+                Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, 0xff1976D2);
+        String visColorHex = String.format("#%08x", (0xff1976D2 & visColor));
+        mVisualizerColor.setSummary(visColorHex);
+        mVisualizerColor.setNewPreviewColor(visColor);
+        mVisualizerColor.setAlphaSliderEnabled(true);
+        mVisualizerColor.setOnPreferenceChangeListener(this);
       }
 
     @Override
@@ -88,7 +101,15 @@ public class LockscreenItems extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(),
 		            LOCKSCREEN_INFO, value ? 1 : 0);
             return true;
-	}
+        } else if (preference == mVisualizerColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+	    Integer.valueOf(String.valueOf(newValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+	    Settings.System.putInt(resolver,
+		    Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, intHex);
+	    preference.setSummary(hex);
+            return true;
+        }
         return false;
     }
 
