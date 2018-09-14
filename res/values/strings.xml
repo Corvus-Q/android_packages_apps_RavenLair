@@ -735,4 +735,9 @@
 
     <!-- Volume dialog timeout -->
     <string name="volume_dialog_timeout_title">Volume dialog timeout</string>
+
+    <!-- Screenshot type -->
+    <string name="screenshot_type_title">Screenshot type</string>
+    <string name="screenshot_type_fullscreen">Full</string>
+    <string name="screenshot_type_partial">Partial</string>
 </resources>
