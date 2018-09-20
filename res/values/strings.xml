@@ -298,6 +298,11 @@
     <string name="status_bar_clock_auto_hide_summary">Hide and display clock for regular intervals</string>
     <string name="status_bar_clock_auto_hide_hdur_title">Hide duration</string>
     <string name="status_bar_clock_auto_hide_sdur_title">Show duration</string>
+    <string name="date_cat">Date</string>
+    <string name="clock_cat">Clock</string>
+    <string name="status_bar_clock_font_style_title">Font style</string>
+    <string name="status_bar_clock_font_style_summary">%1$s</string>
+    <string name="status_bar_clock_font_size_title">Font size</string>
 
     <!-- Carrier Label -->
     <string name="carrier_options">Select display locations</string>

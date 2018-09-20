@@ -23,11 +23,14 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
@@ -39,6 +42,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.util.Log;
+import android.view.View;
 
 import android.provider.SearchIndexableResource;
 
@@ -51,6 +56,8 @@ import com.android.settings.Utils;
 
 import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
 import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
+
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
@@ -70,6 +77,8 @@ public class ClockOptions extends SettingsPreferenceFragment
     private static final String STATUS_BAR_CLOCK_DATE_POSITION = "statusbar_clock_date_position";
     private static final String CLOCK_DATE_AUTO_HIDE_HDUR = "status_bar_clock_auto_hide_hduration";
     private static final String CLOCK_DATE_AUTO_HIDE_SDUR = "status_bar_clock_auto_hide_sduration";
+    private static final String STATUS_BAR_CLOCK_SIZE  = "status_bar_clock_size";
+    private static final String STATUS_BAR_CLOCK_FONT_STYLE  = "status_bar_clock_font_style";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -77,6 +86,7 @@ public class ClockOptions extends SettingsPreferenceFragment
 
     private ListPreference mClockStyle;
     private ListPreference mClockAmPmStyle;
+    private ListPreference mClockFontStyle;
     private ListPreference mClockDateDisplay;
     private ListPreference mClockDateFormat;
     private ListPreference mClockDatePosition;
@@ -85,6 +95,7 @@ public class ClockOptions extends SettingsPreferenceFragment
     private SwitchPreference mShowSeconds;
     private CustomSeekBarPreference mHideDuration;
     private CustomSeekBarPreference mShowDuration;
+    private SystemSettingSeekBarPreference mClockSize;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +103,7 @@ public class ClockOptions extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.clock_options);
         ContentResolver resolver = getActivity().getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         mClockStyle = (ListPreference) findPreference(PREF_CLOCK_STYLE);
         mClockStyle.setOnPreferenceChangeListener(this);
@@ -186,6 +198,17 @@ public class ClockOptions extends SettingsPreferenceFragment
         mClockDatePosition.setValue(String.valueOf(clockDatePosition));
         mClockDatePosition.setSummary(mClockDatePosition.getEntry());
         mClockDatePosition.setOnPreferenceChangeListener(this);
+
+        mClockSize = (SystemSettingSeekBarPreference) findPreference(STATUS_BAR_CLOCK_SIZE);
+        int clockSize = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CLOCK_SIZE, 14);
+        mClockSize.setValue(clockSize / 1);
+        mClockSize.setOnPreferenceChangeListener(this);
+        mClockFontStyle = (ListPreference) findPreference(STATUS_BAR_CLOCK_FONT_STYLE);
+        int showClockFont = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CLOCK_FONT_STYLE, 0);
+        mClockFontStyle.setValue(String.valueOf(showClockFont));
+        mClockFontStyle.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -303,6 +326,18 @@ public class ClockOptions extends SettingsPreferenceFragment
             int value = (Integer) newValue;
             Settings.System.putIntForUser(resolver,
                     Settings.System.STATUS_BAR_CLOCK_AUTO_HIDE_SDURATION, value, UserHandle.USER_CURRENT);
+            return true;
+        }  else if (preference == mClockSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_CLOCK_SIZE, width);
+            return true;
+        }  else if (preference == mClockFontStyle) {
+            int showClockFont = Integer.valueOf((String) newValue);
+            int index = mClockFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.
+                STATUS_BAR_CLOCK_FONT_STYLE, showClockFont);
+            mClockFontStyle.setSummary(mClockFontStyle.getEntries()[index]);
             return true;
         }
         return false;
