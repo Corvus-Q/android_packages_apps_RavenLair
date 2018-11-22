@@ -730,4 +730,7 @@
     <string name="battery_estimate_position_title">Battery Icon &amp; Estimates Position</string>
     <string name="battery_estimate_position_qsheader">QS Header</string>
     <string name="battery_estimate_position_qspanel">QS Panel</string>
+
+    <!-- Volume dialog timeout -->
+    <string name="volume_dialog_timeout_title">Volume dialog timeout</string>
 </resources>

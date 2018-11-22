@@ -33,6 +33,13 @@
     <PreferenceCategory
 	android:title="@string/volume_stuff_title">
 
+    <com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference
+        android:key="volume_dialog_timeout"
+        android:title="@string/volume_dialog_timeout_title"
+        settings:min="1"
+        android:max="10"
+        android:defaultValue="3"
+        settings:units="sec" />
 
     <PreferenceScreen
 	android:key="volume_panel"
