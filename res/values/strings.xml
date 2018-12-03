@@ -161,6 +161,10 @@
     <string name="show_brightness_title">Brightness slider</string>
     <string name="show_brightness_summary">Show the brightness slider</string>
 
+    <!-- Brightness slider position -->
+    <string name="brightness_slider_bottom_title">Bottom brightness slider</string>
+    <string name="brightness_slider_bottom_summary">Show brightness slider on the bottom of the quick settings panel</string>
+
     <!-- Pulse config -->
     <string name="pulse_length_always_on">Always on</string>
     <string name="pulse_length_very_short">Very short</string>
