@@ -60,6 +60,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String QS_PANEL_COLOR = "qs_panel_color";
+    private static final String QS_PANEL_ALPHA = "qs_panel_bg_alpha";
 
     private ListPreference mQuickPulldown;
     private ListPreference mTileAnimationStyle;
@@ -70,6 +71,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private CustomSeekBarPreference mQsRowsLand;
     private CustomSeekBarPreference mQsColumnsPort;
     private CustomSeekBarPreference mQsColumnsLand;
+    private CustomSeekBarPreference mQsPanelAlpha;
     private SystemSettingMasterSwitchPreference mCustomHeader;
     private SystemSettingMasterSwitchPreference mQsBlur;
     private SystemSettingEditTextPreference mFooterString;
@@ -170,6 +172,14 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.QS_PANEL_BG_COLOR, Color.WHITE, UserHandle.USER_CURRENT);
         mQsPanelColor.setNewPreviewColor(QsColor);
         mQsPanelColor.setOnPreferenceChangeListener(this);
+
+        mQsPanelAlpha = (CustomSeekBarPreference) findPreference(QS_PANEL_ALPHA);
+        int qsPanelAlpha = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
+        // Convert QS alpha values 100-255 to corresponding transparency value 100-0
+        int qsTransparencyValue = (int) (100 - (qsPanelAlpha - 100) * 100 / 155);
+        mQsPanelAlpha.setValue(qsTransparencyValue);
+        mQsPanelAlpha.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -253,6 +263,14 @@ public class QuickSettings extends SettingsPreferenceFragment
             int bgColor = (Integer) newValue;
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_PANEL_BG_COLOR, bgColor,
+                    UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsPanelAlpha) {
+            int qsTransparencyValue = (int) newValue;
+            // Convert QS transparency value on scale of 0-100 to corresponding alpha values 255-100
+            int alphaValue = (int) (255 - (qsTransparencyValue * 155 / 100));
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, alphaValue,
                     UserHandle.USER_CURRENT);
             return true;
         }
