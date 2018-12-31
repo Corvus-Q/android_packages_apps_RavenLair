@@ -640,6 +640,10 @@
     <string name="lockscreen_visualizer_title">Music visualizer</string>
     <string name="lockscreen_visualizer_summary">Toggles visualizer display on lockscreen</string>
 
+    <!-- Ambient visualizer -->
+    <string name="ambient_visualizer_title">Show LS Visualizer on Ambient Display</string>
+    <string name="ambient_visualizer_summary">Shows the visualization bars also on ambient display (but less opaque)</string>
+
     <!-- Three-fingers-swipe to screenshot -->
     <string name="three_finger_gesture">Swipe to screenshot</string>
     <string name="three_finger_gesture_summary">Swipe three fingers to take screenshot</string>
