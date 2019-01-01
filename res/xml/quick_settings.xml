@@ -29,19 +29,6 @@
         android:key="qs_layout_category"
         android:title="@string/systemui_tuner_navbar_title">
 
-        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
-            android:key="qs_show_brightness"
-            android:title="@string/show_brightness_title"
-            android:summary="@string/show_brightness_summary"
-            android:defaultValue="true" />
-
-        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
-    	    android:key="qs_brightness_position_bottom"
-    	    android:title="@string/brightness_slider_bottom_title"
-     	    android:summary="@string/brightness_slider_bottom_summary"
-       	    android:defaultValue="false"
-      	    android:dependency="qs_show_brightness" />
-
         <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
             android:key="qs_rows_portrait"
             android:title="@string/qs_rows_portrait_title"
@@ -75,6 +62,45 @@
             android:title="@string/qs_tile_title_visibility_title"
             android:summary="@string/qs_tile_title_visibility_summary"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/brightness_slider_title">
+
+        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_brightness"
+            android:title="@string/qs_show_brightness_title"
+            android:summary="@string/qs_show_brightness_summary"
+            android:defaultValue="true" />
+
+        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_brightness_position_bottom"
+            android:title="@string/qs_brightness_position_bottom_title"
+            android:summary="@string/qs_brightness_position_bottom_summary"
+            android:defaultValue="false"
+            android:dependency="qs_show_brightness" />
+
+        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_auto_brightness"
+            android:title="@string/qs_show_auto_brightness_title"
+            android:summary="@string/qs_show_auto_brightness_summary"
+            android:defaultValue="false"
+            android:dependency="qs_show_brightness" />
+
+        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_auto_brightness_right"
+            android:title="@string/qs_auto_brightness_right_title"
+            android:summary="@string/qs_auto_brightness_right_summary"
+            android:defaultValue="false"
+            android:dependency="qs_show_brightness" />
+
+        <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_brightness_buttons"
+            android:title="@string/qs_show_brightness_buttons_title"
+            android:summary="@string/qs_show_brightness_buttons_summary"
+            android:defaultValue="false"
+            android:dependency="qs_show_brightness" />
 
     </PreferenceCategory>
 
