@@ -80,6 +80,7 @@ public class Interfaces extends SettingsPreferenceFragment
     private static final String SWITCH_STYLE = "switch_style";
     private static final String KEY_FONT_PICKER_FRAGMENT_PREF = "custom_font";
     private static final String QS_HEADER_STYLE = "qs_header_style";
+    private static final String PREF_KEY_CUTOUT = "cutout_settings";
 
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
@@ -150,6 +151,10 @@ public class Interfaces extends SettingsPreferenceFragment
         mQsHeaderStyle.setValueIndex(headerValueIndex >= 0 ? headerValueIndex : 0);
         mQsHeaderStyle.setSummary(mQsHeaderStyle.getEntry());
         mQsHeaderStyle.setOnPreferenceChangeListener(this);
+
+        Preference mCutoutPref = (Preference) findPreference(PREF_KEY_CUTOUT);
+        if (!hasPhysicalDisplayCutout(getContext()))
+            getPreferenceScreen().removePreference(mCutoutPref);
     }
 
     private void restoreCorners() {
@@ -210,6 +215,11 @@ public class Interfaces extends SettingsPreferenceFragment
 
     public void stopProgress() {
     	mFontPreference.stopProgress();
+    }
+
+    private static boolean hasPhysicalDisplayCutout(Context context) {
+        return context.getResources().getBoolean(
+                com.android.internal.R.bool.config_physicalDisplayCutout);
     }
 
     @Override
