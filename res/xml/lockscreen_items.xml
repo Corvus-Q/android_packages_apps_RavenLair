@@ -132,7 +132,7 @@
         android:entries="@array/weather_unit_entries"
         android:entryValues="@array/weather_unit_values"
         android:dependency="weather_lockscreen_enabled"
-        android:defaultValue="0" />
+        android:defaultValue="@*android:integer/weather_lockscreen_default_unit" />
 
     </PreferenceCategory>
 </PreferenceScreen>
