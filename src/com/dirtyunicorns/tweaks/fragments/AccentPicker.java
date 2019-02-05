@@ -238,6 +238,27 @@ public class AccentPicker extends InstrumentedDialogFragment implements OnClickL
 
         Button xiaomi = mView.findViewById(R.id.xiaomi);
         setAccent("53", xiaomi);
+
+        Button nAccentBlue = mView.findViewById(R.id.nAccentBlue);
+        setAccent("54", nAccentBlue);
+
+        Button nAccentBrown = mView.findViewById(R.id.nAccentBrown);
+        setAccent("55", nAccentBrown);
+
+        Button nAccentGreen = mView.findViewById(R.id.nAccentGreen);
+        setAccent("56", nAccentGreen);
+
+        Button nAccentOrange = mView.findViewById(R.id.nAccentOrange);
+        setAccent("57", nAccentOrange);
+
+        Button nAccentPink = mView.findViewById(R.id.nAccentPink);
+        setAccent("58", nAccentPink);
+
+        Button nAccentPurple = mView.findViewById(R.id.nAccentPurple);
+        setAccent("59", nAccentPurple);
+
+        Button nAccentRed = mView.findViewById(R.id.nAccentRed);
+        setAccent("60", nAccentRed);
     }
 
     @Override
