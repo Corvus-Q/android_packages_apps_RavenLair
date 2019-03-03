@@ -60,6 +60,7 @@ public class TrafficIndicators extends SettingsPreferenceFragment
     private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
     private static final String NETWORK_TRAFFIC_TYPE = "network_traffic_type";
     private static final String NETWORK_TRAFFIC_REFRESH_INTERVAL = "network_traffic_refresh_interval";
+    private static final String NETWORK_TRAFFIC_FONT_SIZE  = "network_traffic_font_size";
 
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mHideArrows;
@@ -67,6 +68,7 @@ public class TrafficIndicators extends SettingsPreferenceFragment
     private ListPreference mNetTrafficType;
     private CustomSeekBarPreference mThreshold;
     private CustomSeekBarPreference mNetTrafficRefreshInterval;
+    private CustomSeekBarPreference mNetTrafficSize;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,12 @@ public class TrafficIndicators extends SettingsPreferenceFragment
         mNetTrafficType.setValue(String.valueOf(nettype));
         mNetTrafficType.setSummary(mNetTrafficType.getEntry());
         mNetTrafficType.setOnPreferenceChangeListener(this);
+
+        mNetTrafficSize = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_FONT_SIZE);
+        int NetTrafficSize = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_FONT_SIZE, 15);
+        mNetTrafficSize.setValue(NetTrafficSize / 1);
+        mNetTrafficSize.setOnPreferenceChangeListener(this);
 
         mNetTrafficLocation = (ListPreference) findPreference(NETWORK_TRAFFIC_LOCATION);
         int location = Settings.System.getInt(resolver,
@@ -133,6 +141,11 @@ public class TrafficIndicators extends SettingsPreferenceFragment
             int interval = (Integer) newValue;
             Settings.System.putIntForUser(resolver,
                     Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, interval, UserHandle.USER_CURRENT);
+            return true;
+        }  else if (preference == mNetTrafficSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_FONT_SIZE, width);
             return true;
         } 
         return false; 

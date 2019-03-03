@@ -84,6 +84,7 @@
     <string name="traffic_statusbar">Statusbar</string>
     <string name="traffic_expanded_statusbar">Expanded Statusbar</string>
     <string name="network_traffic_refresh_interval_title">Refresh interval</string>
+    <string name="nettraf_font_size">Single Net Font size</string>
 
     <!-- Navigation -->
     <string name="buttons_title">Buttons</string>
