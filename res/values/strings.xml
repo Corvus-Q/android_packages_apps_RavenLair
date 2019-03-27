@@ -93,6 +93,7 @@
 
     <!-- Sub categories -->
     <string name="sub_cat_advanced">Advanced</string>
+    <string name="volume_stuff_title">Volume Button</string>
 
     <!-- Lockscreen Media art -->
     <string name="media_art_title">Full-screen media cover art</string>
@@ -526,5 +527,9 @@
     <!-- Launch music player when headset is connected -->
     <string name="headset_connect_player_title">Launch music app</string>
     <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
+
+    <!-- Notification guts kill app button -->
+    <string name="notification_guts_kill_app_button_title">Kill app button</string>
+    <string name="notification_guts_kill_app_button_summary">Show a kill app button in the notification\'s longpress menu</string>
 
 </resources>
