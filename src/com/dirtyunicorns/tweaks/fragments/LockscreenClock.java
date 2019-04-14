@@ -52,11 +52,13 @@ public class LockscreenClock extends SettingsPreferenceFragment
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String LOCKSCREEN_CLOCK_SELECTION  = "lockscreen_clock_selection";
+    private static final String CUSTOM_TEXT_CLOCK_FONT_SIZE  = "custom_text_clock_font_size";
 
     ListPreference mLockClockFonts;
     SystemSettingListPreference mLockClockStyle;
 
     private CustomSeekBarPreference mClockFontSize;
+    private CustomSeekBarPreference mCustomTextClockFontSize;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,12 @@ public class LockscreenClock extends SettingsPreferenceFragment
         mLockClockStyle.setValue(String.valueOf(Settings.System.getInt(
                 getContentResolver(), Settings.System.LOCKSCREEN_CLOCK_SELECTION, 0)));
         mLockClockStyle.setOnPreferenceChangeListener(this);
+
+        // Custom Text Clock Size
+        mCustomTextClockFontSize = (CustomSeekBarPreference) findPreference(CUSTOM_TEXT_CLOCK_FONT_SIZE);
+        mCustomTextClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, 32));
+        mCustomTextClockFontSize.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -103,6 +111,11 @@ public class LockscreenClock extends SettingsPreferenceFragment
             } else {
                 Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 1);
             }
+            return true;
+        } else if (preference == mCustomTextClockFontSize) {
+            int top = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, top*1);
             return true;
 	}
         return false;
