@@ -29,7 +29,7 @@
         android:title="@string/lockscreen_clock_selection_title"
         android:entries="@array/lockscreen_clock_selection_entries"
         android:entryValues="@array/lockscreen_clock_selection_values"
-        android:defaultValue="0" />
+        android:defaultValue="15" />
 
     <PreferenceScreen
     	android:key="lockscreen_colors"
