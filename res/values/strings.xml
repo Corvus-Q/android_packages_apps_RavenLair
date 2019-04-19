@@ -427,6 +427,12 @@
     <string name="lockdate_font_size_title">Date font size</string>
     <string name="lockclock_font_size_title">Clock font size</string>
 
+    <!-- Lockscreen text clock align -->
+    <string name="lockscreen_clock_align_title">Q Clock Alignment</string>
+    <string name="lockscreen_clock_align0">Left</string>
+    <string name="lockscreen_clock_align1">Center</string>
+    <string name="lockscreen_clock_align2">Right</string>
+
     <!-- Lockscreen fonts - Common strings -->
     <string name="lock_fonts_stock">Normal (default)</string>
     <string name="lock_fonts_bold">Bold</string>
