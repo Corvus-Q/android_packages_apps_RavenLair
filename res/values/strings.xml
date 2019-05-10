@@ -397,6 +397,12 @@
     <string name="lockscreen_clock_selection_gradient_likeqs">Monochrome gradient clock</string>
     <string name="lockscreen_clock_selection_text">Android Q (Text)</string>
 
+    <!-- Lockscreen Date styles -->
+    <string name="lockscreen_date_selection_title">Date style</string>
+    <string name="lockscreen_date_selection_default">Default</string>
+    <string name="lockscreen_date_selection_str_box">Semi-transparent box</string>
+    <string name="lockscreen_date_selection_str_round">Semi-transparent box (round)</string>
+
     <!-- Lock owner fonts -->
     <string name="lock_owner_font_title">Owner font options</string>
     <string name="lock_owner_font_summary">Change the default font of the lockscreen owner info</string>
