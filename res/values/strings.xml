@@ -386,6 +386,7 @@
     <string name="lockscreen_clock_selection_du">Analog (du)</string>
     <string name="lockscreen_clock_selection_sammy">Sammy</string>
     <string name="lockscreen_clock_selection_sammy_bold">Sammy (bold)</string>
+    <string name="lockscreen_clock_selection_sammy_accent">Sammy (accent)</string>
 
     <!-- Lockscreen Colors -->
     <string name="lockscreen_colors">Lockscreen Colors</string>
