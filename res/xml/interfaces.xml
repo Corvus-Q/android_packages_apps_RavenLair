@@ -77,9 +77,7 @@
             android:title="@string/qs_panel_alpha_title"
             android:max="255"
             settings:min="0"
-            settings:units=""
-            android:persistent="false"
-            android:dependency="qs_panel_bg_use_fw" />
+            settings:units="" />
 
         <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
             android:key="qs_panel_bg_use_fw"
