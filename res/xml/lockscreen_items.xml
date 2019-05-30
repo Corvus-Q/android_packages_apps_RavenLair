@@ -117,6 +117,13 @@
 	android:summary="@string/hide_lockscreen_indicator_display_summary" 
 	android:defaultValue="true" />
 
+   <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+        android:key="weather_lockscreen_enabled"
+        android:title="@string/lock_screen_weather_title"
+        android:dependency="lockscreen_info"
+        android:summary="@string/lock_screen_weather_summary"
+        android:defaultValue="true" />
+
     <com.dirtyunicorns.support.preferences.SystemSettingListPreference
         android:key="weather_lockscreen_unit"
         android:dialogTitle="@string/weather_unit"
@@ -124,7 +131,7 @@
         android:summary="%s"
         android:entries="@array/weather_unit_entries"
         android:entryValues="@array/weather_unit_values"
-        android:dependency="lockscreen_info"
+        android:dependency="weather_lockscreen_enabled"
         android:defaultValue="0" />
 
     </PreferenceCategory>

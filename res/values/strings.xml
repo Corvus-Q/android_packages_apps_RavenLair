@@ -509,6 +509,8 @@
     <string name="active_edge_footer_info">Not all squeeze actions within Active Edge have the capability to activate the display.\n\nLong press on apps in the Select App menu to show and choose a specific activity.</string>
 
     <!-- Weather -->
+    <string name="lock_screen_weather_title">Display weather</string>
+    <string name="lock_screen_weather_summary">Display weather on lockscreen</string>
     <string name="weather_unit">Temperature unit</string>
     <string name="weather_unit_metric" translatable="false">Celsius</string>
     <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
