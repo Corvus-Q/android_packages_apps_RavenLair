@@ -471,6 +471,7 @@
         <item>Themeable logo 1 (mdi cross)</item>
         <item>Themeable logo 2 (mdi lightning)</item>
         <item>Themeable logo 3 (mdi skull)</item>
+        <item>Death Star</item>
     </string-array>
 
     <string-array name="status_bar_logo_style_values" translatable="false">
@@ -513,5 +514,6 @@
         <item>36</item>
         <item>37</item>
         <item>38</item>
+        <item>39</item>
     </string-array>
 </resources>
