@@ -18,10 +18,11 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/miscellaneous_title" >
 
-    <Preference
-        android:key="gaming_mode"
+    <com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference
+        android:key="gaming_mode_master_switch"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.GamingMode"
         android:title="@string/gaming_mode_title"
         android:summary="@string/gaming_mode_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.GamingMode" />
+        android:defaultValue="true" />
 
 </PreferenceScreen>

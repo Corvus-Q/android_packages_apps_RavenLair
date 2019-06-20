@@ -38,18 +38,37 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
+
 public class Miscellaneous extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
+
+    private static final String GAMING_MODE_MASTER_SWITCH = "gaming_mode_master_switch";
+
+    private SystemSettingMasterSwitchPreference mGamingMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.miscellaneous);
+
+        // MediaScanner behavior on boot
+        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_MASTER_SWITCH);
+        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_MASTER_SWITCH, 1) == 1));
+        mGamingMode.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+	if (preference == mGamingMode) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.GAMING_MODE_MASTER_SWITCH, value ? 1 : 0);
+            return true;
+	}
         return false;
+
     }
 
     @Override
