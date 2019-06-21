@@ -515,4 +515,7 @@
 
     <string name="hide_lockscreen_icon_title">Lock icon</string>
     <string name="hide_lockscreen_icon_summary">Show lock icon on the bottom</string>
+
+    <string name="hide_lockscreen_indicator_display_title">Status text on bottom</string>
+    <string name="hide_lockscreen_indicator_display_summary">Show charging information and unlock hints</string>
 </resources>
