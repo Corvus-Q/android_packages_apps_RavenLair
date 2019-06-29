@@ -43,7 +43,7 @@ import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference
 public class Miscellaneous extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    private static final String GAMING_MODE_MASTER_SWITCH = "gaming_mode_master_switch";
+    private static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
 
     private SystemSettingMasterSwitchPreference mGamingMode;
 
@@ -53,9 +53,9 @@ public class Miscellaneous extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.miscellaneous);
 
         // MediaScanner behavior on boot
-        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_MASTER_SWITCH);
+        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_ENABLED);
         mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.GAMING_MODE_MASTER_SWITCH, 1) == 1));
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1));
         mGamingMode.setOnPreferenceChangeListener(this);
     }
 
@@ -64,7 +64,7 @@ public class Miscellaneous extends SettingsPreferenceFragment
 	if (preference == mGamingMode) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.GAMING_MODE_MASTER_SWITCH, value ? 1 : 0);
+                    Settings.System.GAMING_MODE_ENABLED, value ? 1 : 0);
             return true;
 	}
         return false;
