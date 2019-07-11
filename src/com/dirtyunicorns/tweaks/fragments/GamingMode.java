@@ -18,17 +18,25 @@ package com.dirtyunicorns.tweaks.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.support.v14.preference.SwitchPreference;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +44,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -58,15 +65,23 @@ public class GamingMode extends SettingsPreferenceFragment
     private PackageManager mPackageManager;
     private PreferenceGroup mGamingPrefList;
     private Preference mAddGamingPref;
+    private SwitchPreference mGamingModeEnabled;
 
     private String mGamingPackageList;
     private Map<String, Package> mGamingPackages;
+
+    private static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
+
+    private Context mContext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get launch-able applications
         addPreferencesFromResource(R.xml.gaming_mode_settings);
+
+        mGamingModeEnabled = (SwitchPreference) findPreference(GAMING_MODE_ENABLED);
+
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageListAdapter(getActivity());
 
@@ -79,12 +94,10 @@ public class GamingMode extends SettingsPreferenceFragment
 
         mAddGamingPref.setOnPreferenceClickListener(this);
 
-        Resources systemUiResources;
-        try {
-            systemUiResources = getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (Exception e) {
-            return;
-        }
+        mContext = getActivity().getApplicationContext();
+
+        SettingsObserver observer = new SettingsObserver(new Handler(Looper.getMainLooper()));
+        observer.observe();
 
     }
 
@@ -134,6 +147,34 @@ public class GamingMode extends SettingsPreferenceFragment
                 });
         }
         return dialog;
+    }
+
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_ACTIVE), false, this,
+                    UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            if (uri.equals(Settings.System.getUriFor(
+                                   Settings.System.GAMING_MODE_ACTIVE))) {
+                boolean enable = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.GAMING_MODE_ACTIVE, 0) == 1;
+                setGamingControls(!enable);
+            }
+        }
+    }
+
+    private void setGamingControls(boolean enable) {
+        mGamingModeEnabled.setEnabled(enable);
     }
 
     /**
