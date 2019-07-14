@@ -34,8 +34,9 @@
     <!-- System -->
     <string name="device_extras_title">Device extras</string>
     <string name="device_extras_summary">Device specific tweaks</string>
-    <string name="expanded_desktop_title">Expanded desktop</string>
-    <string name="expanded_desktop_summary">Per-app configuration of the status bar and navigation key view</string>
+    <string name="interfaces_title">Interfaces</string>
+    <string name="interfaces_summary">Interfaces tweaks</string>
+
     <string name="miscellaneous_title">Miscellaneous</string>
     <string name="miscellaneous_summary">Miscellaneous tweaks</string>
     <string name="powermenu_title">Power menu</string>

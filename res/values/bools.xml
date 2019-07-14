@@ -64,8 +64,8 @@
     <!-- Whether to display device extras -->
     <bool name="has_device_extras">false</bool>
 
-    <!-- Whether to display expanded desktop category -->
-    <bool name="has_expanded_desktop">false</bool>
+    <!-- Whether to display interfaces category -->
+    <bool name="has_interfaces">true</bool>
 
     <!-- Whether to display misc category -->
     <bool name="has_misc_options">true</bool>

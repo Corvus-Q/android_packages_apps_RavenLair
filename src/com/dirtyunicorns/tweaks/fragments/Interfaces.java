@@ -38,13 +38,13 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpandedDesktop extends SettingsPreferenceFragment
+public class Interfaces extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.expanded_desktop);
+        addPreferencesFromResource(R.xml.interfaces);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class ExpandedDesktop extends SettingsPreferenceFragment
                         boolean enabled) {
                     final ArrayList<SearchIndexableResource> result = new ArrayList<>();
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.expanded_desktop;
+                    sir.xmlResId = R.xml.interfaces;
                     result.add(sir);
                     return result;
                 }
