@@ -32,7 +32,6 @@ public class System extends SettingsPreferenceFragment
 
     private static final String DEVICE_CATEGORY = "device_extras_category";
     private static final String INTERFACES_CATEGORY = "interfaces_category";
-    private static final String LOCKSCREEN_ITEMS_CATEGORY = "lockscreen_items_category";
     private static final String MISC_CATEGORY = "miscellaneous_category";
     private static final String POWERMENU_CATEGORY = "powermenu_category";
 
@@ -49,11 +48,6 @@ public class System extends SettingsPreferenceFragment
         Preference Interfaces = findPreference(INTERFACES_CATEGORY);
         if (!getResources().getBoolean(R.bool.has_interfaces)) {
             getPreferenceScreen().removePreference(Interfaces);
-        }
-
-        Preference LockscreenItems = findPreference(LOCKSCREEN_ITEMS_CATEGORY);
-        if (!getResources().getBoolean(R.bool.has_lockscreen_items)) {
-            getPreferenceScreen().removePreference(LockscreenItems);
         }
 
         Preference MiscOptions = findPreference("miscellaneous_category");
