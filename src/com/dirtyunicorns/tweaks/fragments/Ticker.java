@@ -17,6 +17,7 @@
 package com.dirtyunicorns.tweaks.fragments;
 
 import android.content.Context;
+import android.content.ContentResolver;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -28,6 +29,8 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
+
+import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -41,14 +44,32 @@ import java.util.List;
 public class Ticker extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String STATUS_BAR_TICKER_DURATION = "status_bar_ticker_tick_duration";
+
+    private CustomSeekBarPreference mTickerDuration;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.ticker);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mTickerDuration = (CustomSeekBarPreference) findPreference(STATUS_BAR_TICKER_DURATION);
+        int tickerDuration = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_TICKER_TICK_DURATION, 3000);
+        mTickerDuration.setValue(tickerDuration);
+        mTickerDuration.setOnPreferenceChangeListener(this);	
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mTickerDuration) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_TICKER_TICK_DURATION, value);
+            return true;
+        }
         return false;
     }
 
