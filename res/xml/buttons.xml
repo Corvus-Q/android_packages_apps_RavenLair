@@ -27,6 +27,13 @@
     <PreferenceCategory
 	android:title="@string/volume_stuff_title">
 
+
+    <PreferenceScreen
+	android:key="volume_panel"
+	android:title="@string/audio_panel_view_title"
+	android:summary="@string/audio_panel_view_summary"
+	android:fragment="com.dirtyunicorns.tweaks.fragments.VolumePanel" />
+
     <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
         android:key="volume_button_music_control"
         android:title="@string/volume_button_music_control_title"
