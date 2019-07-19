@@ -426,6 +426,10 @@
     <string name="lock_clock_font_summary">Change the default font of the lockscreen clock widget</string>
     <string name="lock_clock_font_dialog_title">Select lock clock font</string>
 
+    <!-- Lock Clock & Date Size -->
+    <string name="lockdate_font_size_title">Date font size</string>
+    <string name="lockclock_font_size_title">Clock font size</string>
+
     <!-- Lockscreen fonts - Common strings -->
     <string name="lock_fonts_stock">Normal (default)</string>
     <string name="lock_fonts_bold">Bold</string>
