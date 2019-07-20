@@ -41,10 +41,8 @@ import java.util.List;
 public class IconManager extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    private static final String SHOW_LTE_FOURGEE = "show_lte_fourgee";
     private static final String KEY_STATUS_BAR_LOGO = "status_bar_logo";
 
-    private SwitchPreference mShowLteFourGee;
     private SwitchPreference mShowDuLogo;
 
     @Override
@@ -54,15 +52,6 @@ public class IconManager extends SettingsPreferenceFragment
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mShowLteFourGee = (SwitchPreference) findPreference(SHOW_LTE_FOURGEE);
-        if (com.android.internal.util.du.Utils.isWifiOnly(getActivity())) {
-            prefSet.removePreference(mShowLteFourGee);
-        } else {
-            mShowLteFourGee.setChecked((Settings.System.getInt(getContentResolver(),
-                    Settings.System.SHOW_LTE_FOURGEE, 0) == 1));
-            mShowLteFourGee.setOnPreferenceChangeListener(this);
-        }
-
         mShowDuLogo = (SwitchPreference) findPreference(KEY_STATUS_BAR_LOGO);
         mShowDuLogo.setChecked((Settings.System.getInt(getContentResolver(),
              Settings.System.STATUS_BAR_LOGO, 0) == 1));
@@ -70,18 +59,12 @@ public class IconManager extends SettingsPreferenceFragment
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mShowLteFourGee) {
-            boolean value = (Boolean) objValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SHOW_LTE_FOURGEE, value ? 1 : 0);
-            return true;
-        } else if  (preference == mShowDuLogo) {
+	if  (preference == mShowDuLogo) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_LOGO, value ? 1 : 0);
             return true;
         }
-
         return false;
     }
 
