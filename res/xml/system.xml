@@ -40,6 +40,21 @@
         android:summary="@string/miscellaneous_summary"
         android:fragment="com.dirtyunicorns.tweaks.fragments.Miscellaneous" />
 
+
+    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+        android:key="notifications_category"
+        android:icon="@drawable/dt_notifications"
+        android:title="@string/notifications_title"
+        android:summary="@string/notifications_summary"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.Notifications" />
+
+    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+        android:key="heads_up_category"
+        android:icon="@drawable/dt_headsup"
+        android:title="@string/headsup_title"
+        android:summary="@string/headsup_summary"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.HeadsUp" />
+
     <com.dirtyunicorns.tweaks.preferences.CategoryPreference
         android:key="powermenu_category"
         android:icon="@drawable/dt_powermenu"

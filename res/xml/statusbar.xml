@@ -38,21 +38,11 @@
         android:fragment="com.dirtyunicorns.tweaks.fragments.ClockOptions" />
 
     <com.dirtyunicorns.tweaks.preferences.CategoryPreference
-        android:key="icon_manager_title"
-        android:icon="@drawable/dt_icon_manager"
-        android:title="@string/icon_manager_title"
-        android:summary="@string/icon_manager_summary" >
-        <!-- <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.tuner.TunerActivity" /> -->
-    </com.dirtyunicorns.tweaks.preferences.CategoryPreference>
-
-    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
-        android:key="notifications_category"
-        android:icon="@drawable/dt_notifications"
-        android:title="@string/notifications_title"
-        android:summary="@string/notifications_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.Notifications" />
+        android:key="traffic_category"
+        android:icon="@drawable/dt_traffic"
+        android:title="@string/traffic_title"
+        android:summary="@string/traffic_summary"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.TrafficIndicators" />
 
     <com.dirtyunicorns.tweaks.preferences.CategoryPreference
         android:key="quick_settings_category"
@@ -62,10 +52,18 @@
         android:fragment="com.dirtyunicorns.tweaks.fragments.QuickSettings" />
 
     <com.dirtyunicorns.tweaks.preferences.CategoryPreference
-        android:key="traffic_category"
-        android:icon="@drawable/dt_traffic"
-        android:title="@string/traffic_title"
-        android:summary="@string/traffic_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.TrafficIndicators" />
+        android:key="icon_manager_title"
+        android:icon="@drawable/dt_icon_manager"
+        android:title="@string/icon_manager_title"
+        android:summary="@string/icon_manager_summary"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.IconManager" />
+
+
+    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+        android:key="ticker_category"
+        android:icon="@drawable/dt_ticker"
+        android:title="@string/ticker_title"
+        android:summary="@string/ticker_summary"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.Ticker" />
 
 </PreferenceScreen>

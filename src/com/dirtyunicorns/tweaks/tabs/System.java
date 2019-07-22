@@ -33,6 +33,8 @@ public class System extends SettingsPreferenceFragment
     private static final String DEVICE_CATEGORY = "device_extras_category";
     private static final String INTERFACES_CATEGORY = "interfaces_category";
     private static final String MISC_CATEGORY = "miscellaneous_category";
+    private static final String NOTIFICATIONS_CATEGORY = "notifications_category";
+    private static final String HEADS_UP_CATEGORY = "heads_up_category";
     private static final String POWERMENU_CATEGORY = "powermenu_category";
 
     @Override
@@ -53,6 +55,16 @@ public class System extends SettingsPreferenceFragment
         Preference MiscOptions = findPreference("miscellaneous_category");
         if (!getResources().getBoolean(R.bool.has_misc_options)) {
             getPreferenceScreen().removePreference(MiscOptions);
+        }
+
+        Preference Notifications = findPreference(NOTIFICATIONS_CATEGORY);
+        if (!getResources().getBoolean(R.bool.has_notifications)) {
+            getPreferenceScreen().removePreference(Notifications);
+        }
+
+        Preference HeadsUp = findPreference(HEADS_UP_CATEGORY);
+        if (!getResources().getBoolean(R.bool.has_heads_up)) {
+            getPreferenceScreen().removePreference(HeadsUp);
         }
 
         Preference PowerMenu = findPreference(POWERMENU_CATEGORY);

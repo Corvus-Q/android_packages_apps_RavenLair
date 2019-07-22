@@ -34,9 +34,9 @@ public class Statusbar extends SettingsPreferenceFragment
     private static final String CARRIER_LABEL_CATEGORY = "carrier_label_category";
     private static final String CLOCK_CATEGORY = "clock_options_category";
     private static final String ICON_MANAGER_CATEGORY = "icon_manager_title";
-    private static final String NOTIFICATIONS_CATEGORY = "notifications_category";
     private static final String QUICK_SETTINGS_CATEGORY = "quick_settings_category";
     private static final String TRAFFIC_CATEGORY = "traffic_category";
+    private static final String TICKER_CATEGORY = "ticker_category";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,11 +63,6 @@ public class Statusbar extends SettingsPreferenceFragment
             getPreferenceScreen().removePreference(IconManager);
         }
 
-        Preference Notifications = findPreference(NOTIFICATIONS_CATEGORY);
-        if (!getResources().getBoolean(R.bool.has_notifications)) {
-            getPreferenceScreen().removePreference(Notifications);
-        }
-
         Preference QuickSettings = findPreference(QUICK_SETTINGS_CATEGORY);
         if (!getResources().getBoolean(R.bool.has_quick_settings)) {
             getPreferenceScreen().removePreference(QuickSettings);
@@ -76,6 +71,11 @@ public class Statusbar extends SettingsPreferenceFragment
         Preference Traffic = findPreference(TRAFFIC_CATEGORY);
         if (!getResources().getBoolean(R.bool.has_traffic)) {
             getPreferenceScreen().removePreference(Traffic);
+        }
+
+        Preference Ticker = findPreference(TICKER_CATEGORY);
+        if (!getResources().getBoolean(R.bool.has_ticker)) {
+            getPreferenceScreen().removePreference(Ticker);
         }
     }
 
