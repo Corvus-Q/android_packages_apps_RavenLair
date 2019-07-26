@@ -72,6 +72,18 @@
        <item>@string/quick_pulldown_left</item>
     </string-array>
 
+    <!-- Network traffic location -->
+    <string-array name="network_traffic_location_entries">
+        <item>@string/traffic_disabled</item>
+        <item>@string/traffic_statusbar</item>
+        <item>@string/traffic_expanded_statusbar</item>
+    </string-array>
+    <string-array name="network_traffic_location_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <string-array name="quick_pulldown_values" translatable="false">
        <item>0</item>
        <item>1</item>

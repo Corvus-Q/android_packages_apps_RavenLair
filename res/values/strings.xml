@@ -62,6 +62,21 @@
     <string name="ticker_summary">Enable the statusbar ticker and configure ticker related tweaks</string>
     <string name="traffic_title">Traffic indicators</string>
     <string name="traffic_summary">Enable and configure the traffic indicators</string>
+
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Location</string>
+    <string name="network_traffic_autohide_threshold_title">Auto-hide threshold</string>
+    <string name="network_traffic_hidearrow">Activity arrows</string>
+    <string name="network_traffic_hidearrow_summary">Show the network traffic indicator arrows</string>
+    <string name="network_traffic_type">Activity type</string>
+    <string name="show_network_traffic_up">Upload</string>
+    <string name="show_network_traffic_down">Download</string>
+    <string name="show_network_traffic_all">Both</string>
+    <string name="traffic_disabled">Disabled</string>
+    <string name="traffic_statusbar">Statusbar</string>
+    <string name="traffic_expanded_statusbar">Expanded Statusbar</string>
+    <string name="network_traffic_refresh_interval_title">Refresh interval</string>
+
     <!-- Navigation -->
     <string name="buttons_title">Buttons</string>
     <string name="buttons_summary">Configure volume rocker options</string>

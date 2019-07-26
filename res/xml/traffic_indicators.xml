@@ -18,4 +18,41 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/traffic_title" >
 
+    <ListPreference
+        android:key="network_traffic_location"
+        android:title="@string/network_traffic_state_title"
+        android:summary="%s"
+        android:entries="@array/network_traffic_location_entries"
+        android:entryValues="@array/network_traffic_location_values"
+        android:persistent="false" />
+
+    <ListPreference
+        android:key="network_traffic_type"
+        android:title="@string/network_traffic_type"
+        android:entries="@array/show_network_traffic_type_entries"
+        android:entryValues="@array/show_network_traffic_type_values"
+        android:persistent="false" />
+
+    <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+        android:key="network_traffic_hidearrow"
+        android:title="@string/network_traffic_hidearrow"
+        android:summary="@string/network_traffic_hidearrow_summary"
+        android:defaultValue="true" />
+
+    <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
+        android:key="network_traffic_autohide_threshold"
+        android:title="@string/network_traffic_autohide_threshold_title"
+        android:max="10"
+        settings:min="0"
+        android:defaultValue="1"
+        settings:units="KB/s" />
+
+    <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
+        android:key="network_traffic_refresh_interval"
+        android:title="@string/network_traffic_refresh_interval_title"
+        android:max="10"
+        settings:min="1"
+        android:defaultValue="2"
+        settings:units="sec" />
+
 </PreferenceScreen>

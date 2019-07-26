@@ -21,15 +21,17 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.os.PowerManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.os.Bundle;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v14.preference.PreferenceFragment;
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -40,22 +42,137 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
 
 public class TrafficIndicators extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
+    private static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+    private static final String NETWORK_TRAFFIC_TYPE = "network_traffic_type";
+    private static final String NETWORK_TRAFFIC_REFRESH_INTERVAL = "network_traffic_refresh_interval";
+
+    private SystemSettingSwitchPreference mNetMonitor;
+    private SystemSettingSwitchPreference mHideArrows;
+    private ListPreference mNetTrafficLocation;
+    private ListPreference mNetTrafficType;
+    private CustomSeekBarPreference mThreshold;
+    private CustomSeekBarPreference mNetTrafficRefreshInterval;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.traffic_indicators);
+        addPreferencesFromResource(R.xml.traffic_indicators); 
+
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mThreshold = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+        int threshold = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 1, UserHandle.USER_CURRENT);
+        mThreshold.setValue(threshold);
+        mThreshold.setOnPreferenceChangeListener(this);
+
+        mNetTrafficType = (ListPreference) findPreference(NETWORK_TRAFFIC_TYPE);
+        int nettype = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_TYPE, 0, UserHandle.USER_CURRENT);
+        mNetTrafficType.setValue(String.valueOf(nettype));
+        mNetTrafficType.setSummary(mNetTrafficType.getEntry());
+        mNetTrafficType.setOnPreferenceChangeListener(this);
+
+        mNetTrafficLocation = (ListPreference) findPreference(NETWORK_TRAFFIC_LOCATION);
+        int location = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_LOCATION, 0);
+        mNetTrafficLocation.setValue(String.valueOf(location));
+        mNetTrafficLocation.setSummary(mNetTrafficLocation.getEntry());
+        mNetTrafficLocation.setOnPreferenceChangeListener(this);
+
+        mHideArrows = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
+
+        mNetTrafficRefreshInterval = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_REFRESH_INTERVAL);
+        int interval = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, 2, UserHandle.USER_CURRENT);
+        mNetTrafficRefreshInterval.setValue(interval);
+        mNetTrafficRefreshInterval.setOnPreferenceChangeListener(this);
+
+		updateTrafficLocation(location);     
     }
 
-    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mNetTrafficLocation) {
+            int location = Integer.valueOf((String) newValue);
+            int index = mNetTrafficLocation.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_LOCATION, location);
+            mNetTrafficLocation.setSummary(mNetTrafficLocation.getEntries()[index]);
+            updateTrafficLocation(location);
+            return true;
+        } else if (preference == mNetTrafficType) {
+            int val = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_TYPE, val,
+                    UserHandle.USER_CURRENT);
+            int index = mNetTrafficType.findIndexOfValue((String) newValue);
+            mNetTrafficType.setSummary(mNetTrafficType.getEntries()[index]);
+            return true;
+        } else if (preference == mThreshold) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mNetTrafficRefreshInterval) {
+            int interval = (Integer) newValue;
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, interval, UserHandle.USER_CURRENT);
+            return true;
+        } 
+        return false; 
+    }
+
+    public void updateTrafficLocation(int location) {
+        switch(location){ 
+            case 0:
+                mNetTrafficType.setEnabled(false);
+                mThreshold.setEnabled(false);
+                mHideArrows.setEnabled(false);
+                mNetTrafficRefreshInterval.setEnabled(false);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 0);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 0);
+                break;
+            case 1:
+                mNetTrafficType.setEnabled(true);
+                mThreshold.setEnabled(true);
+                mHideArrows.setEnabled(true);
+                mNetTrafficRefreshInterval.setEnabled(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 1);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 0);
+                break;
+            case 2:
+                mNetTrafficType.setEnabled(true);
+                mThreshold.setEnabled(true);
+                mHideArrows.setEnabled(true);
+                mNetTrafficRefreshInterval.setEnabled(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 0);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 1);
+                break;
+            default: 
+                break;
+        }
     }
 
     @Override
