@@ -40,6 +40,7 @@ import android.view.View;
 import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.R;
+import android.provider.SearchIndexableResource;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
@@ -128,6 +129,8 @@ public class Interfaces extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+        ContentResolver resolver = getActivity().getContentResolver();
 	 if (preference == mCornerRadius) {
             Settings.Secure.putInt(resolver, Settings.Secure.SYSUI_ROUNDED_SIZE,
                     ((int) newValue) * 1);

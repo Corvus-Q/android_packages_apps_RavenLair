@@ -163,6 +163,81 @@ public class AccentPicker extends InstrumentedDialogFragment implements OnClickL
 
         Button userAccentSeven = mView.findViewById(R.id.userAccentSeven);
         setAccent("28", userAccentSeven);
+
+        Button armygreen = mView.findViewById(R.id.armygreen);
+        setAccent("29", armygreen);
+
+        Button deepred = mView.findViewById(R.id.deepred);
+        setAccent("30", deepred);
+
+        Button fadedpink = mView.findViewById(R.id.fadedpink);
+        setAccent("31", fadedpink);
+
+        Button kindaindigo = mView.findViewById(R.id.kindaindigo);
+        setAccent("32", kindaindigo);
+
+        Button pinkred = mView.findViewById(R.id.pinkred);
+        setAccent("33", pinkred);
+
+        Button aospa = mView.findViewById(R.id.aospa);
+        setAccent("34", aospa);
+
+        Button androidone = mView.findViewById(R.id.androidone);
+        setAccent("35", androidone);
+
+        Button cocacola = mView.findViewById(R.id.cocacola);
+        setAccent("36", cocacola);
+
+        Button discord = mView.findViewById(R.id.discord);
+        setAccent("37", discord);
+
+        Button facebook = mView.findViewById(R.id.facebook);
+        setAccent("38", facebook);
+
+        Button instagram = mView.findViewById(R.id.instagram);
+        setAccent("39", instagram);
+
+        Button jollibee = mView.findViewById(R.id.jollibee);
+        setAccent("40", jollibee);
+
+        Button monster = mView.findViewById(R.id.monster);
+        setAccent("41", monster);
+
+        Button nextbit = mView.findViewById(R.id.nextbit);
+        setAccent("42", nextbit);
+
+        Button oneplus = mView.findViewById(R.id.oneplus);
+        setAccent("43", oneplus);
+
+        Button pepsi = mView.findViewById(R.id.pepsi);
+        setAccent("44", pepsi);
+
+        Button poco = mView.findViewById(R.id.poco);
+        setAccent("45", poco);
+
+        Button razer = mView.findViewById(R.id.razer);
+        setAccent("46", razer);
+
+        Button samsung = mView.findViewById(R.id.samsung);
+        setAccent("47", samsung);
+
+        Button spotify = mView.findViewById(R.id.spotify);
+        setAccent("48", spotify);
+
+        Button starbucks = mView.findViewById(R.id.starbucks);
+        setAccent("49", starbucks);
+
+        Button twitch = mView.findViewById(R.id.twitch);
+        setAccent("50", twitch);
+
+        Button twitter = mView.findViewById(R.id.twitter);
+        setAccent("51", twitter);
+
+        Button xbox = mView.findViewById(R.id.xbox);
+        setAccent("52", xbox);
+
+        Button xiaomi = mView.findViewById(R.id.xiaomi);
+        setAccent("53", xiaomi);
     }
 
     @Override
