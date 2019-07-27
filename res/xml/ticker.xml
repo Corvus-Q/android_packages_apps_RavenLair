@@ -25,7 +25,7 @@
 	android:summary="@string/status_bar_show_ticker_summary"
 	android:defaultValue="false" />
 
-    <com.dirtyunicorns.support.preferences.SystemSettingIntListPreference
+    <com.dirtyunicorns.support.preferences.SystemSettingListPreference
 	android:key="status_bar_ticker_animation_mode"
 	android:title="@string/ticker_animation_mode_title"
 	android:entries="@array/ticker_animation_mode_entries"

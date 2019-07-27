@@ -40,52 +40,73 @@ import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.dirtyunicorns.support.preferences.SecureSettingMasterSwitchPreference;
-import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingListPreference;
+import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LockscreenItems extends SettingsPreferenceFragment
+public class LockscreenDate extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    private static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
-    private static final String LOCKSCREEN_INFO = "lockscreen_info";
+    private static final String KEY_WEATHER_TEMP = "weather_lockscreen_unit";
+    private static final String LOCK_DATE_FONTS = "lock_date_fonts";
+    private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+    private static final String LOCK_OWNER_FONTS = "lock_owner_fonts";
 
-    private SystemSettingMasterSwitchPreference mClockEnabled;
-    private SystemSettingMasterSwitchPreference mInfoEnabled;
+    ListPreference mLockDateFonts;
+    ListPreference mLockOwnerFonts;
+
+    private CustomSeekBarPreference mDateFontSize;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.lockscreen_items);
-        ContentResolver resolver = getActivity().getContentResolver();
+        addPreferencesFromResource(R.xml.lockscreen_date);
 
-        mClockEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_CLOCK);
-        mClockEnabled.setOnPreferenceChangeListener(this);
-        int clockEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_CLOCK, 1);
-        mClockEnabled.setChecked(clockEnabled != 0);
+        mLockOwnerFonts = (ListPreference) findPreference(LOCK_OWNER_FONTS);
+        mLockOwnerFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_OWNER_FONTS, 26)));
+        mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
+        mLockOwnerFonts.setOnPreferenceChangeListener(this);
 
-        mInfoEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_INFO);
-        mInfoEnabled.setOnPreferenceChangeListener(this);
-        int infoEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_INFO, 1);
-        mInfoEnabled.setChecked(infoEnabled != 0);
-      }
+        mLockDateFonts = (ListPreference) findPreference(LOCK_DATE_FONTS);
+        mLockDateFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_DATE_FONTS, 23)));
+        mLockDateFonts.setSummary(mLockDateFonts.getEntry());
+        mLockDateFonts.setOnPreferenceChangeListener(this);
+
+        mDateFontSize = (CustomSeekBarPreference) findPreference(DATE_FONT_SIZE);
+        mDateFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKDATE_FONT_SIZE,16));
+        mDateFontSize.setOnPreferenceChangeListener(this);
+
+        SystemSettingListPreference mWeatherTemp =
+                (SystemSettingListPreference) findPreference(KEY_WEATHER_TEMP);
+        if (!com.android.internal.util.du.Utils.isPackageInstalled(
+                getActivity(), "org.pixelexperience.weather.client")) {
+            getPreferenceScreen().removePreference(mWeatherTemp);
+        }
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-	 if (preference == mClockEnabled) {
-        ContentResolver resolver = getActivity().getContentResolver();
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getContentResolver(),
-		            LOCKSCREEN_CLOCK, value ? 1 : 0);
+	if (preference == mLockDateFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_DATE_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockDateFonts.setValue(String.valueOf(newValue));
+            mLockDateFonts.setSummary(mLockDateFonts.getEntry());
             return true;
-        } else if (preference == mInfoEnabled) {
-            boolean value = (Boolean) newValue;
+        } else if (preference == mDateFontSize) {
+            int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
-		            LOCKSCREEN_INFO, value ? 1 : 0);
+                    Settings.System.LOCKDATE_FONT_SIZE, top*1);
+            return true;
+	} else if (preference == mLockOwnerFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_OWNER_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockOwnerFonts.setValue(String.valueOf(newValue));
+            mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
             return true;
 	}
         return false;
@@ -103,7 +124,7 @@ public class LockscreenItems extends SettingsPreferenceFragment
                         boolean enabled) {
                     final ArrayList<SearchIndexableResource> result = new ArrayList<>();
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.lockscreen_items;
+                    sir.xmlResId = R.xml.lockscreen_date;
                     result.add(sir);
                     return result;
                 }

@@ -40,52 +40,69 @@ import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.dirtyunicorns.support.preferences.SecureSettingMasterSwitchPreference;
-import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingListPreference;
+import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LockscreenItems extends SettingsPreferenceFragment
+public class LockscreenClock extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    private static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
-    private static final String LOCKSCREEN_INFO = "lockscreen_info";
+    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
+    private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
+    private static final String LOCKSCREEN_CLOCK_SELECTION  = "lockscreen_clock_selection";
 
-    private SystemSettingMasterSwitchPreference mClockEnabled;
-    private SystemSettingMasterSwitchPreference mInfoEnabled;
+    ListPreference mLockClockFonts;
+    SystemSettingListPreference mLockClockStyle;
+
+    private CustomSeekBarPreference mClockFontSize;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.lockscreen_items);
-        ContentResolver resolver = getActivity().getContentResolver();
+        addPreferencesFromResource(R.xml.lockscreen_clock);
 
-        mClockEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_CLOCK);
-        mClockEnabled.setOnPreferenceChangeListener(this);
-        int clockEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_CLOCK, 1);
-        mClockEnabled.setChecked(clockEnabled != 0);
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 22)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
 
-        mInfoEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_INFO);
-        mInfoEnabled.setOnPreferenceChangeListener(this);
-        int infoEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_INFO, 1);
-        mInfoEnabled.setChecked(infoEnabled != 0);
-      }
+        // Lock Clock Size
+        mClockFontSize = (CustomSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
+        mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKCLOCK_FONT_SIZE, 64));
+        mClockFontSize.setOnPreferenceChangeListener(this);
+
+        mLockClockStyle = (SystemSettingListPreference) findPreference(LOCKSCREEN_CLOCK_SELECTION);
+        mLockClockStyle.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCKSCREEN_CLOCK_SELECTION, 0)));
+        mLockClockStyle.setOnPreferenceChangeListener(this);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-	 if (preference == mClockEnabled) {
-        ContentResolver resolver = getActivity().getContentResolver();
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getContentResolver(),
-		            LOCKSCREEN_CLOCK, value ? 1 : 0);
+	if (preference == mLockClockFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
             return true;
-        } else if (preference == mInfoEnabled) {
-            boolean value = (Boolean) newValue;
+        } else if (preference == mClockFontSize) {
+            int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
-		            LOCKSCREEN_INFO, value ? 1 : 0);
+                    Settings.System.LOCKCLOCK_FONT_SIZE, top*1);
+            return true;
+        } else if (preference == mLockClockStyle) {
+            int val = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_CLOCK_SELECTION, val);
+            if (val == 15) {
+                Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 0);
+            } else {
+                Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 1);
+            }
             return true;
 	}
         return false;
@@ -103,7 +120,7 @@ public class LockscreenItems extends SettingsPreferenceFragment
                         boolean enabled) {
                     final ArrayList<SearchIndexableResource> result = new ArrayList<>();
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.lockscreen_items;
+                    sir.xmlResId = R.xml.lockscreen_clock;
                     result.add(sir);
                     return result;
                 }
