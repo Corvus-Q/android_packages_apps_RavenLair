@@ -57,6 +57,12 @@
                 <include layout="@layout/qs_styles_triangles" />
                 <include layout="@layout/qs_styles_divided" />
                 <include layout="@layout/qs_styles_cosmos" />
+                <include layout="@layout/qs_styles_badge" />
+                <include layout="@layout/qs_styles_badgetwo" />
+                <include layout="@layout/qs_styles_hexagon" />
+                <include layout="@layout/qs_styles_star" />
+                <include layout="@layout/qs_styles_gear" />
+                <include layout="@layout/qs_styles_diamond" />
 
             </GridLayout>
         </HorizontalScrollView>

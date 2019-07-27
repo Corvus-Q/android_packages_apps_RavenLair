@@ -139,6 +139,24 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
 
         LinearLayout cosmos = mView.findViewById(R.id.QsTileStyleCosmos);
         setLayout("20", cosmos);
+
+        LinearLayout badge = mView.findViewById(R.id.QsTileStyleBadge);
+        setLayout("21", badge);
+
+        LinearLayout badgetwo = mView.findViewById(R.id.QsTileStyleBadgeTwo);
+        setLayout("22", badgetwo);
+
+        LinearLayout hexagon = mView.findViewById(R.id.QsTileStyleHexagon);
+        setLayout("23", hexagon);
+
+        LinearLayout star = mView.findViewById(R.id.QsTileStyleStar);
+        setLayout("24", star);
+
+        LinearLayout gear = mView.findViewById(R.id.QsTileStyleGear);
+        setLayout("25", gear);
+
+        LinearLayout diamond = mView.findViewById(R.id.QsTileStyleDiamond);
+        setLayout("26", diamond);
     }
 
     @Override
@@ -203,6 +221,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
         LinearLayout triangles = mView.findViewById(R.id.QsTileStyleTriangles);
         LinearLayout divided = mView.findViewById(R.id.QsTileStyleDivided);
         LinearLayout cosmos = mView.findViewById(R.id.QsTileStyleCosmos);
+        LinearLayout badge = mView.findViewById(R.id.QsTileStyleBadge);
+        LinearLayout badgetwo = mView.findViewById(R.id.QsTileStyleBadgeTwo);
+        LinearLayout hexagon = mView.findViewById(R.id.QsTileStyleHexagon);
+        LinearLayout star = mView.findViewById(R.id.QsTileStyleStar);
+        LinearLayout gear = mView.findViewById(R.id.QsTileStyleGear);
+        LinearLayout diamond = mView.findViewById(R.id.QsTileStyleDiamond);
 
         TypedValue typedValue = new TypedValue();
         res.getValue(R.dimen.qs_styles_layout_opacity, typedValue, true);
@@ -229,6 +253,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 2 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha((float) 1.0);
@@ -250,6 +280,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 3 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -271,6 +307,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 4 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -292,6 +334,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 5 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -313,6 +361,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 6 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -334,6 +388,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 7 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -355,6 +415,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 8 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -376,6 +442,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 9 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -397,6 +469,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 10 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -418,6 +496,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 11 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -439,6 +523,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 12 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -460,6 +550,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 13 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -481,6 +577,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 14 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -502,6 +604,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 15 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -523,6 +631,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 16 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -544,6 +658,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 17 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -565,6 +685,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 18 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -586,6 +712,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha((float) 1.0);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 19 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -607,6 +739,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha((float) 1.0);
             cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
         } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 20 )) {
             squircle.setAlpha(mLayoutOpacity);
             teardrop.setAlpha(mLayoutOpacity);
@@ -628,6 +766,174 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha(mLayoutOpacity);
             divided.setAlpha(mLayoutOpacity);
             cosmos.setAlpha((float) 1.0);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 21 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha((float) 1.0);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 22 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha((float) 1.0);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 23 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha((float) 1.0);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 24 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha((float) 1.0);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 25 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha((float) 1.0);
+            diamond.setAlpha(mLayoutOpacity);
+        } else if (ThemeAccentUtils.isUsingQsTileStyles(mOverlayManager, mCurrentUserId, 26 )) {
+            squircle.setAlpha(mLayoutOpacity);
+            teardrop.setAlpha(mLayoutOpacity);
+            deletround.setAlpha(mLayoutOpacity);
+            inktober.setAlpha(mLayoutOpacity);
+            shishunights.setAlpha(mLayoutOpacity);
+            circlegradient.setAlpha(mLayoutOpacity);
+            wavey.setAlpha(mLayoutOpacity);
+            circledualtone.setAlpha(mLayoutOpacity);
+            memedosquare.setAlpha(mLayoutOpacity);
+            pokesign.setAlpha(mLayoutOpacity);
+            ninja.setAlpha(mLayoutOpacity);
+            dottedcircle.setAlpha(mLayoutOpacity);
+            shishuink.setAlpha(mLayoutOpacity);
+            attemptmountain.setAlpha(mLayoutOpacity);
+            cookie.setAlpha(mLayoutOpacity);
+            neonlike.setAlpha(mLayoutOpacity);
+            oxygen.setAlpha(mLayoutOpacity);
+            triangles.setAlpha(mLayoutOpacity);
+            divided.setAlpha(mLayoutOpacity);
+            cosmos.setAlpha(mLayoutOpacity);
+            badge.setAlpha(mLayoutOpacity);
+            badgetwo.setAlpha(mLayoutOpacity);
+            hexagon.setAlpha(mLayoutOpacity);
+            star.setAlpha(mLayoutOpacity);
+            gear.setAlpha(mLayoutOpacity);
+            diamond.setAlpha((float) 1.0);
         } else {
             squircle.setAlpha((float) 1.0);
             teardrop.setAlpha((float) 1.0);
@@ -649,6 +955,12 @@ public class QsTileStyles extends InstrumentedDialogFragment implements OnClickL
             triangles.setAlpha((float) 1.0);
             divided.setAlpha((float) 1.0);
             cosmos.setAlpha((float) 1.0);
+            badge.setAlpha((float) 1.0);
+            badgetwo.setAlpha((float) 1.0);
+            hexagon.setAlpha((float) 1.0);
+            star.setAlpha((float) 1.0);
+            gear.setAlpha((float) 1.0);
+            diamond.setAlpha((float) 1.0);
         }
     }
 }
