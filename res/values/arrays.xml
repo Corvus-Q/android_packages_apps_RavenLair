@@ -25,14 +25,6 @@
         <item>@string/lockscreen_clock_selection_sammy</item>
         <item>@string/lockscreen_clock_selection_sammy_bold</item>
         <item>@string/lockscreen_clock_selection_sammy_accent</item>
-        <item>@string/lockscreen_clock_selection_sammy_accent_alt</item>
-        <item>@string/lockscreen_clock_selection_shishu_dreams</item>
-        <item>@string/lockscreen_clock_selection_shishu_immensity</item>
-        <item>@string/lockscreen_clock_selection_shishu_nerves</item>
-        <item>@string/lockscreen_clock_selection_gradient_btlglogo</item>
-        <item>@string/lockscreen_clock_selection_gradient_shishu</item>
-        <item>@string/lockscreen_clock_selection_gradient_full</item>
-        <item>@string/lockscreen_clock_selection_gradient_likeqs</item>
         <item>@string/lockscreen_clock_selection_text</item>
     </string-array>
 
@@ -45,14 +37,6 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
     </string-array>
 
     <!-- Lock Clock Fonts -->
