@@ -57,6 +57,7 @@ import com.android.settings.Utils;
 import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
 import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
+import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -79,10 +80,13 @@ public class ClockOptions extends SettingsPreferenceFragment
     private static final String CLOCK_DATE_AUTO_HIDE_SDUR = "status_bar_clock_auto_hide_sduration";
     private static final String STATUS_BAR_CLOCK_SIZE  = "status_bar_clock_size";
     private static final String STATUS_BAR_CLOCK_FONT_STYLE  = "status_bar_clock_font_style";
+    private static final String STATUS_BAR_CLOCK_COLOR = "status_bar_clock_color";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
+
+    static final int DEFAULT_STATUS_CLOCK_COLOR = 0xffffffff;
 
     private ListPreference mClockStyle;
     private ListPreference mClockAmPmStyle;
@@ -96,6 +100,7 @@ public class ClockOptions extends SettingsPreferenceFragment
     private CustomSeekBarPreference mHideDuration;
     private CustomSeekBarPreference mShowDuration;
     private SystemSettingSeekBarPreference mClockSize;
+    private ColorPickerPreference mClockColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +109,17 @@ public class ClockOptions extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.clock_options);
         ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        int intColor;
+        String hexColor;
+
+        mClockColor = (ColorPickerPreference) findPreference(STATUS_BAR_CLOCK_COLOR);
+        mClockColor.setOnPreferenceChangeListener(this);
+        intColor = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CLOCK_COLOR, DEFAULT_STATUS_CLOCK_COLOR);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mClockColor.setSummary(hexColor);
+        mClockColor.setNewPreviewColor(intColor);
 
         mClockStyle = (ListPreference) findPreference(PREF_CLOCK_STYLE);
         mClockStyle.setOnPreferenceChangeListener(this);
@@ -326,6 +342,14 @@ public class ClockOptions extends SettingsPreferenceFragment
             int value = (Integer) newValue;
             Settings.System.putIntForUser(resolver,
                     Settings.System.STATUS_BAR_CLOCK_AUTO_HIDE_SDURATION, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mClockColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_CLOCK_COLOR, intHex);
             return true;
         }  else if (preference == mClockSize) {
             int width = ((Integer)newValue).intValue();

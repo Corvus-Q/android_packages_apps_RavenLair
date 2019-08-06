@@ -58,6 +58,7 @@ import java.util.Date;
 
 import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
 import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
+import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 
 public class CarrierLabel extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
@@ -66,11 +67,15 @@ public class CarrierLabel extends SettingsPreferenceFragment
     private static final String KEY_STATUS_BAR_SHOW_CARRIER = "status_bar_show_carrier";
     private static final String STATUS_BAR_CARRIER_FONT_SIZE  = "status_bar_carrier_font_size";
     private static final String CARRIER_FONT_STYLE  = "status_bar_carrier_font_style";
+    private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
+
+    static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
     private ListPreference mShowCarrierLabel;
     private Preference mCustomCarrierLabel;
     private SystemSettingSeekBarPreference mStatusBarCarrierSize;
     private ListPreference mCarrierFontStyle;
+    private ColorPickerPreference mCarrierColorPicker;
 
     private String mCustomCarrierLabelText;
 
@@ -83,6 +88,9 @@ public class CarrierLabel extends SettingsPreferenceFragment
 
         final ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        int intColor;
+        String hexColor;
 
         mShowCarrierLabel = (ListPreference) findPreference(KEY_STATUS_BAR_SHOW_CARRIER);
         showCarrierLabel = Settings.System.getInt(resolver,
@@ -119,6 +127,14 @@ public class CarrierLabel extends SettingsPreferenceFragment
                 Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 23);
         mCarrierFontStyle.setValue(String.valueOf(showCarrierFont));
         mCarrierFontStyle.setOnPreferenceChangeListener(this);
+
+        mCarrierColorPicker = (ColorPickerPreference) findPreference(STATUS_BAR_CARRIER_COLOR);
+        mCarrierColorPicker.setOnPreferenceChangeListener(this);
+        intColor = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CARRIER_COLOR, DEFAULT_STATUS_CARRIER_COLOR);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mCarrierColorPicker.setSummary(hexColor);
+        mCarrierColorPicker.setNewPreviewColor(intColor);
     }
 
     private void updateCustomLabelTextSummary() {
@@ -154,7 +170,14 @@ public class CarrierLabel extends SettingsPreferenceFragment
             int index = mCarrierFontStyle.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.
                 STATUS_BAR_CARRIER_FONT_STYLE, showCarrierFont);
-            mCarrierFontStyle.setSummary(mCarrierFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mCarrierColorPicker) {
+            String hex = ColorPickerPreference.convertToARGB(
+            Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
             return true;
         }
         return false;

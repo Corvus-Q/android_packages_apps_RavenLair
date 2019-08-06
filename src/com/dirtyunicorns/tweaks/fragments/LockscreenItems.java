@@ -76,8 +76,9 @@ public class LockscreenItems extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-	 if (preference == mClockEnabled) {
         ContentResolver resolver = getActivity().getContentResolver();
+
+	 if (preference == mClockEnabled) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),
 		            LOCKSCREEN_CLOCK, value ? 1 : 0);
