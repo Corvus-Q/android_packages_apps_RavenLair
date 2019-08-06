@@ -21,7 +21,10 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.PreferenceCategory;
@@ -34,6 +37,8 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -49,15 +54,23 @@ import com.android.internal.util.du.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+
+import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
 
 public class CarrierLabel extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String KEY_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_STATUS_BAR_SHOW_CARRIER = "status_bar_show_carrier";
+    private static final String STATUS_BAR_CARRIER_FONT_SIZE  = "status_bar_carrier_font_size";
+    private static final String CARRIER_FONT_STYLE  = "status_bar_carrier_font_style";
 
     private ListPreference mShowCarrierLabel;
     private Preference mCustomCarrierLabel;
+    private SystemSettingSeekBarPreference mStatusBarCarrierSize;
+    private ListPreference mCarrierFontStyle;
 
     private String mCustomCarrierLabelText;
 
@@ -69,6 +82,7 @@ public class CarrierLabel extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.carrier_label);
 
         final ContentResolver resolver = getActivity().getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         mShowCarrierLabel = (ListPreference) findPreference(KEY_STATUS_BAR_SHOW_CARRIER);
         showCarrierLabel = Settings.System.getInt(resolver,
@@ -93,6 +107,18 @@ public class CarrierLabel extends SettingsPreferenceFragment
         updateCustomLabelTextSummary();
         mCustomCarrierLabel.setEnabled(!mShowCarrierLabel.getEntryValues()
                 [showCarrierLabel].equals("0"));
+
+        mStatusBarCarrierSize = (SystemSettingSeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
+        int StatusBarCarrierSize = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
+        mStatusBarCarrierSize.setValue(StatusBarCarrierSize / 1);
+        mStatusBarCarrierSize.setOnPreferenceChangeListener(this);
+
+        mCarrierFontStyle = (ListPreference) findPreference(CARRIER_FONT_STYLE);
+        int showCarrierFont = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 23);
+        mCarrierFontStyle.setValue(String.valueOf(showCarrierFont));
+        mCarrierFontStyle.setOnPreferenceChangeListener(this);
     }
 
     private void updateCustomLabelTextSummary() {
@@ -117,6 +143,18 @@ public class CarrierLabel extends SettingsPreferenceFragment
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             mCustomCarrierLabel.setEnabled(!mShowCarrierLabel.getEntryValues()
                     [showCarrierLabel].equals("0"));
+            return true;
+        }  else if (preference == mStatusBarCarrierSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, width);
+            return true;
+        }  else if (preference == mCarrierFontStyle) {
+            int showCarrierFont = Integer.valueOf((String) newValue);
+            int index = mCarrierFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.
+                STATUS_BAR_CARRIER_FONT_STYLE, showCarrierFont);
+            mCarrierFontStyle.setSummary(mCarrierFontStyle.getEntries()[index]);
             return true;
         }
         return false;
