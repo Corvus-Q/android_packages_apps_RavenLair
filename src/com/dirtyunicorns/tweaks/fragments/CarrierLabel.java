@@ -57,7 +57,7 @@ import java.util.List;
 import java.util.Date;
 
 import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
-import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
+import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 
 public class CarrierLabel extends SettingsPreferenceFragment
@@ -73,7 +73,7 @@ public class CarrierLabel extends SettingsPreferenceFragment
 
     private ListPreference mShowCarrierLabel;
     private Preference mCustomCarrierLabel;
-    private SystemSettingSeekBarPreference mStatusBarCarrierSize;
+    private CustomSeekBarPreference  mStatusBarCarrierSize;
     private ListPreference mCarrierFontStyle;
     private ColorPickerPreference mCarrierColorPicker;
 
@@ -116,7 +116,7 @@ public class CarrierLabel extends SettingsPreferenceFragment
         mCustomCarrierLabel.setEnabled(!mShowCarrierLabel.getEntryValues()
                 [showCarrierLabel].equals("0"));
 
-        mStatusBarCarrierSize = (SystemSettingSeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
+        mStatusBarCarrierSize = (CustomSeekBarPreference) findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
         int StatusBarCarrierSize = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
         mStatusBarCarrierSize.setValue(StatusBarCarrierSize / 1);

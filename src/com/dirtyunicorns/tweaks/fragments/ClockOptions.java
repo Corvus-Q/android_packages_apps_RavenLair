@@ -56,7 +56,6 @@ import com.android.settings.Utils;
 
 import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
 import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
-import com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference;
 import com.dirtyunicorns.support.colorpicker.ColorPickerPreference;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -99,7 +98,7 @@ public class ClockOptions extends SettingsPreferenceFragment
     private SwitchPreference mShowSeconds;
     private CustomSeekBarPreference mHideDuration;
     private CustomSeekBarPreference mShowDuration;
-    private SystemSettingSeekBarPreference mClockSize;
+    private CustomSeekBarPreference mClockSize;
     private ColorPickerPreference mClockColor;
 
     @Override
@@ -215,7 +214,7 @@ public class ClockOptions extends SettingsPreferenceFragment
         mClockDatePosition.setSummary(mClockDatePosition.getEntry());
         mClockDatePosition.setOnPreferenceChangeListener(this);
 
-        mClockSize = (SystemSettingSeekBarPreference) findPreference(STATUS_BAR_CLOCK_SIZE);
+        mClockSize = (CustomSeekBarPreference) findPreference(STATUS_BAR_CLOCK_SIZE);
         int clockSize = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CLOCK_SIZE, 14);
         mClockSize.setValue(clockSize / 1);

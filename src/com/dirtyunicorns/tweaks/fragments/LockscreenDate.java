@@ -52,7 +52,6 @@ public class LockscreenDate extends SettingsPreferenceFragment
     private static final String KEY_WEATHER_TEMP = "weather_lockscreen_unit";
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
-    private static final String LOCK_OWNER_FONTS = "lock_owner_fonts";
 
     ListPreference mLockDateFonts;
     ListPreference mLockOwnerFonts;
@@ -64,15 +63,9 @@ public class LockscreenDate extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreen_date);
 
-        mLockOwnerFonts = (ListPreference) findPreference(LOCK_OWNER_FONTS);
-        mLockOwnerFonts.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.LOCK_OWNER_FONTS, 26)));
-        mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
-        mLockOwnerFonts.setOnPreferenceChangeListener(this);
-
         mLockDateFonts = (ListPreference) findPreference(LOCK_DATE_FONTS);
         mLockDateFonts.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.LOCK_DATE_FONTS, 23)));
+                getContentResolver(), Settings.System.LOCK_DATE_FONTS, 28)));
         mLockDateFonts.setSummary(mLockDateFonts.getEntry());
         mLockDateFonts.setOnPreferenceChangeListener(this);
 
@@ -101,12 +94,6 @@ public class LockscreenDate extends SettingsPreferenceFragment
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKDATE_FONT_SIZE, top*1);
-            return true;
-	} else if (preference == mLockOwnerFonts) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_OWNER_FONTS,
-                    Integer.valueOf((String) newValue));
-            mLockOwnerFonts.setValue(String.valueOf(newValue));
-            mLockOwnerFonts.setSummary(mLockOwnerFonts.getEntry());
             return true;
 	}
         return false;

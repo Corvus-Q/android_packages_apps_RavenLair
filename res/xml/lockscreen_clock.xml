@@ -25,39 +25,23 @@
         android:entryValues="@array/lockscreen_clock_selection_values"
         android:defaultValue="0" />
 
-
-    <com.dirtyunicorns.support.preferences.SystemSettingListPreference
-        android:key="lockscreen_text_clock_align"
-        android:title="@string/lockscreen_clock_align_title"
-        android:entries="@array/lockscreen_clock_align_entries"
-        android:entryValues="@array/lockscreen_clock_align_values"
-        android:defaultValue="0" />
-
     <ListPreference
         android:key="lock_clock_fonts"
         android:title="@string/lock_clock_font_title"
+        android:dialogTitle="@string/lock_clock_font_dialog_title"
         android:entries="@array/lock_clock_fonts_entries"
         android:entryValues="@array/lock_clock_fonts_values"
-        android:defaultValue="0"
+        android:summary="@string/lock_clock_font_summary"
         android:persistent="false" />
-
-    <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
-        android:key="custom_text_clock_font_size"
-        android:title="@string/custom_text_clock_font_size_title"
-        android:max="51"
-        settings:min="30"
-        settings:units="dp"
-        android:persistent="false"
-        android:defaultValue="32" />
 
     <com.dirtyunicorns.support.preferences.CustomSeekBarPreference
         android:key="lockclock_font_size"
         android:title="@string/lockclock_font_size_title"
-        android:max="120"
-        android:min="50"
-        android:defaultValue="64"
+        android:max="108"
+        settings:min="50"
         settings:units="dp"
-        android:persistent="false" />
+        android:persistent="false"
+        android:defaultValue="68" />
 
     <PreferenceScreen
     	android:key="lockscreen_colors"

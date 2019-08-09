@@ -52,7 +52,6 @@ public class LockscreenClock extends SettingsPreferenceFragment
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String LOCKSCREEN_CLOCK_SELECTION  = "lockscreen_clock_selection";
-    private static final String CUSTOM_TEXT_CLOCK_FONT_SIZE  = "custom_text_clock_font_size";
 
     ListPreference mLockClockFonts;
     SystemSettingListPreference mLockClockStyle;
@@ -67,26 +66,20 @@ public class LockscreenClock extends SettingsPreferenceFragment
 
         mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
         mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 22)));
+                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 28)));
         mLockClockFonts.setSummary(mLockClockFonts.getEntry());
         mLockClockFonts.setOnPreferenceChangeListener(this);
 
         // Lock Clock Size
         mClockFontSize = (CustomSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKCLOCK_FONT_SIZE, 64));
+                Settings.System.LOCKCLOCK_FONT_SIZE, 68));
         mClockFontSize.setOnPreferenceChangeListener(this);
 
         mLockClockStyle = (SystemSettingListPreference) findPreference(LOCKSCREEN_CLOCK_SELECTION);
         mLockClockStyle.setValue(String.valueOf(Settings.System.getInt(
                 getContentResolver(), Settings.System.LOCKSCREEN_CLOCK_SELECTION, 0)));
         mLockClockStyle.setOnPreferenceChangeListener(this);
-
-        // Custom Text Clock Size
-        mCustomTextClockFontSize = (CustomSeekBarPreference) findPreference(CUSTOM_TEXT_CLOCK_FONT_SIZE);
-        mCustomTextClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, 32));
-        mCustomTextClockFontSize.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -111,11 +104,6 @@ public class LockscreenClock extends SettingsPreferenceFragment
             } else {
                 Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 1);
             }
-            return true;
-        } else if (preference == mCustomTextClockFontSize) {
-            int top = (Integer) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, top*1);
             return true;
 	}
         return false;
