@@ -52,11 +52,13 @@ public class LockscreenDate extends SettingsPreferenceFragment
     private static final String KEY_WEATHER_TEMP = "weather_lockscreen_unit";
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
-
-    ListPreference mLockDateFonts;
-    ListPreference mLockOwnerFonts;
+    private static final String LOCK_OWNERINFO_FONTS = "lock_ownerinfo_fonts";
+    private static final String LOCKOWNER_FONT_SIZE = "lockowner_font_size";
 
     private CustomSeekBarPreference mDateFontSize;
+    private CustomSeekBarPreference mOwnerInfoFontSize;
+    ListPreference mLockDateFonts;
+    ListPreference mLockOwnerInfoFonts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,19 @@ public class LockscreenDate extends SettingsPreferenceFragment
         mDateFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKDATE_FONT_SIZE,16));
         mDateFontSize.setOnPreferenceChangeListener(this);
+
+        // Lockscren OwnerInfo Fonts
+        mLockOwnerInfoFonts = (ListPreference) findPreference(LOCK_OWNERINFO_FONTS);
+        mLockOwnerInfoFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_OWNERINFO_FONTS, 0)));
+        mLockOwnerInfoFonts.setSummary(mLockOwnerInfoFonts.getEntry());
+        mLockOwnerInfoFonts.setOnPreferenceChangeListener(this);
+
+        // Lockscren OwnerInfo Size
+        mOwnerInfoFontSize = (CustomSeekBarPreference) findPreference(LOCKOWNER_FONT_SIZE);
+        mOwnerInfoFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKOWNER_FONT_SIZE,21));
+        mOwnerInfoFontSize.setOnPreferenceChangeListener(this);
 
         SystemSettingListPreference mWeatherTemp =
                 (SystemSettingListPreference) findPreference(KEY_WEATHER_TEMP);
@@ -94,6 +109,17 @@ public class LockscreenDate extends SettingsPreferenceFragment
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKDATE_FONT_SIZE, top*1);
+            return true;
+       } else if (preference == mLockOwnerInfoFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_OWNERINFO_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockOwnerInfoFonts.setValue(String.valueOf(newValue));
+            mLockOwnerInfoFonts.setSummary(mLockOwnerInfoFonts.getEntry());
+            return true;
+        } else if (preference == mOwnerInfoFontSize) {
+            int top = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKOWNER_FONT_SIZE, top*1);
             return true;
 	}
         return false;
