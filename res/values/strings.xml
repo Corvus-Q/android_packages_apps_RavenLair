@@ -17,8 +17,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Dirty Tweaks -->
-    <string name="dirtytweaks_title">Dirty Tweaks</string>
-    <string name="dirtytweaks_summary">Enhance your experience</string>
+    <string name="dirtytweaks_title">DU-REX Tweaks</string>
+    <string name="dirtytweaks_summary">Be safe with DU-REX</string>
 
     <!-- The Team -->
     <string name="dialog_team_title">The Team</string>
@@ -27,7 +27,7 @@
     <string name="bottom_nav_system_title">System</string>
     <string name="bottom_nav_lockscreen_title">Lockscreen</string>
     <string name="bottom_nav_statusbar_title">Statusbar</string>
-    <string name="bottom_nav_navigation_title">Navigation</string>
+    <string name="bottom_nav_navigation_title">Hardware</string>
     <string name="bottom_nav_multitasking_title">Multitasking</string>
 
     <!-- General strings -->
@@ -35,16 +35,15 @@
     <string name="default_string">Default</string>
 
     <!-- Categories -->
-    <!-- System -->
     <string name="device_extras_title">Device extras</string>
     <string name="device_extras_summary">Device specific tweaks</string>
     <string name="interfaces_title">Interfaces</string>
     <string name="interfaces_summary">Interfaces tweaks</string>
-
     <string name="miscellaneous_title">Miscellaneous</string>
     <string name="miscellaneous_summary">Miscellaneous tweaks</string>
     <string name="powermenu_title">Power menu</string>
     <string name="powermenu_summary">Configure the power menu</string>
+
     <!-- Lockscreen -->
     <string name="fingerprint_prefs_title">Fingerprint prefs</string>
     <string name="fingerprint_prefs_summary">Tweaks specific to the fingerprint scanner</string>
@@ -88,9 +87,10 @@
 
     <!-- Navigation -->
     <string name="buttons_title">Buttons</string>
-    <string name="buttons_summary">Configure volume rocker options</string>
+    <string name="buttons_summary">Configure buttons options</string>
     <string name="navigation_options_title">Navigation</string>
     <string name="navigation_options_summary">Configure navigation options</string>
+
     <!-- Multitasking -->
     <string name="active_edge_title">Active Edge</string>
     <string name="active_edge_summary">Configure Active Edge options</string>
