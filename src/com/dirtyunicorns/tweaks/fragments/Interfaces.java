@@ -16,16 +16,24 @@
 
 package com.dirtyunicorns.tweaks.fragments;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.FontInfo;
+import android.content.IFontService;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.provider.Settings;
+import android.provider.SearchIndexableResource;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
@@ -36,8 +44,11 @@ import android.support.v14.preference.PreferenceFragment;
 import android.support.v14.preference.SwitchPreference;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.settingslib.drawer.SettingsDrawerActivity;
+import com.android.settings.display.FontDialogPreference;
 
 import com.android.settings.R;
 import android.provider.SearchIndexableResource;
@@ -61,13 +72,25 @@ import com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference;
 public class Interfaces extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
+    public static final String TAG = "Interfaces";
+
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
+    private static final String SWITCH_STYLE = "switch_style";
+    private static final String KEY_FONT_PICKER_FRAGMENT_PREF = "custom_font";
+    private static final String QS_HEADER_STYLE = "qs_header_style";
 
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
     private SecureSettingSwitchPreference mRoundedFwvals;
+    private ListPreference mSwitchStyle;
+    private FontDialogPreference mFontPreference;
+    private ListPreference mQsHeaderStyle;
+
+    Context mContext;
+
+    IFontService mFontService = IFontService.Stub.asInterface(ServiceManager.getService("dufont"));
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,6 +131,25 @@ public class Interfaces extends SettingsPreferenceFragment
         mRoundedFwvals = (SecureSettingSwitchPreference) findPreference(SYSUI_ROUNDED_FWVALS);
         mRoundedFwvals.setOnPreferenceChangeListener(this);
 
+        mSwitchStyle = (ListPreference) findPreference(SWITCH_STYLE);
+        int switchStyle = Settings.System.getInt(resolver,
+                Settings.System.SWITCH_STYLE, 2);
+        int switchValueIndex = mSwitchStyle.findIndexOfValue(String.valueOf(switchStyle));
+        mSwitchStyle.setValueIndex(switchValueIndex >= 0 ? switchValueIndex : 0);
+        mSwitchStyle.setSummary(mSwitchStyle.getEntry());
+        mSwitchStyle.setOnPreferenceChangeListener(this);
+
+        mFontPreference = (FontDialogPreference) findPreference(KEY_FONT_PICKER_FRAGMENT_PREF);
+        mFontPreference.setSummary(getCurrentFontInfo().fontName.replace("_", " "));
+
+        // set qs header style
+        mQsHeaderStyle = (ListPreference) findPreference(QS_HEADER_STYLE);
+        int qsHeaderStyle = Settings.System.getInt(resolver,
+                Settings.System.QS_HEADER_STYLE, 0);
+        int headerValueIndex = mQsHeaderStyle.findIndexOfValue(String.valueOf(qsHeaderStyle));
+        mQsHeaderStyle.setValueIndex(headerValueIndex >= 0 ? headerValueIndex : 0);
+        mQsHeaderStyle.setSummary(mQsHeaderStyle.getEntry());
+        mQsHeaderStyle.setOnPreferenceChangeListener(this);
     }
 
     private void restoreCorners() {
@@ -142,8 +184,32 @@ public class Interfaces extends SettingsPreferenceFragment
         } else if (preference == mRoundedFwvals) {
             restoreCorners();
             return true;
+        } else if (preference == mSwitchStyle) {
+            String value = (String) newValue;
+            Settings.System.putInt(resolver, Settings.System.SWITCH_STYLE, Integer.valueOf(value));
+            int valueIndex = mSwitchStyle.findIndexOfValue(value);
+            mSwitchStyle.setSummary(mSwitchStyle.getEntries()[valueIndex]);
+            return true;
+        } else if (preference == mQsHeaderStyle) {
+            String value = (String) newValue;
+            Settings.System.putInt(resolver, Settings.System.QS_HEADER_STYLE, Integer.valueOf(value));
+            int valueIndex = mQsHeaderStyle.findIndexOfValue(value);
+            mQsHeaderStyle.setSummary(mQsHeaderStyle.getEntries()[valueIndex]);
+            return true;
 	}
         return false;
+    }
+
+    private FontInfo getCurrentFontInfo() {
+        try {
+            return mFontService.getFontInfo();
+        } catch (RemoteException e) {
+            return FontInfo.getDefaultFontInfo();
+        }
+    }
+
+    public void stopProgress() {
+    	mFontPreference.stopProgress();
     }
 
     @Override
