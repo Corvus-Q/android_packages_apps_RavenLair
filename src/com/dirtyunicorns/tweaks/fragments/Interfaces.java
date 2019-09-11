@@ -74,6 +74,10 @@ public class Interfaces extends SettingsPreferenceFragment
 
     public static final String TAG = "Interfaces";
 
+    private String KEY_ACCENT_PICKER = "accent_picker";
+
+    private static final String QS_TILE_STYLE = "qs_tile_style";
+    private static final String SYSTEM_THEME_STYLE = "system_theme_style";
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
@@ -82,12 +86,15 @@ public class Interfaces extends SettingsPreferenceFragment
     private static final String QS_HEADER_STYLE = "qs_header_style";
     private static final String PREF_KEY_CUTOUT = "cutout_settings";
 
+    private SecureSettingSwitchPreference mRoundedFwvals;
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
-    private SecureSettingSwitchPreference mRoundedFwvals;
     private ListPreference mSwitchStyle;
-    private FontDialogPreference mFontPreference;
     private ListPreference mQsHeaderStyle;
+    private ListPreference mSystemThemeStyle;
+    private Preference mQsTileStyle;
+    private Preference mAccentPicker;
+    private FontDialogPreference mFontPreference;
 
     Context mContext;
 
@@ -131,6 +138,19 @@ public class Interfaces extends SettingsPreferenceFragment
         // Rounded use Framework Values
         mRoundedFwvals = (SecureSettingSwitchPreference) findPreference(SYSUI_ROUNDED_FWVALS);
         mRoundedFwvals.setOnPreferenceChangeListener(this);
+
+        mSystemThemeStyle = (ListPreference) findPreference(SYSTEM_THEME_STYLE);
+        int systemThemeStyle = Settings.System.getInt(resolver,
+                Settings.System.SYSTEM_UI_THEME, 0);
+        int themeValueIndex = mSystemThemeStyle.findIndexOfValue(String.valueOf(systemThemeStyle));
+        mSystemThemeStyle.setValueIndex(themeValueIndex >= 0 ? themeValueIndex : 0);
+        mSystemThemeStyle.setSummary(mSystemThemeStyle.getEntry());
+        mSystemThemeStyle.setOnPreferenceChangeListener(this);
+
+        mAccentPicker = findPreference(KEY_ACCENT_PICKER);
+
+        // set qs tile style
+        mQsTileStyle = (Preference) findPreference(QS_TILE_STYLE);
 
         mSwitchStyle = (ListPreference) findPreference(SWITCH_STYLE);
         int switchStyle = Settings.System.getInt(resolver,
@@ -195,6 +215,13 @@ public class Interfaces extends SettingsPreferenceFragment
             int valueIndex = mSwitchStyle.findIndexOfValue(value);
             mSwitchStyle.setSummary(mSwitchStyle.getEntries()[valueIndex]);
             return true;
+        } else if (preference == mSystemThemeStyle) {
+            String value = (String) newValue;
+            Settings.System.putInt(resolver, Settings.System.SYSTEM_THEME_STYLE, Integer.valueOf(value));
+            int systemThemeStyle = mSystemThemeStyle.findIndexOfValue(value);
+            mSystemThemeStyle.setSummary(mSystemThemeStyle.getEntries()[systemThemeStyle]);
+            updateThemePicker(systemThemeStyle);
+            return true;
         } else if (preference == mQsHeaderStyle) {
             String value = (String) newValue;
             Settings.System.putInt(resolver, Settings.System.QS_HEADER_STYLE, Integer.valueOf(value));
@@ -203,6 +230,16 @@ public class Interfaces extends SettingsPreferenceFragment
             return true;
 	}
         return false;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mAccentPicker) {
+            AccentPicker.show(this);
+        } else if (preference == mQsTileStyle) {
+            QsTileStyles.show(this);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 
     private FontInfo getCurrentFontInfo() {

@@ -34,9 +34,32 @@
 	android:entries="@array/switch_style_entries"
 	android:entryValues="@array/switch_style_values" />
 
+    <ListPreference
+        android:key="system_theme_style"
+        android:title="@string/system_theme_style_title"
+        android:persistent="false"
+        android:entries="@array/system_theme_style_entries"
+        android:entryValues="@array/system_theme_style_values" />
+
+    <Preference
+	android:key="accent_picker"
+	android:title="@string/theme_accent_picker_title"
+	android:summary="@string/theme_accent_picker_summary" />
+
     <PreferenceCategory
         android:key="qs_category"
         android:title="@string/qs_category" >
+
+        <Preference
+            android:key="cutout_settings"
+            android:title="@string/cutout_main"
+            android:summary="@string/cutout_main_summary"
+            android:fragment="com.dirtyunicorns.tweaks.fragments.CutoutFragment"
+            android:icon="@drawable/ic_cutout" />
+
+   	 <Preference
+	    android:key="qs_tile_style"
+	    android:title="@string/qs_tile_style_title" />
 
    	 <Preference
      	    android:key="custom_header"
@@ -50,13 +73,6 @@
             android:persistent="false"
             android:entries="@array/qs_header_style_entries"
             android:entryValues="@array/qs_header_style_values" />
-
-        <Preference
-            android:key="cutout_settings"
-            android:title="@string/cutout_main"
-            android:summary="@string/cutout_main_summary"
-            android:fragment="com.dirtyunicorns.tweaks.fragments.CutoutFragment"
-            android:icon="@drawable/ic_cutout" />
 
         <com.dirtyunicorns.support.preferences.SecureSettingSwitchPreference
             android:key="sysui_rounded_fwvals"
