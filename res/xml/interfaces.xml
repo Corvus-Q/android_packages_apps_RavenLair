@@ -41,10 +41,21 @@
         android:entries="@array/system_theme_style_entries"
         android:entryValues="@array/system_theme_style_values" />
 
+    <PreferenceCategory
+        android:key="accent_themes_category"
+        android:title="@string/accent_themes_category" >
+
+    <Preference
+	android:key="theme_picker"
+	android:title="@string/theme_picker_title"
+	android:summary="@string/theme_picker_summary" />
+
     <Preference
 	android:key="accent_picker"
 	android:title="@string/theme_accent_picker_title"
 	android:summary="@string/theme_accent_picker_summary" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="qs_category"

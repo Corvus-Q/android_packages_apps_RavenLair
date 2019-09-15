@@ -57,6 +57,9 @@ import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import com.android.settings.du.AccentPicker;
+import com.dirtyunicorns.tweaks.fragments.ThemePicker;
+
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -75,6 +78,7 @@ public class Interfaces extends SettingsPreferenceFragment
     public static final String TAG = "Interfaces";
 
     private String KEY_ACCENT_PICKER = "accent_picker";
+    private String KEY_THEME_PICKER = "theme_picker";
 
     private static final String QS_TILE_STYLE = "qs_tile_style";
     private static final String SYSTEM_THEME_STYLE = "system_theme_style";
@@ -94,6 +98,7 @@ public class Interfaces extends SettingsPreferenceFragment
     private ListPreference mSystemThemeStyle;
     private Preference mQsTileStyle;
     private Preference mAccentPicker;
+    private Preference mThemePicker;
     private FontDialogPreference mFontPreference;
 
     Context mContext;
@@ -149,6 +154,8 @@ public class Interfaces extends SettingsPreferenceFragment
 
         mAccentPicker = findPreference(KEY_ACCENT_PICKER);
 
+        mThemePicker = findPreference(KEY_THEME_PICKER);
+
         // set qs tile style
         mQsTileStyle = (Preference) findPreference(QS_TILE_STYLE);
 
@@ -175,6 +182,30 @@ public class Interfaces extends SettingsPreferenceFragment
         Preference mCutoutPref = (Preference) findPreference(PREF_KEY_CUTOUT);
         if (!hasPhysicalDisplayCutout(getContext()))
             getPreferenceScreen().removePreference(mCutoutPref);
+
+        updateThemePicker(systemThemeStyle);
+    }
+
+    public void updateThemePicker(int systemThemeStyle) {
+        switch(systemThemeStyle){ 
+            case 0:
+                mThemePicker.setEnabled(false);
+                break;
+            case 1:
+                mThemePicker.setEnabled(false);
+                break;
+            case 2:
+                mThemePicker.setEnabled(false);
+                break;
+            case 3:
+                mThemePicker.setEnabled(true);
+                break;
+            case 4:
+                mThemePicker.setEnabled(true);
+                break;
+            default:
+                break;
+        }
     }
 
     private void restoreCorners() {
@@ -238,6 +269,8 @@ public class Interfaces extends SettingsPreferenceFragment
             AccentPicker.show(this);
         } else if (preference == mQsTileStyle) {
             QsTileStyles.show(this);
+        } else if (preference == mThemePicker) {
+            ThemePicker.show(this);
         }
         return super.onPreferenceTreeClick(preference);
     }

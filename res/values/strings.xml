@@ -123,7 +123,7 @@
     <string name="recents_icon_pack_summary">Apply a custom icon pack for Recents panel</string>
 
     <!-- Themes -->
-    <string name="theme_category_title">Theme options</string>
+    <string name="accent_themes_category">Accent options</string>
     <string name="accent_picker_dialog_title">Select an accent color</string>
     <string name="theme_accent_picker_title">Accent color</string>
     <string name="theme_accent_picker_summary">Select system theme accent color</string>
@@ -881,9 +881,13 @@
     <string name="system_theme_style_extended">Extended UI</string>
     <string name="system_theme_style_chocolate">Chocolate UI</string>
     <string name="system_theme_style_elegant">Elegant UI</string>
-    <string name="system_theme_style_shishunights">Shishu Nights</string>
-    <string name="theme_applied_toast">Theme applied.</string>
-    <string name="applying_theme_toast">Applying theme, please wait...</string>
+    <string name="system_theme_style_shady">Shady UI</string>
+    <string name="system_theme_style_glassy">Glassy UI</string>
+
+    <!-- Theme picker -->
+    <string name="theme_picker_title">Theme color</string>
+    <string name="theme_picker_summary">Select color for Shady/Glassy themes</string>
+    <string name="theme_picker_dialog_title">Select a theme color</string>
 
     <!-- QuickSettings Panel Transparency -->
     <string name="qs_panel_alpha_title">Opacity</string>

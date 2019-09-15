@@ -1095,7 +1095,8 @@
         <item>@string/system_theme_style_extended</item>
         <item>@string/system_theme_style_chocolate</item>
         <item>@string/system_theme_style_elegant</item>
-        <item>@string/system_theme_style_shishunights</item>
+        <item>@string/system_theme_style_shady</item>
+        <item>@string/system_theme_style_glassy</item>
     </string-array>
 
      <string-array name="system_theme_style_values" translatable="false">
@@ -1107,5 +1108,6 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>8</item>
     </string-array>
 </resources>
