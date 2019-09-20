@@ -34,6 +34,7 @@ import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.internal.util.du.Utils;
 import com.dirtyunicorns.support.preferences.IconPackPreference;
 
 import java.util.ArrayList;
@@ -41,13 +42,15 @@ import java.util.List;
 
 public class Recents extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
-			
+
     private static final String RECENTS_COMPONENT_TYPE = "recents_component";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+    private static final String RECENTS_TYPE = "recents_layout_style";
 
     private ListPreference mRecentsClearAllLocation;
     private ListPreference mRecentsComponentType;
     private SwitchPreference mRecentsClearAll;
+    private ListPreference mRecentsType;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,14 @@ public class Recents extends SettingsPreferenceFragment
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+
+        // oreo recents type
+        mRecentsType = (ListPreference) findPreference(RECENTS_TYPE);
+        int style = Settings.System.getIntForUser(resolver,
+                Settings.System.RECENTS_LAYOUT_STYLE, 0, UserHandle.USER_CURRENT);
+        mRecentsType.setValue(String.valueOf(style));
+        mRecentsType.setSummary(mRecentsType.getEntry());
+        mRecentsType.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -101,6 +112,14 @@ public class Recents extends SettingsPreferenceFragment
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
+        return true;
+        } else if (preference == mRecentsType) {
+            int style = Integer.valueOf((String) newValue);
+            int index = mRecentsType.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_LAYOUT_STYLE, style, UserHandle.USER_CURRENT);
+            mRecentsType.setSummary(mRecentsType.getEntries()[index]);
+            Utils.showSystemUiRestartDialog(getContext());
         return true;
         }
       return false;
