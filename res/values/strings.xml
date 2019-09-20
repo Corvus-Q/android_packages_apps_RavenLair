@@ -903,4 +903,10 @@
     <!-- Hide Lockscreen shortcuts on secure Lockscreen --> 
     <string name="lockscreen_hide_shortcuts_title">Hide Bottom Shortcuts</string> 
     <string name="lockscreen_hide_shortcuts_summary">Hide Left-Right Shortcuts on secure lock screens</string> 
+
+    <!-- AOSP Recents component Style -->
+    <string name="aosp_recents_category">AOSP recents</string>
+    <string name="recents_component_type_title">Recents Style</string>
+    <string name="recents_pie">Pie</string>
+    <string name="recents_oreo">Oreo</string>
 </resources>

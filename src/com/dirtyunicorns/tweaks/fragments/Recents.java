@@ -16,25 +16,50 @@
 package com.dirtyunicorns.tweaks.fragments;
 
 import android.content.Context;
+import android.content.ContentResolver;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
+
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.SettingsPreferenceFragment;
 import com.dirtyunicorns.support.preferences.IconPackPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recents extends SettingsPreferenceFragment implements Indexable {
+public class Recents extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener, Indexable {
+			
+    private static final String RECENTS_COMPONENT_TYPE = "recents_component";
+
+    private ListPreference mRecentsComponentType;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.recents);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        // recents component type
+        mRecentsComponentType = (ListPreference) findPreference(RECENTS_COMPONENT_TYPE);
+        int type = Settings.System.getInt(resolver,
+                Settings.System.RECENTS_COMPONENT, 0);
+        mRecentsComponentType.setValue(String.valueOf(type));
+        mRecentsComponentType.setSummary(mRecentsComponentType.getEntry());
+        mRecentsComponentType.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -43,6 +68,25 @@ public class Recents extends SettingsPreferenceFragment implements Indexable {
         IconPackPreference iconPackPref = (IconPackPreference) findPreference("recents_icon_pack");
         // Re-initialise preference
         iconPackPref.init();
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        if (preference == mRecentsComponentType) {
+            int type = Integer.valueOf((String) newValue);
+            int index = mRecentsComponentType.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_COMPONENT, type);
+            mRecentsComponentType.setSummary(mRecentsComponentType.getEntries()[index]);
+            if (type == 1) { // Disable swipe up gesture, if oreo type selected
+               Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.SWIPE_UP_TO_SWITCH_APPS_ENABLED, 0);
+            }
+        return true;
+        }
+      return false;
     }
 
     @Override
