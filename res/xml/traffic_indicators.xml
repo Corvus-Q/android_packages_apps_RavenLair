@@ -19,4 +19,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+        <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:summary="@string/network_traffic_state_summary"
+            android:defaultValue="false" />
+
+        <com.dirtyunicorns.support.preferences.SystemSettingSeekBarPreference
+            android:key="network_traffic_autohide_threshold"
+            android:title="@string/network_traffic_autohide_threshold_title"
+            android:max="10"
+            settings:min="0"
+            android:defaultValue="0"
+            settings:units="KB/s"
+            android:dependency="network_traffic_state" />
+
 </PreferenceScreen>
