@@ -366,4 +366,9 @@
     <!-- Fingerprint unlock -->
     <string name="fp_unlock_keystore_title">Force FP authentication</string>
     <string name="fp_unlock_keystore_summary">Unlock device with fingerprint after reboot or lockdown</string>
+
+    <!-- Lock screen cover art -->
+    <string name="lockscreen_media_category">Music</string>
+    <string name="media_art_title">Media artwork</string>
+    <string name="media_art_summary">Show media cover art as the lockscreen background</string>
 </resources>
