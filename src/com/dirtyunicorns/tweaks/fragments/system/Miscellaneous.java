@@ -52,8 +52,10 @@ public class Miscellaneous extends SettingsPreferenceFragment
     private static final String SCROLLINGCACHE_DEFAULT = "2";
     private static final String PREF_KEY_CUTOUT = "cutout_settings";
     private static final String KEY_RINGTONE_FOCUS_MODE_V2 = "ringtone_focus_mode_v2";
+    private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
 
     private SystemSettingMasterSwitchPreference mGamingMode;
+    private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
     private ListPreference mScrollingCachePref;
     private ListPreference mScreenOffAnimation;
     private ListPreference mRingtoneFocusMode;
@@ -92,6 +94,12 @@ public class Miscellaneous extends SettingsPreferenceFragment
         if (!res.getBoolean(com.android.internal.R.bool.config_deviceRingtoneFocusMode)) {
             prefScreen.removePreference(mRingtoneFocusMode);
         }
+
+        mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
+        int enabled = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
+        mEnableScreenStateToggles.setChecked(enabled != 0);
+        mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -111,6 +119,19 @@ public class Miscellaneous extends SettingsPreferenceFragment
         } else if (preference == mScrollingCachePref) {
             if (newValue != null) {
                 SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String) newValue);
+            }
+            return true;
+        } else if (preference == mEnableScreenStateToggles) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.START_SCREEN_STATE_SERVICE, value ? 1 : 0, UserHandle.USER_CURRENT);
+            Intent service = (new Intent())
+                .setClassName("com.android.systemui", "com.android.systemui.du.screenstate.ScreenStateService");
+            if (value) {
+                getActivity().stopService(service);
+                getActivity().startService(service);
+            } else {
+                getActivity().stopService(service);
             }
             return true;
         }
