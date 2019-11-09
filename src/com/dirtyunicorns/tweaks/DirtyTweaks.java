@@ -39,9 +39,9 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.dirtyunicorns.tweaks.fragments.Team;
 import com.dirtyunicorns.tweaks.navigation.BottomNavigationViewCustom;
-//import com.dirtyunicorns.tweaks.tabs.Lockscreen;
-import com.dirtyunicorns.tweaks.tabs.Multitasking;
-import com.dirtyunicorns.tweaks.tabs.Navigation;
+import com.dirtyunicorns.tweaks.tabs.Lockscreen;
+//import com.dirtyunicorns.tweaks.tabs.Multitasking;
+import com.dirtyunicorns.tweaks.tabs.Hardware;
 import com.dirtyunicorns.tweaks.tabs.Statusbar;
 import com.dirtyunicorns.tweaks.tabs.System;
 
@@ -71,18 +71,18 @@ public class DirtyTweaks extends SettingsPreferenceFragment {
                     case R.id.system:
                         viewPager.setCurrentItem(0);
                         return true;
-                    /*case R.id.lockscreen:
-                        viewPager.setCurrentItem(1);
-                        return true;*/
                     case R.id.statusbar:
                         viewPager.setCurrentItem(1);
                         return true;
-                    case R.id.navigation:
+                    case R.id.lockscreen:
                         viewPager.setCurrentItem(2);
                         return true;
-                    case R.id.multitasking:
+                    case R.id.hardware:
                         viewPager.setCurrentItem(3);
                         return true;
+                    /*case R.id.multitasking:
+                        viewPager.setCurrentItem(3);
+                        return true;*/
                 }
                 return false;
             }
@@ -122,10 +122,10 @@ public class DirtyTweaks extends SettingsPreferenceFragment {
         PagerAdapter(FragmentManager fm) {
             super(fm);
             frags[0] = new System();
-            //frags[1] = new Lockscreen();
             frags[1] = new Statusbar();
-            frags[2] = new Navigation();
-            frags[3] = new Multitasking();
+            frags[2] = new Lockscreen();
+            frags[3] = new Hardware();
+            //frags[3] = new Multitasking();
         }
 
         @Override
@@ -148,10 +148,10 @@ public class DirtyTweaks extends SettingsPreferenceFragment {
         String titleString[];
         titleString = new String[]{
                 getString(R.string.bottom_nav_system_title),
-                //getString(R.string.bottom_nav_lockscreen_title),
                 getString(R.string.bottom_nav_statusbar_title),
-                getString(R.string.bottom_nav_navigation_title),
-                getString(R.string.bottom_nav_multitasking_title)};
+                getString(R.string.bottom_nav_lockscreen_title),
+                getString(R.string.bottom_nav_hardware_title)};
+                //getString(R.string.bottom_nav_multitasking_title)
 
         return titleString;
     }
