@@ -35,20 +35,38 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrafficIndicators extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
+    private static final String NETWORK_TRAFFIC_FONT_SIZE  = "network_traffic_font_size";
+
+    private CustomSeekBarPreference mNetTrafficSize;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.traffic_indicators);
+
+        mNetTrafficSize = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_FONT_SIZE);
+        int NetTrafficSize = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_FONT_SIZE, 21);
+        mNetTrafficSize.setValue(NetTrafficSize / 1);
+        mNetTrafficSize.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mNetTrafficSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_FONT_SIZE, width);
+            return true;
+        }
         return false;
     }
 

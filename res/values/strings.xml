@@ -109,6 +109,7 @@
     <string name="network_traffic_autohide_threshold_title">Auto-hide threshold</string>
     <string name="network_traffic_arrow_title">Activity arrows</string>
     <string name="network_traffic_arrow_summary">Show the network traffic indicator arrows</string>
+    <string name="nettraf_font_size">Net Font size</string>
 
     <!-- Language options - Volume rocker cursor control -->
     <string name="cursor_section_header">Cursor</string>
