@@ -18,7 +18,7 @@
 
     <!-- Dirty Tweaks -->
     <string name="dirtytweaks_title">Грязные твики</string>
-    <string name="dirtytweaks_summary">Повысьте свой опыт</string>
+    <string name="dirtytweaks_summary">Измените своё представление о прошивке</string>
 
     <!-- The Team -->
     <string name="dialog_team_title">Команда</string>
@@ -50,17 +50,17 @@
     <string name="battery_options_summary">Настроить отображение батареи в строке состояния</string>
     <string name="carrier_label_title">Название оператора</string>
     <string name="carrier_label_summary">Изменить название оператора на экране блокировки или строке состояния</string>
-    <string name="clock_options_title">Clock options</string>
-    <string name="clock_options_summary">Customize your statusbar clock</string>
-    <string name="icon_manager_title">Icon manager</string>
-    <string name="icon_manager_summary">Configure the visibility of statusbar items</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="clock_options_title">Настройки часов</string>
+    <string name="clock_options_summary">Персонализируйте часы в строке состояния</string>
+    <string name="icon_manager_title">Менеджер значков</string>
+    <string name="icon_manager_summary">Настройте значки в строке состояния</string>
+    <string name="notifications_title">Уведомления</string>
     <string name="notifications_summary">Tweaks specific to system notifications</string>
-    <string name="quicksettings_title">Quick settings</string>
+    <string name="quicksettings_title">Быстрые натройки</string>
     <string name="quicksettings_summary">Configure the layout of the quick settings area</string>
     <string name="ticker_title">Ticker</string>
     <string name="ticker_summary">Enable the statusbar ticker and configure ticker related tweaks</string>
-    <string name="traffic_title">Traffic indicators</string>
+    <string name="traffic_title">Индикатор траффика</string>
     <string name="traffic_summary">Enable and configure the traffic indicators</string>
 
     <!-- Navigation -->
