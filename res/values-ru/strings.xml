@@ -71,21 +71,21 @@
 
     <!-- Multitasking -->
     <string name="active_edge_title">Active Edge</string>
-    <string name="active_edge_summary">Configure Active Edge options</string>
+    <string name="active_edge_summary">Настройка параметров Active Edge</string>
     <string name="headsup_title">Heads up</string>
     <string name="headsup_summary">Configure heads up options</string>
-    <string name="recents_title">Recents</string>
-    <string name="recents_summary">Configure recents options</string>
+    <string name="recents_title">Недавние</string>
+    <string name="recents_summary">Настройка параметров меню недавних приложений</string>
 
     <!-- Sub categories -->
-    <string name="sub_cat_advanced">Advanced</string>
+    <string name="sub_cat_advanced">Продвинутые</string>
     <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="animation_settings_title">Animations</string>
-    <string name="animation_settings_summary">System Wide Animation Options</string>
-    <string name="signal_icon_title">Signal Icon</string>
+    <string name="reset">Сбросить</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="animation_settings_title">Анимации</string>
+    <string name="animation_settings_summary">Настройка системных анимаций</string>
+    <string name="signal_icon_title">Значок сети</string>
 
     <!-- Power Menu -->
     <string name="powermenu_reboot_title">Restart</string>
@@ -633,20 +633,20 @@
     <string name="audio_panel_view_bt_sco_title">Bluetooth</string>
 
     <!-- Volume Steps Fragment -->
-    <string name="volume_steps_title">Volume steps</string>
+    <string name="volume_steps_title">Шаги громкости</string>
     <string name="volume_steps_summary">Set custom volume steps for sounds</string>
-    <string name="volume_steps_alarm_title">Volume steps: Alarm</string>
-    <string name="volume_steps_dtmf_title">Volume steps: DTMF</string>
-    <string name="volume_steps_music_title">Volume steps: Media</string>
-    <string name="volume_steps_notification_title">Volume steps: Notification</string>
-    <string name="volume_steps_ring_title">Volume steps: Ringer</string>
-    <string name="volume_steps_system_title">Volume steps: System</string>
-    <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
-    <string name="volume_steps_reset">Reset</string>
+    <string name="volume_steps_alarm_title">Шаги громкости: Будильник</string>
+    <string name="volume_steps_dtmf_title">Шаги громкости: DTMF</string>
+    <string name="volume_steps_music_title">Шаги громкости: Медиа</string>
+    <string name="volume_steps_notification_title">Шаги громкости: Уведомления</string>
+    <string name="volume_steps_ring_title">Шаги громкости: Звонок</string>
+    <string name="volume_steps_system_title">Шаги громкости: Система</string>
+    <string name="volume_steps_voice_call_title">Шаги громкости: Голосовой вызов</string>
+    <string name="volume_steps_reset">Сбросить</string>
 
     <!-- Gaming mode -->
     <string name="gaming_mode_title">Игровой режим</string>
-    <string name="gaming_mode_summary">Customize Gaming mode preferences</string>
+    <string name="gaming_mode_summary">Настройка параметров игрового режима</string>
     <string name="gaming_mode_enabled_summary">Allow turning on Gaming mode</string>
     <string name="gaming_mode_app_picker_title">Automatically turn on for these apps</string>
     <string name="add_gaming_mode_package_title">Add apps for Gaming mode</string>
