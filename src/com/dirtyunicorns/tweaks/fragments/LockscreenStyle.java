@@ -53,6 +53,7 @@ public class LockscreenStyle extends SettingsPreferenceFragment
     private static final String CUSTOM_TEXT_CLOCK_FONTS = "custom_text_clock_fonts";
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
     private static final String LOCK_OWNERINFO_FONTS = "lock_ownerinfo_fonts";
+    private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker_category";
 
     private ListPreference mLockClockFonts;
     private ListPreference mTextClockFonts;
@@ -62,6 +63,7 @@ public class LockscreenStyle extends SettingsPreferenceFragment
     private CustomSeekBarPreference mCustomTextClockFontSize;
     private CustomSeekBarPreference mDateFontSize;
     private CustomSeekBarPreference mOwnerInfoFontSize;
+    private Preference mFODIconPicker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,12 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         mOwnerInfoFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKOWNER_FONT_SIZE, 18));
         mOwnerInfoFontSize.setOnPreferenceChangeListener(this);
+
+        // FOD Icon Picker
+        mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPicker != null
+                && !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
+            prefScreen.removePreference(mFODIconPicker);
     }
 
     @Override
