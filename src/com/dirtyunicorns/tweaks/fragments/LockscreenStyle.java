@@ -70,6 +70,7 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreen_style);
         ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         // Lockscreen Clock Fonts
         mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
@@ -127,7 +128,8 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         mFODIconPickerCategory = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
         if (mFODIconPickerCategory != null
                 && !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
-            prefScreen.removePreference(mFODIconPickerCategory);
+                prefScreen.removePreference(mFODIconPickerCategory);
+         }
     }
 
     @Override
