@@ -76,12 +76,5 @@ public class CategoryPreference extends Preference {
         holder.itemView.setClickable(selectable);
         holder.setDividerAllowedAbove(mAllowDividerAbove);
         holder.setDividerAllowedBelow(mAllowDividerBelow);
-
-        ImageView imageview = (ImageView) holder.findViewById(android.R.id.icon);
-
-        // Icons remain the stock color for other accents
-        imageview.getDrawable().setColorFilter(getContext().getResources().getColor(
-                R.color.dirty_tweaks_dark_category_icon_tint), PorterDuff.Mode.SRC_IN);
-
     }
 }

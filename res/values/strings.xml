@@ -32,8 +32,6 @@
 
     <!-- Categories -->
     <!-- System -->
-    <string name="expanded_desktop_title">Expanded desktop</string>
-    <string name="expanded_desktop_summary">Per-app configuration of the status bar and navigation key view</string>
     <string name="miscellaneous_title">Miscellaneous</string>
     <string name="miscellaneous_summary">Miscellaneous tweaks</string>
     <string name="powermenu_title">Power menu</string>

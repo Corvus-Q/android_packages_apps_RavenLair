@@ -1,7 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="80dp"
-    android:width="80dp"
+    android:width="24dp"
+    android:height="24dp"
     android:viewportWidth="24"
-    android:viewportHeight="24">
-    <path android:fillColor="#fff" android:pathData="M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M8.9,6C8.9,4.29 10.29,2.9 12,2.9C13.71,2.9 15.1,4.29 15.1,6V8H8.9V6M16,16H13V19H11V16H8V14H11V11H13V14H16V16Z" />
+    android:viewportHeight="24"
+	android:tint="@color/dt_lockscreen_items_icon_tint">
+
+    <path
+        android:fillColor="#000000"
+        android:pathData="M17.5,8.8h-1.9v-3c0-2-1.6-3.6-3.6-3.6S8.4,3.8,8.4,5.8v3H6.5c-0.6,0-1,0.4-1,1v11c0,0.6,0.4,1,1,1h11c0.6,0,1-0.4,1-1v-11 C18.5,9.2,18.1,8.8,17.5,8.8z M10.4,5.8c0-0.9,0.7-1.6,1.6-1.6s1.6,0.7,1.6,1.6v3h-3.3V5.8z M16.5,19.8h-9v-9h9V19.8z M12,12.1 c-1.8,0-3.2,1.4-3.2,3.2s1.4,3.2,3.2,3.2s3.2-1.4,3.2-3.2S13.8,12.1,12,12.1z M12,16.5c-0.7,0-1.2-0.5-1.2-1.2s0.5-1.2,1.2-1.2 s1.2,0.5,1.2,1.2S12.7,16.5,12,16.5z" />
 </vector>

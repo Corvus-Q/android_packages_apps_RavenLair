@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2019 The Dirty Unicorns Project
+ * Copyright (C) 2014-2016 The Dirty Unicorns Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,55 +16,63 @@
 
 package com.raven.lair;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.provider.Settings;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceManager;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceScreen;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
+
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
-import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.internal.logging.nano.MetricsProto;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import com.raven.lair.fragments.Team;
-import com.raven.lair.navigation.BottomNavigationViewCustom;
 import com.raven.lair.tabs.Lockscreen;
 import com.raven.lair.tabs.Hardware;
 import com.raven.lair.tabs.Statusbar;
 import com.raven.lair.tabs.System;
 
-public class RavenLair extends SettingsPreferenceFragment {
-
-    private MenuItem mMenuItem;
+public class RavenLair extends SettingsPreferenceFragment implements
+       Preference.OnPreferenceChangeListener {    
+	private MenuItem mMenuItem;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        
+        View view = inflater.inflate(R.layout.ravenlair, container, false);
         getActivity().setTitle(R.string.ravenlair_title);
 
-        View view = inflater.inflate(R.layout.ravenlair, container, false);
-
-        final BottomNavigationViewCustom navigation = view.findViewById(R.id.navigation);
-
+        final BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation);
         final ViewPager viewPager = view.findViewById(R.id.viewpager);
         PagerAdapter mPagerAdapter = new PagerAdapter(getFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
 
-        navigation.setOnNavigationItemSelectedListener(
-                new BottomNavigationViewCustom.OnNavigationItemSelectedListener() {
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(MenuItem item) {
+		    if (item.getItemId() == navigation.getSelectedItemId()) {
+	            return false;
+		    }	else {
 			int id = item.getItemId();
 				if (id == R.id.system) {
 					viewPager.setCurrentItem(0);
@@ -80,8 +88,10 @@ public class RavenLair extends SettingsPreferenceFragment {
 					return true;
 				}
 				return false;
+			    }
 	    }
         });
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset,
@@ -105,7 +115,8 @@ public class RavenLair extends SettingsPreferenceFragment {
         });
 
         setHasOptionsMenu(true);
-
+        navigation.setSelectedItemId(R.id.system);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         return view;
     }
 
@@ -149,6 +160,11 @@ public class RavenLair extends SettingsPreferenceFragment {
         return titleString;
     }
 
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        return true;
+    }
+
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.CORVUS;
@@ -180,4 +196,4 @@ public class RavenLair extends SettingsPreferenceFragment {
         ft.addToBackStack(null);
         dialog.show(ft, "dialog");
     }
-}
+ }
