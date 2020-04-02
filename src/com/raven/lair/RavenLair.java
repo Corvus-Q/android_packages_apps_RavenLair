@@ -17,6 +17,8 @@
 package com.raven.lair;
 
 import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,10 +34,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.ViewPager;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.android.settings.R;
@@ -45,7 +45,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
-import com.raven.lair.fragments.Team;
+import com.raven.lair.fragments.team.TeamActivity;
 import com.raven.lair.tabs.Lockscreen;
 import com.raven.lair.tabs.Hardware;
 import com.raven.lair.tabs.Statusbar;
@@ -54,10 +54,13 @@ import com.raven.lair.tabs.System;
 public class RavenLair extends SettingsPreferenceFragment implements
        Preference.OnPreferenceChangeListener {    
 	private MenuItem mMenuItem;
+	private Context mContext;
+	  
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        
+       
+        mContext = getActivity();
         View view = inflater.inflate(R.layout.ravenlair, container, false);
         getActivity().setTitle(R.string.ravenlair_title);
 
@@ -179,21 +182,11 @@ public class RavenLair extends SettingsPreferenceFragment implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 0:
-                final Team dialog = new Team();
-                showDialog(this, dialog);
+                Intent intent = new Intent(mContext, TeamActivity.class);
+                mContext.startActivity(intent);
                 return true;
             default:
                 return false;
         }
     }
-
-    private static void showDialog(Fragment context, DialogFragment dialog) {
-        FragmentTransaction ft = context.getChildFragmentManager().beginTransaction();
-        Fragment prev = context.getChildFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-        dialog.show(ft, "dialog");
-    }
- }
+}
