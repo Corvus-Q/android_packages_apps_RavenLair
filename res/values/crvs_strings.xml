@@ -1035,6 +1035,7 @@
     <string name="qs_tint_off">Disable</string>
     <string name="qs_tint_random">Random color</string>
     <string name="qs_tint_accent">Accent color</string>
+    <string name="qs_disco_mode">Disco</string>
 
     <!-- Pocket judge -->
     <string name="pocket_judge_title">Pocket detection</string>
