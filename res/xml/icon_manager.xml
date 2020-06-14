@@ -26,6 +26,12 @@
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
 
+    <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+        android:key="statusbar_dual_row"
+        android:title="@string/statusbar_dual_row_title"
+        android:summary="@string/statusbar_dual_row_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="signal_icon_switch"
         android:title="@string/signal_icon_switch_title"

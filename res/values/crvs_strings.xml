@@ -1140,4 +1140,8 @@
     <string name="theming_settings_dashboard_icons_default_accent2">Accent background</string>
     <string name="theming_settings_dashboard_icons_plain">Plain</string>
     <string name="theming_settings_dashboard_icons_plain_accent">Plain accent</string>
+
+    <!-- Statusbar dual row -->
+    <string name="statusbar_dual_row_title">Dual Row</string>
+    <string name="statusbar_dual_row_summary">Enable dual row statusbar for notifications</string>
 </resources>
