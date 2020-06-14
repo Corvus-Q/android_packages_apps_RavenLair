@@ -25,26 +25,29 @@ import android.provider.Settings;
 import androidx.preference.*;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.du.ActionUtils;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference;
+import com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference;
 
 @SearchIndexable
 public class IconManager extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String STATUS_BAR_LOGO = "status_bar_logo";
+    private static final String STATUSBAR_DUAL_ROW = "statusbar_dual_row";
 
     private SystemSettingMasterSwitchPreference mStatusBarLogo;
+    private SystemSettingSwitchPreference mStatusbarDualRow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,11 @@ public class IconManager extends SettingsPreferenceFragment
         mStatusBarLogo.setChecked((Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_LOGO, 0) == 1));
         mStatusBarLogo.setOnPreferenceChangeListener(this);
+
+        mStatusbarDualRow = (SystemSettingSwitchPreference) findPreference(STATUSBAR_DUAL_ROW);
+        mStatusbarDualRow.setChecked((Settings.System.getInt(resolver,
+                Settings.System.STATUSBAR_DUAL_ROW, 0) == 1));
+        mStatusbarDualRow.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -66,6 +74,12 @@ public class IconManager extends SettingsPreferenceFragment
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_LOGO, value ? 1 : 0);
+            return true;
+       } else if (preference == mStatusbarDualRow) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_DUAL_ROW, value ? 1 : 0);
+            ActionUtils.showSystemUiRestartDialog(getContext());
             return true;
 	}
         return false;
