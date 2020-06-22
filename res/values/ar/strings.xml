@@ -273,17 +273,17 @@
     <string name="lock_ownerinfo_font_dialog_title">حدد خط معلومات المالك القفل</string>
     <string name="lockowner_font_size_title">حجم خط معلومات المالك</string>
     <!-- Custom carrier label and position -->
-    <string name="custom_carrier_label_title">Custom carrier label</string>
-    <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
-    <string name="custom_carrier_label_notset">Custom label currently not set</string>
-    <string name="show_carrier_title">Carrier label</string>
-    <string name="show_carrier_disabled">Disabled</string>
-    <string name="show_carrier_keyguard">Lockscreen only</string>
-    <string name="show_carrier_statusbar">Statusbar only</string>
-    <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
-    <string name="status_bar_carrier_color">Carrier label color</string>
-    <string name="status_bar_carrier_size">Carrier label size</string>
-    <string name="status_bar_carrier_font_style_title">Carrier Label Font</string>
+    <string name="custom_carrier_label_title">عرض اسم مخصص بدل اسم الشبكه</string>
+    <string name="custom_carrier_label_explain">الرجاء إدخال تسمية جديدة او اتركه فارغاً ليعود للتسمية الافتراضية.</string>
+    <string name="custom_carrier_label_notset">لم يتم تعيين تسمية مخصصة حاليا</string>
+    <string name="show_carrier_title">مزود الخدمة</string>
+    <string name="show_carrier_disabled">معطّل</string>
+    <string name="show_carrier_keyguard">شاشة القفل فقط</string>
+    <string name="show_carrier_statusbar">شريط الحالة فقط</string>
+    <string name="show_carrier_enabled">شاشة القفل وشريط الحالة</string>
+    <string name="status_bar_carrier_color">لون تسمية مشغل الشبكة</string>
+    <string name="status_bar_carrier_size">حجم تسمية مشغل الشبكة</string>
+    <string name="status_bar_carrier_font_style_title">خط تسمية مشغل الشبكة</string>
     <!-- Headsup -->
     <string name="heads_up_notifications">Heads Up Options</string>
     <string name="heads_up_notifications_summary">Pop up statusbar notifications</string>
