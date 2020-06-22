@@ -255,23 +255,23 @@
     <string name="lock_clock_font_bariol">Bariol</string>
     <string name="lock_clock_font_cagliostro">Cagliostro</string>
     <string name="lock_clock_font_coolstory">خط coolstory</string>
-    <string name="lock_clock_font_lgsmartgothic">LGSmartGothic</string>
-    <string name="lock_clock_font_rosemary">Rosemary</string>
-    <string name="lock_clock_font_sonysketch">SonySketch</string>
-    <string name="lock_clock_font_surfer">Surfer</string>
+    <string name="lock_clock_font_lgsmartgothic">خط LGSmartGothic</string>
+    <string name="lock_clock_font_rosemary">روزماري</string>
+    <string name="lock_clock_font_sonysketch">سوني سكيتش</string>
+    <string name="lock_clock_font_surfer">خط Surfer</string>
     <!-- Lock Date Fonts -->
-    <string name="lock_date_font_title">Date font options</string>
-    <string name="lock_date_font_summary">Change the default font of the lockscreen date widget</string>
-    <string name="lock_date_font_dialog_title">Select lock date font</string>
+    <string name="lock_date_font_title">خيارات خط التاريخ</string>
+    <string name="lock_date_font_summary">تغيير الخط الافتراضي للتاريخ على شاشة القفل</string>
+    <string name="lock_date_font_dialog_title">حدد خط تاريخ شاشة القفل</string>
     <!-- Lock Clock & Date Size -->
-    <string name="lockdate_font_size_title">Date font size</string>
-    <string name="lockclock_font_size_title">Clock font size</string>
-    <string name="custom_text_clock_font_size_title">Text clock size</string>
+    <string name="lockdate_font_size_title">حجم خط التاريخ</string>
+    <string name="lockclock_font_size_title">حجم خط الساعة</string>
+    <string name="custom_text_clock_font_size_title">حجم الساعة النصية</string>
     <!-- LS OwnerInfo Font & Size -->
-    <string name="lock_ownerinfo_font_title">Owner Info font options</string>
-    <string name="lock_ownerinfo_font_summary">Change the default font of the lockscreen owner info</string>
-    <string name="lock_ownerinfo_font_dialog_title">Select lock owner info font</string>
-    <string name="lockowner_font_size_title">Owner info font size</string>
+    <string name="lock_ownerinfo_font_title">خيارات خط معلومات المالك</string>
+    <string name="lock_ownerinfo_font_summary">تغيير الخط الافتراضي لمعلومات المالك على شاشة القفل</string>
+    <string name="lock_ownerinfo_font_dialog_title">حدد خط معلومات المالك القفل</string>
+    <string name="lockowner_font_size_title">حجم خط معلومات المالك</string>
     <!-- Custom carrier label and position -->
     <string name="custom_carrier_label_title">Custom carrier label</string>
     <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
