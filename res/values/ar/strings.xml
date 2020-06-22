@@ -75,26 +75,26 @@
     <string name="animation_settings_title">تأثيرات إغلاق الشاشة</string>
     <string name="animation_settings_summary">خيارات حركة عرض شاشة النظام</string>
     <!-- Power Menu -->
-    <string name="powermenu_reboot_title">Restart</string>
-    <string name="powermenu_advanced_restart_title">Advanced restart</string>
-    <string name="powermenu_advanced_restart_summary">Enables the advanced restart menu for other restarting options</string>
-    <string name="powermenu_lockdown_title">Lockdown</string>
-    <string name="powermenu_screenshot_title">Screenshot</string>
-    <string name="powermenu_disabled_title">Power menu when locked</string>
-    <string name="powermenu_disabled_summary">Disable power menu on secure lockscreen</string>
-    <string name="powermenu_lockscreen_title">Lockscreen visibility</string>
-    <string name="powermenu_lockscreen_summary">Display power menu on a secured lockscreen</string>
+    <string name="powermenu_reboot_title">إعادة التشغيل</string>
+    <string name="powermenu_advanced_restart_title">إعادة التشغيل المتقدمة</string>
+    <string name="powermenu_advanced_restart_summary">تفعيل قائمة اعادة التشغيل المتقدم لخيارات إعادة التشغيل</string>
+    <string name="powermenu_lockdown_title">التأمين</string>
+    <string name="powermenu_screenshot_title">لقط الشاشة</string>
+    <string name="powermenu_disabled_title">قائمة التشغيل عند القفل</string>
+    <string name="powermenu_disabled_summary">تعطيل قائمة الطاقة في شاشة القفل</string>
+    <string name="powermenu_lockscreen_title">إظهار شاشة القفل</string>
+    <string name="powermenu_lockscreen_summary">عرض قائمة الطاقة على شاشة قفل آمنة</string>
     <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
-    <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
+    <string name="lockscreen_battery_info_title">معلومات الشحن على شاشة القفل</string>
+    <string name="lockscreen_battery_info_summary">عرض الحد الأقصى لفولتية وتيار الشاحن وحرارة البطارية على شاشة القفل أثناء الشحن</string>
     <!-- Language options - Volume rocker cursor control -->
-    <string name="cursor_section_header">Cursor</string>
-    <string name="volume_key_cursor_control_title">Volume key cursor control</string>
-    <string name="volume_key_cursor_control_off">Disabled</string>
-    <string name="volume_key_cursor_control_on">Volume up/down moves cursor left/right</string>
-    <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+    <string name="cursor_section_header">المؤشر</string>
+    <string name="volume_key_cursor_control_title">التحكم بمؤشر لوحة المفاتيح بأزرار مستوى الصوت</string>
+    <string name="volume_key_cursor_control_off">معطّل</string>
+    <string name="volume_key_cursor_control_on">زر الصوت لأعلى/لأسفل يحرك المؤشر لليسار/لليمين</string>
+    <string name="volume_key_cursor_control_on_reverse">مفتاح الصوت لأعلى/لأسفل يحرك المؤشر لليمين/لليسار</string>
     <!-- Volume Button Music Control -->
-    <string name="volume_rocker_music_controls_title">Music control</string>
+    <string name="volume_rocker_music_controls_title">التحكم في الموسيقى</string>
     <string name="volume_rocker_music_controls_summary">Long press volume buttons to switch tracks while screen off</string>
     <!-- Volume swap buttons -->
     <string name="swap_volume_buttons_title">Reorient</string>
