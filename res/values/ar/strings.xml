@@ -250,7 +250,7 @@
     <string name="lock_clock_font_sourcesanspro">خط سورس سانس برو</string>
     <string name="lock_clock_font_circularstd">CircularStd</string>
     <string name="lock_clock_font_slateforoneplus">Slate for OnePlus</string>
-    <string name="lock_clock_font_aclonica">Aclonica</string>
+    <string name="lock_clock_font_aclonica">أكليونيكا</string>
     <string name="lock_clock_font_amarante">Amarante</string>
     <string name="lock_clock_font_bariol">Bariol</string>
     <string name="lock_clock_font_cagliostro">Cagliostro</string>
@@ -314,16 +314,16 @@
     <!-- Lock screen cover art -->
     <string name="lockscreen_media_category">Music/Media</string>
     <string name="media_art_title">Media artwork</string>
-    <string name="media_art_summary">Show media cover art as the lockscreen background</string>
+    <string name="media_art_summary">اظهار بوستر الموسيقى كخلفية لشاشة القفل</string>
     <!-- Lock screen media blur -->
-    <string name="lockscreen_media_blur_title">Media artwork blur level</string>
+    <string name="lockscreen_media_blur_title">مستوى ضبابية الصور الفنية للوسائط</string>
     <!-- Screen off animation -->
-    <string name="screen_off_animation_title">Screen off animation</string>
-    <string name="screen_off_animation_fade">Simple fade</string>
-    <string name="screen_off_animation_crt">CRT</string>
-    <string name="screen_off_animation_scale">Scale</string>
+    <string name="screen_off_animation_title">حركة إغلاق الشاشة</string>
+    <string name="screen_off_animation_fade">تلاشي بسيط</string>
+    <string name="screen_off_animation_crt">تأثير CRT</string>
+    <string name="screen_off_animation_scale">تأثير Scale</string>
     <!-- Show statusbar on lockscreen -->
-    <string name="lockscreen_show_status_bar_title">Statusbar</string>
+    <string name="lockscreen_show_status_bar_title">شريط الحالة</string>
     <string name="lockscreen_show_status_bar_summary">Show statusbar on the lockscreen</string>
     <!-- Quick QS pulldown -->
     <string name="status_bar_quick_qs_pulldown">Quick QS pulldown</string>
