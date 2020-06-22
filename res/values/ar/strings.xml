@@ -351,9 +351,9 @@
     <string name="lockscreen_visualizer_enable_summary">اظهار مؤثرات ذات أشرطة اثناء تشغيل أغنية</string>
     <string name="lockscreen_visualizer_enable_custom">استخدام لون مخصص</string>
     <string name="lockscreen_visualizer_enable_custom_summary">استخدم لون مسبق الإعداد بدلاً من اللون الذي تم إنشاؤه</string>
-    <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
-    <string name="lockscreen_autocolor_title">Automatic color</string>
-    <string name="lockscreen_autocolor_summary">Sync color with lockscreen background</string>
+    <string name="lockscreen_visualizer_custom_color">لون المؤثرات</string>
+    <string name="lockscreen_autocolor_title">لون تلقائي</string>
+    <string name="lockscreen_autocolor_summary">مزامنة اللون مع خلفية قفل الشاشة</string>
     <string name="lockscreen_autocolor_lavalamp">Requires lava lamp disabled</string>
     <string name="lockscreen_lavalamp_title">Lava lamp</string>
     <string name="lockscreen_lavalamp_summary">Use a smooth lava lamp style color blend animation</string>
