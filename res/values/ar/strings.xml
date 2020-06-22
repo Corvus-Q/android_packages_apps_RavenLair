@@ -95,33 +95,33 @@
     <string name="volume_key_cursor_control_on_reverse">مفتاح الصوت لأعلى/لأسفل يحرك المؤشر لليمين/لليسار</string>
     <!-- Volume Button Music Control -->
     <string name="volume_rocker_music_controls_title">التحكم في الموسيقى</string>
-    <string name="volume_rocker_music_controls_summary">Long press volume buttons to switch tracks while screen off</string>
+    <string name="volume_rocker_music_controls_summary">اضغط على أزرار ضغطة طويلة لتبديل الموسيقى أثناء إيقاف الشاشة</string>
     <!-- Volume swap buttons -->
-    <string name="swap_volume_buttons_title">Reorient</string>
-    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
+    <string name="swap_volume_buttons_title">التبديل</string>
+    <string name="swap_volume_buttons_summary">تبديل صوت الأزرار عندما يتم استدارة الشاشة</string>
     <!-- Volume Wake -->
-    <string name="volume_stuff_title">Volume Button</string>
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
-    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
+    <string name="volume_stuff_title">أزرار الصوت</string>
+    <string name="volume_rocker_wake_title">زرار صوت للايقاظ</string>
+    <string name="volume_rocker_wake_summary">الضغط على أزرار الصوت سيوقظ الجهاز</string>
     <!-- Screenshot -->
-    <string name="screenshot_type_title">Screenshot type</string>
-    <string name="screenshot_type_fullscreen">Take fullscreen screenshots</string>
-    <string name="screenshot_type_partial">Drag selection on the area you want to take as a screenshot</string>
-    <string name="screenshot_options_category">Screenshot options</string>
-    <string name="screenshot_options_summary">Customize screenshot attributes like time, delay,type etc</string>
+    <string name="screenshot_type_title">نوع لقطة الشاشة</string>
+    <string name="screenshot_type_fullscreen">خذ لقطات لكامل الشاشة</string>
+    <string name="screenshot_type_partial">السحب لتحديد منطقة معينة لأخذ لقطة شاشة</string>
+    <string name="screenshot_options_category">خيارات لقطة الشاشة</string>
+    <string name="screenshot_options_summary">تخصيص سمات لقطة الشاشة كالوقت، التأخير، النوع إلخ</string>
     <!-- Charging options -->
-    <string name="vibration_on_charge_state_changed_title">Vibrate on plug/unplug</string>
-    <string name="vibration_on_charge_state_changed_summary">Enable/disable vibration on plug/unplug</string>
+    <string name="vibration_on_charge_state_changed_title">الاهتزاز عند التوصيل/فصل</string>
+    <string name="vibration_on_charge_state_changed_summary">تمكين/تعطيل الاهتزاز عند الإضافة/إلغاء التوصيل</string>
     <!-- Three-fingers-swipe to screenshot -->
-    <string name="three_finger_gesture">Swipe to screenshot</string>
-    <string name="three_finger_gesture_summary">Swipe three fingers to take screenshot</string>
+    <string name="three_finger_gesture">اسحب لأخذ لقطة للشاشة</string>
+    <string name="three_finger_gesture_summary">تمرير ثلاثة أصابع على الشاشة لتصوير الشاشة</string>
     <!-- 4G icon -->
-    <string name="show_fourg_icon_title">4G icon</string>
-    <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
+    <string name="show_fourg_icon_title">أيقونة 4G</string>
+    <string name="show_fourg_icon_summary">عرض رمز 4G في أيقونة الشبكة بدلاً من LTE</string>
     <!-- Show VoLTE icon on statusbar -->
-    <string name="volte_icon_title">VoLTE icon</string>
-    <string name="volte_icon_summary">Display VoLTE icon</string>
-    <string name="volte_icon_style_title">Select VoLTE Icon</string>
+    <string name="volte_icon_title">أيقونة VoLTE</string>
+    <string name="volte_icon_summary">إظهار أيقونة VoLTE</string>
+    <string name="volte_icon_style_title">اختر أيقونة VoLTE</string>
     <string name="volte_icon_vo">Vo Only Icon</string>
     <string name="volte_icon_volte">VoLTE Icon</string>
     <string name="volte_icon_oos">أيقونة VoLTE</string>
@@ -181,19 +181,19 @@
     <string name="clock_date_style_normal">عادي</string>
     <string name="clock_date_style_lowercase">احرف صغيرة</string>
     <string name="clock_date_style_uppercase">أحرف كبيرة</string>
-    <string name="clock_date_format_custom">Custom java format</string>
-    <string name="clock_date_format">Date format</string>
-    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
-    <string name="clock_date_string_edittext_summary">Enter string</string>
+    <string name="clock_date_format_custom">تنسيق جاڤا مخصص</string>
+    <string name="clock_date_format">تنسيق التاريخ</string>
+    <string name="clock_date_string_edittext_title">يجب أن يكون في تنسيق التاريخ على سبيل المثال. شهر/يوم/سنة</string>
+    <string name="clock_date_string_edittext_summary">ادخل النص</string>
     <!-- Statusbar Clock Font Style, Size & Color -->
-    <string name="status_bar_clock_font_style_title">Clock font style</string>
-    <string name="status_bar_clock_font_size_title">Clock font size</string>
-    <string name="status_bar_clock_color_title">Clock font color</string>
-    <string name="clock_date_right">Right of time</string>
-    <string name="clock_date_left">Left of time</string>
-    <string name="clock_date_position">Date position</string>
-    <string name="status_bar_clock_auto_hide_title">Auto-hide clock</string>
-    <string name="status_bar_clock_auto_hide_summary">Hide and show clock at regular intervals of time</string>
+    <string name="status_bar_clock_font_style_title">شكل خط الساعة</string>
+    <string name="status_bar_clock_font_size_title">حجم خط الساعة</string>
+    <string name="status_bar_clock_color_title">لون خط الساعة</string>
+    <string name="clock_date_right">يمين الوقت</string>
+    <string name="clock_date_left">يسار الوقت</string>
+    <string name="clock_date_position">موضع التاريخ</string>
+    <string name="status_bar_clock_auto_hide_title">الإخفاء التلقائي للساعة</string>
+    <string name="status_bar_clock_auto_hide_summary">إخفاء وإظهار الساعة على فترات زمنية منتظمة</string>
     <string name="status_bar_clock_auto_hide_hdur_title">مدة الإخفاء</string>
     <string name="status_bar_clock_auto_hide_sdur_title">مدة الإظهار</string>
     <!-- Network traffic -->
@@ -254,7 +254,7 @@
     <string name="lock_clock_font_amarante">Amarante</string>
     <string name="lock_clock_font_bariol">Bariol</string>
     <string name="lock_clock_font_cagliostro">Cagliostro</string>
-    <string name="lock_clock_font_coolstory">Coolstory</string>
+    <string name="lock_clock_font_coolstory">خط coolstory</string>
     <string name="lock_clock_font_lgsmartgothic">LGSmartGothic</string>
     <string name="lock_clock_font_rosemary">Rosemary</string>
     <string name="lock_clock_font_sonysketch">SonySketch</string>
