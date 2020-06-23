@@ -65,7 +65,7 @@
     <string name="quicksettings_title">Configurações rápidas</string>
     <string name="quicksettings_summary">Personalizar as configurações rápidas</string>
     <string name="traffic_title">Indicadores de tráfego</string>
-    <string name="traffic_summary">Personalize os indicadores de tráfego</string>
+    <string name="traffic_summary">Personalizar os indicadores de tráfego</string>
 
     <!-- Navegação -->
     <string name="buttons_title">Botões</string>
@@ -75,17 +75,17 @@
 
     <!-- Diversos -->
     <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="sub_cat_advanced">Advanced</string>
-    <string name="signal_icon_title">Signal Icon</string>
-    <string name="switch_category">Advanced Switch</string>
-    <string name="animation_settings_title">Screen Animations</string>
-    <string name="animation_settings_summary">System Wide Screen Animation Options</string>
+    <string name="reset">Redefinir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Salvar</string>
+    <string name="sub_cat_advanced">Avançado</string>
+    <string name="signal_icon_title">Ícone do sinal</string>
+    <string name="switch_category">Interruptor avançado</string>
+    <string name="animation_settings_title">Animações da tela</string>
+    <string name="animation_settings_summary">Opções de animação em tela ampla do sistema</string>
 
     <!-- Menu de energia -->
-    <string name="powermenu_reboot_title">Restart</string>
+    <string name="powermenu_reboot_title">Reiniciar</string>
     <string name="powermenu_advanced_restart_title">Reinicialização avançada</string>
     <string name="powermenu_advanced_restart_summary">Ativa o menu de reinicialização avançada para outras opções de reinicialização</string>
     <string name="powermenu_lockdown_title">Bloqueio de tela</string>
