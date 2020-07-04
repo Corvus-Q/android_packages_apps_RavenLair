@@ -61,7 +61,9 @@ public class TeamActivity extends Activity {
         setTeamMember("Samuel", getString(R.string.developer_title)
                 + " / " + getString(R.string.maintainer_title), "DeadmanxXD", "deadmanxxd",
                 R.drawable.deadmanxxd);
-        setTeamMember("Jughead", getString(R.string.contributor_title), "", "jughead069",
+        setTeamMember("Xawlw", getString(R.string.developer_title), "xawlw", "xawlw", 
+                R.drawable.xawlw);
+        setTeamMember("Jughead", getString(R.string.contributor_title), "jughead069", "jughead069",
                 R.drawable.jughead);
         setTeamMember("Rizky Benggolo", getString(R.string.developer_title)
                 + " / " + getString(R.string.contributor_title), "travarilo", "travarilo", 
@@ -90,7 +92,7 @@ public class TeamActivity extends Activity {
                 R.drawable.saikiran);
         setTeamMember("Jean Graff", getString(R.string.maintainer_title), "jeangraff30", "jeangraff30",
                 R.drawable.jeangraff);
-        setTeamMember("MahmoudK", getString(R.string.maintainer_title), "MahmoudK1000", "MahmoudK1000",
+        setTeamMember("Mahmoud", getString(R.string.maintainer_title), "MahmoudK1000", "MahmoudK1000",
                 R.drawable.mahmoud);
 
         ListAdapter mAdapter = new ListAdapter(mList);
