@@ -1144,4 +1144,9 @@
     <!-- Statusbar dual row -->
     <string name="statusbar_dual_row_title">Dual Row</string>
     <string name="statusbar_dual_row_summary">Enable dual row statusbar for notifications</string>
+
+    <!-- StatusBar notification count -->
+    <string name="notif_count_title">Notification count</string>
+    <string name="notif_count_summary">Show notification count near notfication icons</string>
+
 </resources>

@@ -56,4 +56,12 @@
          android:title="@string/bluetooth_battery_title"
          android:summary="@string/bluetooth_battery_summary"
          android:defaultValue="true"/>
+
+    <!-- StatusBar notification count -->
+    <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
+         android:key="status_bar_notif_count"
+         android:title="@string/notif_count_title"
+         android:summary="@string/notif_count_summary"
+         android:defaultValue="false" />
+
 </PreferenceScreen>
