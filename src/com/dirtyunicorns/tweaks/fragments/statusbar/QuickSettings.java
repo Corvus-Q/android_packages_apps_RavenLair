@@ -28,15 +28,13 @@ import android.provider.Settings;
 import androidx.preference.*;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.du.ActionUtils;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 import com.android.settingslib.search.SearchIndexable;
-
-import com.dirtyunicorns.support.preferences.CustomSeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +51,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
     private static final String FOOTER_TEXT_STRING = "footer_text_string";
     private static final String QS_BLUR = "qs_blur";
+    private static final String QS_TINT = "qs_panel_bg_use_new_tint";
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
@@ -69,6 +68,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private CustomSeekBarPreference mQsColumnsLand;
     private SystemSettingMasterSwitchPreference mCustomHeader;
     private SystemSettingMasterSwitchPreference mQsBlur;
+    private SystemSettingSwitchPreference mQsTint;
     private SystemSettingEditTextPreference mFooterString;
 
     @Override
@@ -126,6 +126,12 @@ public class QuickSettings extends SettingsPreferenceFragment
         mQsBlur.setChecked((Settings.System.getInt(resolver,
                 Settings.System.QS_BLUR, 0) == 1));
         mQsBlur.setOnPreferenceChangeListener(this);
+
+
+        mQsTint = (SystemSettingSwitchPreference) findPreference(QS_TINT);
+        mQsTint.setChecked((Settings.System.getInt(resolver,
+                Settings.System.QS_PANEL_BG_USE_NEW_TINT, 0) == 1));
+        mQsTint.setOnPreferenceChangeListener(this);
 
         mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
         int tileAnimationStyle = Settings.System.getIntForUser(getContentResolver(),
@@ -207,12 +213,12 @@ public class QuickSettings extends SettingsPreferenceFragment
         } else if (preference == mFooterString) {
             String value = (String) newValue;
             if (value != "" && value != null)
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(resolver,
                         Settings.System.FOOTER_TEXT_STRING, value);
             else {
-                mFooterString.setText("#Durex");
+                mFooterString.setText("#Corvus");
                 Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.FOOTER_TEXT_STRING, "#Durex");
+                        Settings.System.FOOTER_TEXT_STRING, "#Corvus");
             }
             return true;
         } else if (preference == mTileAnimationStyle) {
@@ -236,8 +242,14 @@ public class QuickSettings extends SettingsPreferenceFragment
             return true;
         } else if (preference == mQsBlur) {
             boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(resolver,
                     Settings.System.QS_BLUR, value ? 1 : 0);
+            return true;
+        } else if (preference == mQsTint) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.QS_PANEL_BG_USE_NEW_TINT, value ? 1 : 0);
+            ActionUtils.showSystemUiRestartDialog(getContext());
             return true;
         }
         return false;
