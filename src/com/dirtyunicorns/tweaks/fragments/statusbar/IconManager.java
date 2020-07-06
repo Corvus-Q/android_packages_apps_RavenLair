@@ -56,6 +56,7 @@ public class IconManager extends SettingsPreferenceFragment
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+        Context mContext = getContext();
 
         mStatusBarLogo = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_LOGO);
         mStatusBarLogo.setChecked((Settings.System.getInt(resolver,
@@ -66,6 +67,12 @@ public class IconManager extends SettingsPreferenceFragment
         mStatusbarDualRow.setChecked((Settings.System.getInt(resolver,
                 Settings.System.STATUSBAR_DUAL_ROW, 0) == 1));
         mStatusbarDualRow.setOnPreferenceChangeListener(this);
+
+        boolean hasNotch = mContext.getResources().getBoolean(com.android.internal.R.bool.config_physicalDisplayCutout);
+        final Preference statusbarDualRow = (Preference) getPreferenceScreen().findPreference(STATUSBAR_DUAL_ROW);
+        if (statusbarDualRow != null && !hasNotch) {
+            prefSet.removePreference(statusbarDualRow);
+        }
     }
 
     @Override
