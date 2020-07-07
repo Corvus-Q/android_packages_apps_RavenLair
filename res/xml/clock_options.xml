@@ -114,7 +114,7 @@
             android:max="23"
             settings:min="4"
             android:defaultValue="14"
-            settings:units="dp"
+            settings:units="sp"
             android:dependency="status_bar_clock" />
 
         <com.dirtyunicorns.support.colorpicker.ColorPickerPreference
