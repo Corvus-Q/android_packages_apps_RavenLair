@@ -205,7 +205,7 @@
     <string name="clock_hide_category">Clock auto hide </string>
     <string name="clock_style_category">Clock Style</string>
     <string name="status_bar_clock_show">Show clock and date</string>
-    <string name="status_bar_clock_style_title">Clock style</string>
+    <string name="status_bar_clock_style_title">Clock position</string>
     <string name="status_bar_clock_style_right">Right</string>
     <string name="status_bar_clock_style_center">Center</string>
     <string name="status_bar_clock_style_left">Left</string>
@@ -499,11 +499,11 @@
     <!-- Dashboard Suggestions & Conditions -->
     <string name="dashboard_stuff">Dashboard Settings</string>
     <string name="dashboard_conditions_title">Dashboard conditions</string>
-    <string name="summary_dashboard_conditions_enabled">Dashboard conditions are enabled</string>
-    <string name="summary_dashboard_conditions_disabled">Dashboard conditions are disabled</string>
+    <string name="summary_dashboard_conditions_enabled">Dashboard conditions are disabled</string>
+    <string name="summary_dashboard_conditions_disabled">Dashboard conditions are enabled</string>
     <string name="dashboard_suggestions_title">Dashboard suggestions</string>
-    <string name="summary_dashboard_suggestions_enabled">Dashboard suggestions are enabled</string>
-    <string name="summary_dashboard_suggestions_disabled">Dashboard suggestions are disabled</string>
+    <string name="summary_dashboard_suggestions_enabled">Dashboard suggestions are disabled</string>
+    <string name="summary_dashboard_suggestions_disabled">Dashboard suggestions are enabled</string>
 
     <!-- Roaming indicator icon -->
     <string name="roaming_indicator_icon_title">Roaming indicator</string>
@@ -1066,7 +1066,7 @@
     <string name="cutout_force_fullscreen_no_apps">No apps</string>
 
     <!-- QS Header data uasge -->
-    <string name="qs_datausage_title">Data usage in QS Header</string>
+    <string name="qs_datausage_title">Data usage</string>
     <string name="qs_datausage_disabled">Disabled</string>
     <string name="qs_datausage_daily">Daily usage</string>
     <string name="qs_datausage_monthly">Monthly usage</string>
