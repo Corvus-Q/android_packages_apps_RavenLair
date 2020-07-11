@@ -169,6 +169,12 @@
     <string name="double_tap_sleep_gesture_title">Double tap to sleep</string>
     <string name="double_tap_sleep_gesture_summary">Double tap on the status bar to put the device to sleep</string>
 
+
+    <!-- Fingerprint unlock keystore -->
+    <string name="fp_unlock_keystore_title">Fingerprint unlock</string>
+    <string name="fp_unlock_keystore_summary">Unlock device with fingerprint after reboot\nNote: Think Twice, not less risky than FaceUnlcok!</string>
+
+
     <!-- Quick settings brightness slider -->
     <string name="qs_brightness_slider_title">Brightness slider position</string>
     <string name="qs_brightness_slider_hide">Hidden</string>
