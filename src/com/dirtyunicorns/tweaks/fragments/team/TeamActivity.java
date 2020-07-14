@@ -94,6 +94,8 @@ public class TeamActivity extends Activity {
                 R.drawable.jeangraff);
         setTeamMember("Mahmoud", getString(R.string.maintainer_title), "MahmoudK1000", "MahmoudK1000",
                 R.drawable.mahmoud);
+        setTeamMember("ZHANtech", getString(R.string.maintainer_title), "zhantech", "zhantech",
+                R.drawable.zhantech);
         setTeamMember("Azaharuddin", getString(R.string.maintainer_title), "aza786", "Azahar123",
                 R.drawable.azahar);
         setTeamMember("Shekhar", getString(R.string.maintainer_title), "Flamefusion", "Flamefusion",
