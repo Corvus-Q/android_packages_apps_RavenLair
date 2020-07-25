@@ -1243,4 +1243,7 @@
     <string name="selinux_enforcing_toast_title">Selinux set to enforcing!</string>
     <string name="cannot_get_su">Action failed because of missing superuser access</string>
 
+    <!-- QQS brightness slider -->
+    <string name="qqs_brightness_slider_title">Quick Qs Brightness slider</string>
+
 </resources>
