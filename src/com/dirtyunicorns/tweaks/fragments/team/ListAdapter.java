@@ -110,7 +110,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW,
                                 mTelegramName.getText().equals("") ?
-                                        Uri.parse("https://t.me/corvussupport") :
+                                        Uri.parse("https://t.me/CorvusCommunityOfficial") :
                                         Uri.parse("https://t.me/" + mTelegramName.getText()));
                         mContext.startActivity(intent);
                     } catch (ActivityNotFoundException e) {
