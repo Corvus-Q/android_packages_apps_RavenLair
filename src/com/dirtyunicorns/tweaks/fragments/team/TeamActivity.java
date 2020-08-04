@@ -67,8 +67,8 @@ public class TeamActivity extends Activity {
                 R.drawable.jughead);
         setTeamMember("Reignz", getString(R.string.developer_title), "PainKiller3", "Reignz3",
                 R.drawable.reignz);
-        setTeamMember("OGHyperion", getString(R.string.maintainer_title), "OGHyperion", "OGHyperion",
-                R.drawable.OGHyperion);
+        setTeamMember("Astile Kuriakose", getString(R.string.maintainer_title), "Astile97", "Astile97",
+                R.drawable.astile97);
         setTeamMember("Ronald Santos", getString(R.string.maintainer_title), "ronald-b", "RonaldSt",
                 R.drawable.ronald);
         setTeamMember("Shivam Kumar", getString(R.string.maintainer_title), "ShivamKumar2002", "ShivamKumar2002",
