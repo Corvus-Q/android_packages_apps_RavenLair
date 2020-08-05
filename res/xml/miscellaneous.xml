@@ -60,19 +60,23 @@
 
         <Preference
             android:summary="@string/selinux_explanation_summary"
-            android:selectable="false"/>
+            android:selectable="false"
+            android:icon="@drawable/ic_warning" />
 
         <SwitchPreference
             android:key="selinux_mode"
             android:title="@string/selinux_mode_title"
             android:summaryOn="@string/selinux_enforcing_summary"
-            android:summaryOff="@string/selinux_permissive_summary" />
+            android:summaryOff="@string/selinux_permissive_summary"
+            android:icon="@drawable/ic_linux" />
 
         <SwitchPreference
             android:key="selinux_persistence"
             android:title="@string/selinux_persistence_title"
             android:summary="@string/selinux_persistence_summary"
-            android:defaultValue="true" />
+            android:defaultValue="true"
+            android:icon="@drawable/ic_power" />
+
     	</PreferenceCategory>
 
     <PreferenceCategory
