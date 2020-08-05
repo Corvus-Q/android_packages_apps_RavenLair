@@ -18,6 +18,9 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/miscellaneous_title" >
 
+    <PreferenceCategory
+        android:title="@string/screen_category">
+
     <PreferenceScreen
         android:key="rounded_corners"
         android:title="@string/corners_title"
@@ -30,18 +33,16 @@
         android:summary="@string/cutout_main_summary"
         android:fragment="com.dirtyunicorns.tweaks.fragments.CutoutFragment"/>
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/animations_category">
+
     <Preference
         android:key="animations_category"
         android:title="@string/animation_settings_title"
         android:summary="@string/animation_settings_summary"
         android:fragment="com.dirtyunicorns.tweaks.fragments.AnimationSettings" />
-
-    <com.dirtyunicorns.support.preferences.SystemSettingListPreference
-        android:key="screenshot_type"
-        android:entries="@array/screenshot_type_entries"
-        android:entryValues="@array/screenshot_type_values"
-        android:title="@string/screenshot_type_title"
-        android:defaultValue="0" />
 
     <ListPreference
         android:key="screen_off_animation"
@@ -51,16 +52,25 @@
         android:persistent="false"
         android:defaultValue="0" />
 
-    <ListPreference
-        android:key="pref_scrollingcache"
-        android:dialogTitle="@string/pref_scrollingcache_title"
-        android:title="@string/pref_scrollingcache_title"
-        android:summary="@string/pref_scrollingcache_summary"
-        android:entries="@array/entries_scrollingcache"
-        android:entryValues="@array/values_scrollingcache" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/switch_category">
+
+        <com.dirtyunicorns.support.preferences.SystemSettingListPreference
+            android:key="screenshot_type"
+            android:entries="@array/screenshot_type_entries"
+            android:entryValues="@array/screenshot_type_values"
+            android:title="@string/screenshot_type_title"
+            android:defaultValue="0" />
+
+        <ListPreference
+            android:key="pref_scrollingcache"
+            android:dialogTitle="@string/pref_scrollingcache_title"
+            android:title="@string/pref_scrollingcache_title"
+            android:summary="@string/pref_scrollingcache_summary"
+            android:entries="@array/entries_scrollingcache"
+            android:entryValues="@array/values_scrollingcache" />
 
         <com.dirtyunicorns.support.preferences.SystemSettingMasterSwitchPreference
             android:key="gaming_mode_enabled"

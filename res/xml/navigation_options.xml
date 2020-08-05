@@ -43,13 +43,6 @@
         android:defaultValue="true" />
 
     <Preference
-        android:key="pulse"
-        android:title="@string/pulse_settings"
-        android:summary="@string/pulse_settings_summary"
-        android:dependency="force_show_navbar"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.PulseSettings" />
-
-    <Preference
         android:key="gesture_system_navigation"
         android:title="@string/system_navigation_title"
         android:dependency="force_show_navbar"
@@ -65,6 +58,18 @@
             android:targetPackage="com.android.systemui"
             android:targetClass="com.android.systemui.tuner.NavbarActivity" />
     </Preference>
+
+    <PreferenceCategory
+        android:title="@string/navbar_pulse_category">
+
+    <Preference
+        android:key="pulse"
+        android:title="@string/pulse_settings"
+        android:summary="@string/pulse_settings_summary"
+        android:dependency="force_show_navbar"
+        android:fragment="com.dirtyunicorns.tweaks.fragments.PulseSettings" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="hw_keys"

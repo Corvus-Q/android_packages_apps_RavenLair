@@ -21,7 +21,7 @@
     <string name="dirtytweaks_summary">Unleash the Raven</string>
 
     <!-- The Team -->
-    <string name="dialog_team_title">The team</string>
+    <string name="dialog_team_title">The Team</string>
     <string name="developer_title">Developer</string>
     <string name="maintainer_title">Maintainer</string>
     <string name="contributor_title">Contributor</string>
@@ -38,40 +38,41 @@
     <string name="corvus_parts_title">Corvus Parts</string>
     <string name="corvus_parts_summary">Corvus device specific parts</string>
     <string name="miscellaneous_title">Miscellaneous</string>
-    <string name="miscellaneous_summary">Customize the miscellaneous</string>
+    <string name="miscellaneous_summary">Miscellaneous customizations</string>
     <string name="powermenu_title">Power menu</string>
-    <string name="powermenu_summary">Customize the power menu</string>
+    <string name="powermenu_summary">Power menu customizations</string>
     <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Customize the notifications</string>
+    <string name="notifications_summary">Notifications customizations</string>
 
     <!-- Lockscreen -->
     <string name="fingerprint_prefs_title">Fingerprint prefs</string>
-    <string name="fingerprint_prefs_summary">Customize the fingerprint scanner</string>
+    <string name="fingerprint_prefs_summary">Fingerprint customizations</string>
     <string name="lockscreen_items_title">Lockscreen items</string>
-    <string name="lockscreen_items_summary">Customize the lockscreen item</string>
+    <string name="lockscreen_items_summary">Customize your lockscreen clock, date styles and lot more</string>
     <string name="lockscreen_style_title">Lockscreen Style</string>
-    <string name="lockscreen_style_summary">Customize the lockscreen</string>
-    <string name="switch_settings_title">Element</string>
+    <string name="lockscreen_style_summary">Lockscreen clock, date styles customizations</string>
+    <string name="switch_settings_title">Misc lockscreen settings</string>
 
     <!-- Statusbar -->
     <string name="battery_options_title">Battery options</string>
-    <string name="battery_options_summary">Customize the statusbar battery</string>
+    <string name="battery_options_summary">Battery customizations</string>
     <string name="carrier_label_title">Carrier label</string>
-    <string name="carrier_label_summary">Customize the carrier label</string>
-    <string name="clock_options_title">Clock options</string>
-    <string name="clock_options_summary">Customize the statusbar clock</string>
+    <string name="carrier_label_summary">Carrier label customizations</string>
+    <string name="clock_options_title">Statusbar clock options</string>
+    <string name="clock_options_summary">Statusbar clock customizations</string>
     <string name="icon_manager_title">Icon manager</string>
-    <string name="icon_manager_summary">Customize the statusbar items</string>
+    <string name="icon_manager_summary">Statusbar icons customizations</string>
     <string name="quicksettings_title">Quick settings</string>
-    <string name="quicksettings_summary">Customize the quick settings</string>
+    <string name="quicksettings_summary">Quick settings customizations</string>
     <string name="traffic_title">Traffic indicators</string>
-    <string name="traffic_summary">Customize the traffic indicators</string>
+    <string name="traffic_summary">Network traffic indicators customizations</string>
 
     <!-- Navigation -->
     <string name="buttons_title">Buttons</string>
-    <string name="buttons_summary">Customize the Button options</string>
+    <string name="buttons_summary">Volume panel, screen off power button torch customizations</string>
     <string name="navigation_options_title">Navigation</string>
-    <string name="navigation_options_summary">Customize the navigation options</string>
+    <string name="navigation_options_summary">Navigation bar customizations</string>
+    <string name="navbar_pulse_category">Navigation bar pulse</string>
 
     <!-- Misc -->
     <string name="ok">OK</string>
@@ -80,9 +81,11 @@
     <string name="save">Save</string>
     <string name="sub_cat_advanced">Advanced</string>
     <string name="signal_icon_title">Signal Icon</string>
-    <string name="switch_category">Advanced Switch</string>
+    <string name="switch_category">Advanced Tweaks</string>
     <string name="animation_settings_title">Screen Animations</string>
-    <string name="animation_settings_summary">System Wide Screen Animation Options</string>
+    <string name="animation_settings_summary">System Wide Screen Animations customization</string>
+    <string name="screen_category">Screen customizations</string>
+    <string name="animations_category">Animations</string>
 
     <!-- Power Menu -->
     <string name="powermenu_reboot_title">Restart</string>
