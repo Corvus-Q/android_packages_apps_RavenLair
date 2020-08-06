@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0f00d73_9dadd495",
+        "filename": "src/com/dirtyunicorns/tweaks/fragments/team/TeamActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2020-08-06T12:31:10Z",
+      "side": 1,
+      "message": "Add your git id and tg id after maintainer string title",
+      "revId": "3173ae3924c665faa07ce17d74256190b08390dd",
+      "serverId": "742c4a34-0943-4e3b-a7fa-8535aaaf63b1",
+      "unresolved": true
+    }
+  ]
+}
