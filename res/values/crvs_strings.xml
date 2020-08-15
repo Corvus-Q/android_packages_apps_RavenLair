@@ -1248,4 +1248,8 @@
     <string name="selinux_enforcing_toast_title">Selinux set to enforcing!</string>
     <string name="cannot_get_su">Action failed because of missing superuser access</string>
 
+    <!-- Center R Notification headers -->
+    <string name="center_notification_headers_title">Center notification headers</string>
+    <string name="center_notification_headers_summary">Whether to Center R style notification headers (Requires a SystemUI restart)</string>
+
 </resources>
