@@ -1246,4 +1246,8 @@
     <!-- QQS brightness slider -->
     <string name="qqs_brightness_slider_title">Quick Qs Brightness slider</string>
 
+    <!-- Qs drag handle -->
+    <string name="qs_show_drag_handle_title">Qs Drag Handle</string>
+    <string name="qs_show_drag_handle_summary">Show Qs footer handle</string>
+
 </resources>
