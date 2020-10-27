@@ -16,25 +16,25 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+    <com.raven.lair.preferences.CategoryPreference
         android:key="expanded_desktop_category"
         android:icon="@drawable/dt_expanded_desktop"
         android:title="@string/expanded_desktop_title"
         android:summary="@string/expanded_desktop_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.ExpandedDesktop" />
+        android:fragment="com.raven.lair.fragments.ExpandedDesktop" />
 
-    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+    <com.raven.lair.preferences.CategoryPreference
         android:key="notifications_category"
         android:icon="@drawable/dt_notifications"
         android:title="@string/notifications_title"
         android:summary="@string/notifications_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.Notifications" />
+        android:fragment="com.raven.lair.fragments.Notifications" />
 
-    <com.dirtyunicorns.tweaks.preferences.CategoryPreference
+    <com.raven.lair.preferences.CategoryPreference
         android:key="miscellaneous_category"
         android:icon="@drawable/dt_miscellaneous"
         android:title="@string/miscellaneous_title"
         android:summary="@string/miscellaneous_summary"
-        android:fragment="com.dirtyunicorns.tweaks.fragments.Miscellaneous" />
+        android:fragment="com.raven.lair.fragments.Miscellaneous" />
 
 </PreferenceScreen>
