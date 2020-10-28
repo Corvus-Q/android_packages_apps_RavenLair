@@ -17,9 +17,16 @@
 package com.raven.lair;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.provider.Settings;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceManager;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceScreen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +42,17 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+
 import com.raven.lair.fragments.Team;
 import com.raven.lair.tabs.Lockscreen;
 import com.raven.lair.tabs.Hardware;
 import com.raven.lair.tabs.Statusbar;
 import com.raven.lair.tabs.System;
-import com.raven.lair.bottomnav.BubbleNavigationConstraintView;
-import com.raven.lair.bottomnav.BubbleNavigationChangeListener;
 
-public class RavenLair extends SettingsPreferenceFragment  {    
+public class RavenLair extends SettingsPreferenceFragment implements
+       Preference.OnPreferenceChangeListener {    
 	private MenuItem mMenuItem;
 
     @Override
@@ -52,45 +61,62 @@ public class RavenLair extends SettingsPreferenceFragment  {
         View view = inflater.inflate(R.layout.ravenlair, container, false);
         getActivity().setTitle(R.string.ravenlair_title);
 
-        final BubbleNavigationConstraintView bubbleNavigationConstraintView =  (BubbleNavigationConstraintView) view.findViewById(R.id.bottom_navigation_view_constraint);
+        final BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation);
         final ViewPager viewPager = view.findViewById(R.id.viewpager);
         PagerAdapter mPagerAdapter = new PagerAdapter(getFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
 
-        bubbleNavigationConstraintView.setNavigationChangeListener(new BubbleNavigationChangeListener() {
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
-            public void onNavigationChanged(View view, int position) {
-			int id = view.getId();
+            public boolean onNavigationItemSelected(MenuItem item) {
+		    if (item.getItemId() == navigation.getSelectedItemId()) {
+	            return false;
+		    }	else {
+			int id = item.getItemId();
 				if (id == R.id.system) {
-					viewPager.setCurrentItem(position, true);
+					viewPager.setCurrentItem(0);
+					return true;
 				} else if (id == R.id.lockscreen) {
-					viewPager.setCurrentItem(position, true);
+					viewPager.setCurrentItem(1);
+					return true;
 				} else if (id == R.id.statusbar) {
-					viewPager.setCurrentItem(position, true);
+					viewPager.setCurrentItem(2);
+					return true;
 				} else if (id == R.id.hardware) {
-					viewPager.setCurrentItem(position, true);
+					viewPager.setCurrentItem(3);
+					return true;
 				}
-				
+				return false;
 			    }
-	    
+	    }
         });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            public void onPageScrolled(int position, float positionOffset,
+                                       int positionOffsetPixels) {
             }
 
             @Override
-            public void onPageSelected(int i) {
-                bubbleNavigationConstraintView.setCurrentActiveItem(i);
+            public void onPageSelected(int position) {
+                if(mMenuItem != null) {
+                    mMenuItem.setChecked(false);
+                } else {
+                    navigation.getMenu().getItem(0).setChecked(false);
+                }
+                navigation.getMenu().getItem(position).setChecked(true);
+                mMenuItem = navigation.getMenu().getItem(position);
             }
 
             @Override
-            public void onPageScrollStateChanged(int i) {
+            public void onPageScrollStateChanged(int state) {
             }
         });
 
         setHasOptionsMenu(true);
+        navigation.setSelectedItemId(R.id.system);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         return view;
     }
 
@@ -132,6 +158,11 @@ public class RavenLair extends SettingsPreferenceFragment  {
                 getString(R.string.bottom_nav_hardware_title)};
 
         return titleString;
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        return true;
     }
 
     @Override

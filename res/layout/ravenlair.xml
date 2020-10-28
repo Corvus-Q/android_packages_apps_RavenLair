@@ -19,71 +19,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:id="@+id/fragment_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	android:layout_above="@+id/bottom_navigation_view_linear"/>
+	android:layout_above="@+id/navigation"/>
 
-        <com.raven.lair.bottomnav.BubbleNavigationConstraintView
-        android:id="@+id/bottom_navigation_view_constraint"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:colorPrimary"
-        android:elevation="0.0dp"
-        app:corvus_mode="spread"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:padding="10dp">
+        style="@style/DtBottomNavStyle"
+        app:menu="@menu/main" />
 
-        <com.raven.lair.bottomnav.BubbleToggleView
-            android:id="@+id/system"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:corvus_active="true"
-            app:corvus_padding="12dp"
-            app:corvus_titlePadding="8dp"
-            app:corvus_colorActive="@color/green_active"
-            app:corvus_colorInactive="@color/green_inactive"
-            app:corvus_icon="@drawable/bottomnav_system"
-            app:corvus_shape="@drawable/transition_background_drawable_system"
-            app:corvus_title="@string/bottom_nav_system_title" />
-
-        <com.raven.lair.bottomnav.BubbleToggleView
-            android:id="@+id/lockscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:corvus_padding="12dp"
-            app:corvus_titlePadding="8dp"
-            app:corvus_colorActive="@color/red_active"
-            app:corvus_colorInactive="@color/red_inactive"
-            app:corvus_icon="@drawable/bottomnav_lockscreen"
-            app:corvus_shape="@drawable/transition_background_drawable_lockscreen"
-            app:corvus_title="@string/bottom_nav_lockscreen_title" />
-
-        <com.raven.lair.bottomnav.BubbleToggleView
-            android:id="@+id/statusbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:corvus_padding="12dp"
-            app:corvus_titlePadding="8dp"
-            app:corvus_colorActive="@color/blue_active"
-            app:corvus_colorInactive="@color/blue_inactive"
-            app:corvus_icon="@drawable/bottomnav_statusbar"
-            app:corvus_shape="@drawable/transition_background_drawable_statusbar"
-            app:corvus_title="@string/bottom_nav_statusbar_title" />
-
-        <com.raven.lair.bottomnav.BubbleToggleView
-            android:id="@+id/hardware"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:corvus_padding="12dp"
-            app:corvus_titlePadding="8dp"
-            app:corvus_colorActive="@color/orange_active"
-            app:corvus_colorInactive="@color/orange_inactive"
-            app:corvus_icon="@drawable/bottomnav_hardware"
-            app:corvus_shape="@drawable/transition_background_drawable_hardware"
-            app:corvus_title="@string/bottom_nav_hardware_title" />
-    </com.raven.lair.bottomnav.BubbleNavigationConstraintView>
 </RelativeLayout>
