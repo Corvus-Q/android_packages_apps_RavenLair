@@ -55,13 +55,6 @@ public class Team extends DialogFragment {
         final AlertDialog dialog = alertDialogBuilder.create();
         dialog.show();
 
-        if (view != null) {
-            FrameLayout genkzsz11 = view.findViewById(R.id.genkzsz11);
-            setTeamMember("Genkzsz11", genkzsz11);
-        }
-
-        dialog.show();
-
         return dialog;
     }
 

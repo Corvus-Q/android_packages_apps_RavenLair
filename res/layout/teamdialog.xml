@@ -50,7 +50,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal" />
 
-                <com.dirtyunicorns.support.helpers.RowLayout
+                <com.corvus.support.helpers.RowLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,41 +60,7 @@
                     android:horizontalSpacing="10dp"
                     android:verticalSpacing="10dp">
 
-                    <FrameLayout
-                        android:id="@+id/genkzsz11"
-                        android:layout_width="80dp"
-                        android:layout_height="75dp">
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="75dp">
-
-                            <com.dirtyunicorns.support.helpers.CircularImageView
-                                android:id="@+id/genkzsz11_image"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="15dp"
-                                android:src="@drawable/genkzsz11"
-                                app:civ_border_color="@color/team_dialog_circle_border_color"
-                                app:civ_border="true"
-                                app:civ_border_width="3dp" />
-
-                            <TextView
-                                android:id="@+id/genkzsz11_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Genkzsz11"
-                                android:textStyle="bold"
-                                android:layout_below="@+id/genkzsz11_image"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="3dp" />
-
-                        </RelativeLayout>
-
-                    </FrameLayout>
-
-                </com.dirtyunicorns.support.helpers.RowLayout>
+                </com.corvus.support.helpers.RowLayout>
 
             </LinearLayout>
 
