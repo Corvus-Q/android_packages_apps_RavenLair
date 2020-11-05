@@ -47,6 +47,7 @@
     <string name="fingerprint_prefs_summary">Tweaks specific to the fingerprint scanner</string>
     <string name="lockscreen_items_title">Lockscreen items</string>
     <string name="lockscreen_items_summary">Customize the lockscreen</string>
+    <string name="switch_settings_title">Misc lockscreen settings</string>
 
     <!-- Statusbar -->
     <string name="battery_options_title">Battery options</string>
@@ -96,6 +97,10 @@
     <!-- Network Traffic Location -->
     <string name="network_traffic_location_title">Traffic indicator placement</string>
     <string name="network_traffic_location_summary">Place indicator in either status bar or expanded header</string>
+
+    <!-- Double Tap gestures -->
+    <string name="double_tap_sleep_lockscreen_title">Double tap to sleep on lockscreen</string>
+    <string name="double_tap_sleep_lockscreen_summary">Double tap anywhere on the lockscreen to put phone to sleep</string>
 
 </resources>
 
