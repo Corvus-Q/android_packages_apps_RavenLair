@@ -118,5 +118,9 @@
     <string name="qs_bg_use_new_tint">QS Tint</string>
     <string name="qs_bg_use_new_tint_summary">Enable QS tiles tint style (Requires Reboot)</string>
 
+    <!-- 4G icon -->
+    <string name="show_fourg_icon_title">4G icon</string>
+    <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
+
 </resources>
 
