@@ -110,6 +110,9 @@
     <string name="volume_rocker_wake_title">Wake device</string>
     <string name="volume_rocker_wake_summary">Press volume keys to wake your device</string>
 
+    <!-- Lock screen cover art -->
+    <string name="lockscreen_media_category">Music/Media</string>
+
     <!-- Old Mobile Type Icons -->
     <string name="use_old_mobiletype_title">Old mobiletype</string>
     <string name="use_old_mobiletype_summary">Use pre-p mobiletype icons for signal (Reboot required)</string>
@@ -143,6 +146,10 @@
 
     <!-- Statusbar Tuner -->
     <string name="statusbar_items_title">Statusbar items</string>
+
+     <!-- Media art -->
+    <string name="lockscreen_media_art_title">Media art</string>
+    <string name="lockscreen_media_art_summary">Toggle visibility of media art</string>
 
 </resources>
 
