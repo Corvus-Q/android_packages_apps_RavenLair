@@ -114,5 +114,9 @@
     <string name="use_old_mobiletype_title">Old mobiletype</string>
     <string name="use_old_mobiletype_summary">Use pre-p mobiletype icons for signal (Reboot required)</string>
 
+    <!-- QS themes -->
+    <string name="qs_bg_use_new_tint">QS Tint</string>
+    <string name="qs_bg_use_new_tint_summary">Enable QS tiles tint style (Requires Reboot)</string>
+
 </resources>
 
