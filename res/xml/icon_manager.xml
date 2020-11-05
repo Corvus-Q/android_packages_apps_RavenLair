@@ -18,4 +18,10 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/icon_manager_title" >
 
+    <com.corvus.support.preferences.SystemSettingSwitchPreference
+        android:key="use_old_mobiletype"
+        android:title="@string/use_old_mobiletype_title"
+        android:summary="@string/use_old_mobiletype_summary"
+        android:defaultValue="true" />
+
 </PreferenceScreen>
