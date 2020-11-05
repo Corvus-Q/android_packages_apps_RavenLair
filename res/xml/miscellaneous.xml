@@ -18,4 +18,14 @@
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/miscellaneous_title" >
 
+    <PreferenceCategory
+        android:title="@string/switch_category">
+
+    <com.corvus.support.preferences.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/double_tap_sleep_gesture_title"
+        android:summary="@string/double_tap_sleep_gesture_summary"
+        android:defaultValue="false" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
