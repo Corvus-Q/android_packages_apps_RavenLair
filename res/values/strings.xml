@@ -139,16 +139,18 @@
 
     <!-- Translucent lockscreen notifications background -->
     <string name="translucent_lockscreen_notifications_bg_title">Translucent notifications background</string>
+    <string name="translucent_lockscreen_notifications_bg_summary">Gives your notifications a tranculent feel on the lockscreen</string>
 
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
     <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
 
     <!-- Statusbar Tuner -->
-    <string name="statusbar_items_title">Statusbar items</string>
+    <string name="statusbar_items_title">Statusbar Items</string>
+    <string name="statusbar_items_summary">Enable your favorite statusbar icons</string>
 
      <!-- Media art -->
-    <string name="lockscreen_media_art_title">Media art</string>
+    <string name="lockscreen_media_art_title">Media Art</string>
     <string name="lockscreen_media_art_summary">Toggle visibility of media art</string>
 
 </resources>

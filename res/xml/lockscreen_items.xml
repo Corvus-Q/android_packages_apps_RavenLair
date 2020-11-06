@@ -30,6 +30,7 @@
     <com.corvus.support.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_translucent_notifications_bg_enabled"
         android:title="@string/translucent_lockscreen_notifications_bg_title"
+        android:summary="@string/translucent_lockscreen_notifications_bg_summary"
         android:defaultValue="false" />
 
     <com.corvus.support.preferences.SystemSettingSwitchPreference
