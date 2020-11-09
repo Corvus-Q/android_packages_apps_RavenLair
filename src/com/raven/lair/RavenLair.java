@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2016 The Dirty Unicorns Project
+ * Copyright (C) 2015-2020 AOSiP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,14 @@
 
 package com.raven.lair;
 
-import android.os.Bundle;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
-import android.text.Html;
+import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.provider.Settings;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceManager;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceScreen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,90 +31,78 @@ import androidx.viewpager.widget.ViewPager;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.logging.nano.MetricsProto;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import com.raven.lair.fragments.team.TeamActivity;
-import com.raven.lair.tabs.Lockscreen;
 import com.raven.lair.tabs.Hardware;
+import com.raven.lair.tabs.Lockscreen;
 import com.raven.lair.tabs.Statusbar;
 import com.raven.lair.tabs.System;
 
-public class RavenLair extends SettingsPreferenceFragment implements
-       Preference.OnPreferenceChangeListener {    
-	private MenuItem mMenuItem;
-	private Context mContext;
-	  
+import com.raven.lair.navigation.BubbleNavigationConstraintView;
+import com.raven.lair.navigation.BubbleNavigationChangeListener;
+
+public class RavenLair extends SettingsPreferenceFragment {
+
+    private static final String TAG = "RavenLair";
+
+    Context mContext;
+//    View view;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
         mContext = getActivity();
         View view = inflater.inflate(R.layout.ravenlair, container, false);
-        getActivity().setTitle(R.string.ravenlair_title);
 
-        final BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation);
-        final ViewPager viewPager = view.findViewById(R.id.viewpager);
+        ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.ravenlair_title);
+        }
+
+        BubbleNavigationConstraintView bubbleNavigationConstraintView =  (BubbleNavigationConstraintView) view.findViewById(R.id.bottom_navigation_view_constraint);
+        ViewPager viewPager = view.findViewById(R.id.viewpager);
         PagerAdapter mPagerAdapter = new PagerAdapter(getFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
 
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
+        bubbleNavigationConstraintView.setNavigationChangeListener(new BubbleNavigationChangeListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-		    if (item.getItemId() == navigation.getSelectedItemId()) {
-	            return false;
-		    }	else {
-			int id = item.getItemId();
-				if (id == R.id.system) {
-					viewPager.setCurrentItem(0);
-					return true;
-				} else if (id == R.id.lockscreen) {
-					viewPager.setCurrentItem(1);
-					return true;
-				} else if (id == R.id.statusbar) {
-					viewPager.setCurrentItem(2);
-					return true;
-				} else if (id == R.id.hardware) {
-					viewPager.setCurrentItem(3);
-					return true;
-				}
-				return false;
-			    }
-	    }
+            public void onNavigationChanged(View view, int position) {
+                if (view.getId() == R.id.system) {
+                    viewPager.setCurrentItem(position, true);
+                } else if (view.getId() == R.id.lockscreen) {
+                    viewPager.setCurrentItem(position, true);
+                } else if (view.getId() == R.id.statusbar) {
+                    viewPager.setCurrentItem(position, true);
+                } else if (view.getId() == R.id.hardware) {
+                    viewPager.setCurrentItem(position, true);
+		}
+            }
         });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset,
-                                       int positionOffsetPixels) {
+            public void onPageScrolled(int i, float v, int i1) {
             }
 
             @Override
-            public void onPageSelected(int position) {
-                if(mMenuItem != null) {
-                    mMenuItem.setChecked(false);
-                } else {
-                    navigation.getMenu().getItem(0).setChecked(false);
-                }
-                navigation.getMenu().getItem(position).setChecked(true);
-                mMenuItem = navigation.getMenu().getItem(position);
+            public void onPageSelected(int i) {
+                bubbleNavigationConstraintView.setCurrentActiveItem(i);
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onPageScrollStateChanged(int i) {
             }
         });
 
         setHasOptionsMenu(true);
-        navigation.setSelectedItemId(R.id.system);
-        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
         return view;
     }
 
@@ -155,18 +138,13 @@ public class RavenLair extends SettingsPreferenceFragment implements
     private String[] getTitles() {
         String titleString[];
         titleString = new String[]{
-                getString(R.string.bottom_nav_system_title),
-                getString(R.string.bottom_nav_lockscreen_title),
-                getString(R.string.bottom_nav_statusbar_title),
-                getString(R.string.bottom_nav_hardware_title)};
+            getString(R.string.navigation_system_title),
+            getString(R.string.navigation_lockscreen_title),
+            getString(R.string.navigation_statusbar_title),
+            getString(R.string.navigation_hardware_title)};
 
-        return titleString;
-    }
-
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        return true;
-    }
+	    return titleString;
+	}
 
     @Override
     public int getMetricsCategory() {
@@ -175,18 +153,16 @@ public class RavenLair extends SettingsPreferenceFragment implements
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, 0, 0, R.string.dialog_team_title);
+		menu.add(0, 0, 0, R.string.dialog_team_title);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 0:
-                Intent intent = new Intent(mContext, TeamActivity.class);
-                mContext.startActivity(intent);
-                return true;
-            default:
-                return false;
-        }
+	    if (item.getItemId() == 0) {
+		    Intent intent = new Intent(mContext, TeamActivity.class);
+		    mContext.startActivity(intent);
+		    return true;
+	    }
+	    return false;
     }
 }

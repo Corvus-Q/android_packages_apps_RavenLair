@@ -19,6 +19,12 @@
     <!-- Bottom navigation bar -->
     <dimen name="design_bottom_navigation_text_size">10dp</dimen>
     <dimen name="design_bottom_navigation_active_text_size">11dp</dimen>
+    <dimen name="default_corner_radii">56dp</dimen>
+    <dimen name="default_nav_item_padding">10dp</dimen>
+    <dimen name="default_nav_item_text_size">11sp</dimen>
+    <dimen name="default_nav_item_text_padding">8dp</dimen>
+    <dimen name="default_nav_item_title_max_width">80dp</dimen>
+    <dimen name="default_icon_size">24dp</dimen>
 
     <!-- Cardview Preference -->
     <dimen name="card_elevation">2dp</dimen>
