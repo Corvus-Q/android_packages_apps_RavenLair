@@ -15,7 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!--
     <com.raven.lair.preferences.CategoryPreference
         android:key="battery_options_category"
         android:icon="@drawable/dt_battery_options"
@@ -36,7 +36,7 @@
         android:title="@string/clock_options_title"
         android:summary="@string/clock_options_summary"
         android:fragment="com.raven.lair.fragments.ClockOptions" />
-
+-->
     <com.raven.lair.preferences.CategoryPreference
         android:key="icon_manager_title"
         android:icon="@drawable/dt_icon_manager"

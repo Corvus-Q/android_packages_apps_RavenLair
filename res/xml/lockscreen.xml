@@ -23,11 +23,11 @@
         android:summary="@string/lockscreen_items_summary"
         android:fragment="com.raven.lair.fragments.LockscreenItems" />
 
-    <com.raven.lair.preferences.CategoryPreference
+<!--    <com.raven.lair.preferences.CategoryPreference
         android:key="fingerprint_prefs_category"
         android:icon="@drawable/dt_fingerprint_prefs"
         android:title="@string/fingerprint_prefs_title"
         android:summary="@string/fingerprint_prefs_summary"
-        android:fragment="com.raven.lair.fragments.FingerprintPrefs" />
-
+	android:fragment="com.raven.lair.fragments.FingerprintPrefs" />
+-->
 </PreferenceScreen>
