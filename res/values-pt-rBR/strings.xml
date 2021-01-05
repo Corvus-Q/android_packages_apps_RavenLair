@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017-2019 The Dirty Unicorns Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <! - Ajustes sujos ->
+    <string name = "ravenlair_title"> Raven \ 's Lair </string>
+    <string name = "ravenlair_summary"> Liberte o Raven </string>
+
+    <! - A equipe ->
+    <string name = "dialog_team_title"> A equipe </string>
+    <string name = "developer_title"> Desenvolvedor </string>
+    <string name = "keeper_title"> Mantenedor </string>
+    <string name = "contributor_title"> Contribuidor </string>
+
+    <! - Navegação inferior ->
+    <string name = "navigation_system_title"> Sistema </string>
+    <string name = "navigation_lockscreen_title"> Lockscreen </string>
+    <string name = "navigation_statusbar_title"> Barra de status </string>
+    <string name = "navigation_hardware_title"> Hardware </string>
+    <string name = "navigation_multitasking_title"> Multitarefa </string>
+
+    <! - Categorias ->
+    <! - Sistema ->
+    <string name = "misc Miscellaneous_title"> Diversos </string>
+    <string name = "misc Miscellaneous_summary"> Ajustes diversos </string>
+    <string name = "powermenu_title"> Menu liga / desliga </string>
+    <string name = "powermenu_summary"> Configure o menu de energia </string>
+    <string name = "notifications_title"> Notificações </string>
+    <string name = "notifications_summary"> Ajustes específicos para notificações do sistema </string>
+
+    <! - Tela de bloqueio ->
+    <string name = "fingerprint_prefs_title"> Preferências de impressão digital </string>
+    <string name = "fingerprint_prefs_summary"> Ajustes específicos para leitor de impressão digital </string>
+    <string name = "lockscreen_items_title"> Itens da tela de bloqueio </string>
+    <string name = "lockscreen_items_summary"> Personalize a tela de bloqueio </string>
+    <string name = "switch_settings_title"> Configurações diversas da tela de bloqueio </string>
+
+    <! - Barra de status ->
+    <string name = "battery_options_title"> Opções de bateria </string>
+    <string name = "battery_options_summary"> Personalize a bateria da barra de status </string>
+    <string name = "carrier_label_title"> Rótulo da operadora </string>
+    <string name = "carrier_label_summary"> Personalize a etiqueta da transportadora na tela de bloqueio ou na barra de status </string>
+    <string name = "clock_options_title"> Opções de relógio </string>
+    <string name = "clock_options_summary"> Personalize o relógio da barra de status </string>
+    <string name = "icon_manager_title"> Gerenciador de ícones </string>
+    <string name = "icon_manager_summary"> Configurar a visibilidade dos itens da barra de status </string>
+    <string name = "quicksettings_title"> Configurações rápidas </string>
+    <string name = "quicksettings_summary"> Configure o layout da área de configurações rápidas </string>
+    <string name = "traffic_title"> Indicadores de tráfego </string>
+    <string name = "traffic_summary"> Habilite e configure os indicadores de tráfego </string>
+    <string name = "switch_category"> Ajustes avançados </string>
+
+    <! - Navegação ->
+    <string name = "buttons_title"> Botões </string>
+    <string name = "buttons_summary"> Configurar opções de controle de volume </string>
+    <string name = "navigation_options_title"> Navegação </string>
+    <string name = "navigation_options_summary"> Configure as opções de navegação </string>
+
+    <! - Ações globais ->
+    <string name = "power_menu_title"> Menu liga / desliga </string>
+    <string name = "power_menu_subtitle"> Personalizar o menu avançado </string>
+    <string name = "global_actions_power"> Poder </string>
+    <string name = "global_actions_restart"> Reiniciar </string>
+    <string name = "global_actions_airplane"> Avião </string>
+    <string name = "global_actions_settings"> Configurações </string>
+    <string name = "global_actions_lockdown"> Bloqueio </string>
+    <string name = "global_actions_soundpanel"> Painel de som </string>
+    <string name = "global_actions_users"> Usuários </string>
+    <string name = "global_actions_screenshot"> Captura de tela </string>
+    <string name = "global_actions_screenrecord"> Registro de tela </string>
+    <string name = "global_actions_flashlight"> Lanterna </string>
+    <string name = "global_actions_emergency"> Emergência </string>
+    <string name = "global_actions_advanced_reboot_title"> Habilitar reinicialização avançada </string>
+    <string name = "global_actions_advanced_reboot_summary"> Ao reiniciar, também mostre opções para recuperação e bootloader </string>
+
+    <! - Tráfego de rede ->
+    <string name = "network_traffic_state_title"> Mostrar atividade da rede na barra de status </string>
+    <string name = "network_traffic_autohide_threshold_title"> Limite de ocultação automática de atividade da rede (KB / s) </string>
+    <string name = "network_traffic_hidearrow"> Ocultar setas </string>
+    <string name = "network_traffic_hidearrow_summary"> Ocultar as setas indicadoras de tráfego de rede </string>
+    <string name = "network_traffic_statusbar"> Barra de status </string>
+    <string name = "network_traffic_header"> Cabeçalho expandido </string>
+
+    <! - Local do tráfego de rede ->
+    <string name = "network_traffic_location_title"> Posicionamento do indicador de tráfego </string>
+    <string name = "network_traffic_location_summary"> Coloque o indicador na barra de status ou no cabeçalho expandido </string>
+
+    <! - Gestos de duplo toque ->
+    <string name = "double_tap_sleep_lockscreen_title"> Toque duas vezes para dormir na tela de bloqueio </string>
+    <string name = "double_tap_sleep_lockscreen_summary"> Toque duas vezes em qualquer lugar da tela de bloqueio para colocar o telefone no modo de espera </string>
+    <string name = "double_tap_sleep_gesture_title"> Toque duas vezes para dormir na barra de status </string>
+    <string name = "double_tap_sleep_gesture_summary"> Toque duas vezes na barra de status para colocar o dispositivo para hibernar </string>
+
+    <! - Volume Waker ->
+    <string name = "volume_stuff_title"> Botão de volume </string>
+    <string name = "volume_rocker_wake_title"> Dispositivo de ativação </string>
+    <string name = "volume_rocker_wake_summary"> Pressione as teclas de volume para despertar seu dispositivo </string>
+
+    <! - Bloquear arte da capa da tela ->
+    <string name = "lockscreen_media_category"> Música / mídia </string>
+
+    <! - Antigos ícones de tipo de celular ->
+    <string name = "use_old_mobiletype_title"> Antigo tipo de celular </string>
+    <string name = "use_old_mobiletype_summary"> Use ícones de tipo de celular pré-p para sinal (reinicialização necessária) </string>
+
+    <! - Temas QS ->
+    <string name = "qs_bg_use_new_tint"> QS Tint </string>
+    <string name = "qs_bg_use_new_tint_summary"> Habilitar estilo de tom dos blocos QS (requer reinicialização) </string>
+
+    <! - ícone 4G ->
+    <string name = "show_fourg_icon_title"> ícone 4G </string>
+    <string name = "show_fourg_icon_summary"> Exibir ícone 4G no ícone de sinal ao invés de LTE </string>
+
+    <! - Ícone de dados desativados ->
+    <string name = "data_disabled_icon_title"> Ícone de dados desativados </string>
+    <string name = "data_disabled_icon_summary"> Exibir um sinal de cruz ao lado da barra de sinal quando os dados forem desativados </string>
+
+    <! - Ícone indicador de roaming ->
+    <string name = "roaming_indicator_icon_title"> Indicador de roaming </string>
+    <string name = "roaming_indicator_icon_summary"> Exibir o indicador de roaming no ícone de sinal quando em modo roaming </string>
+
+    <! - Notch: aplicativos de tela inteira ->
+    <string name = "display_cutout_force_fullscreen_title"> Aplicativos de tela inteira </string>
+    <string name = "display_cutout_force_fullscreen_summary"> Força os aplicativos a ignorar o espaço de entalhe </string>
+
+    <! - Fundo translúcido das notificações da tela de bloqueio ->
+    <string name = "translucent_lockscreen_notifications_bg_title"> Fundo de notificações translúcido </string>
+    <string name = "translucent_lockscreen_notifications_bg_summary"> Dá às suas notificações uma sensação tranculenta na tela de bloqueio </string>
+
+    <! - Indicador de informações da bateria da tela de bloqueio ->
+    <string name = "lockscreen_battery_info_title"> Informações de carregamento do Lockscreen </string>
+    <string name = "lockscreen_battery_info_summary"> Exibir corrente e tensão máximas do carregador negociado e temperatura da bateria na tela de bloqueio durante o carregamento </string>
+
+    <! - Sintonizador da barra de status ->
+    <string name = "statusbar_items_title"> Itens da barra de status </string>
+    <string name = "statusbar_items_summary"> Ative seus ícones favoritos da barra de status </string>
+
+     <! - Arte de mídia ->
+    <string name = "lockscreen_media_art_title"> Arte de mídia </string>
+    <string name = "lockscreen_media_art_summary"> Alternar a visibilidade da arte de mídia </string>
+</resources>
