@@ -104,13 +104,6 @@
             android:title="@string/qs_footer_edit_title"
             android:summary="@string/qs_footer_edit_summary"
             android:defaultValue="true" />
-
-        <com.dirtyunicorns.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_carrier"
-            android:title="@string/qs_footer_carrier_title"
-            android:summary="@string/qs_footer_carrier_summary"
-            android:defaultValue="true" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
