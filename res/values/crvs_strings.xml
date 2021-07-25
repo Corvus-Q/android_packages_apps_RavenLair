@@ -22,9 +22,15 @@
 
     <!-- The Team -->
     <string name="dialog_team_title">The Team</string>
+    <string name="lead_developer_title">Lead Developer</string>
+    <string name="manager_title">Project Manager</string>
+    <string name="core_developer_title">Core Developer</string>
+    <string name="ui_developer_title">UI/UX Developer</string>
     <string name="developer_title">Developer</string>
     <string name="maintainer_title">Maintainer</string>
     <string name="contributor_title">Contributor</string>
+    <string name="graphics_title">Graphics Contributor</string>
+    <string name="moderator_title">Telegram Moderator</string>
 
     <!-- Bottom navigation -->
     <string name="bottom_nav_system_title">System</string>
